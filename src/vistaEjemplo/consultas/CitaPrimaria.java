@@ -1,4 +1,4 @@
-package consultas;
+package vistaEjemplo.consultas;
 import java.awt.Color;
 import java.awt.Font;
 

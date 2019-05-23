@@ -1,4 +1,4 @@
-package consultas;
+package vistaEjemplo.consultas;
 import java.awt.Font;
 
 import javax.swing.GroupLayout;

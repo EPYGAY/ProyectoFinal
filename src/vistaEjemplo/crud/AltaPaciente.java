@@ -1,12 +1,12 @@
-package crud;
+package vistaEjemplo.crud;
 import javax.swing.JPanel;
 
-import consultas.CierreOperacion;
-import consultas.CitaEspecialista;
-import consultas.CitaPrimaria;
-import consultas.Citaoperacion;
-import consultas.CitasPaciente;
-import consultas.HistorialPaciente;
+import vistaEjemplo.consultas.CierreOperacion;
+import vistaEjemplo.consultas.CitaEspecialista;
+import vistaEjemplo.consultas.CitaPrimaria;
+import vistaEjemplo.consultas.Citaoperacion;
+import vistaEjemplo.consultas.CitasPaciente;
+import vistaEjemplo.consultas.HistorialPaciente;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;

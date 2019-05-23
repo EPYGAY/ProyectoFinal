@@ -1,4 +1,4 @@
-package ventana;
+package vistaEjemplo.ventana;
 import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -12,20 +12,21 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import consultas.AtencionCita;
-import consultas.CierreOperacion;
-import consultas.CitaEspecialista;
-import consultas.CitaPrimaria;
-import consultas.Citaoperacion;
-import consultas.CitasPaciente;
-import consultas.HistorialPaciente;
-import consultas.Presentacion;
-import crud.AltaMedico;
-import crud.AltaPaciente;
-import crud.BajaPaciente;
-import crud.ConsultaMedico;
-import crud.ConsultaPaciente;
-import crud.ModificacionPaciente;
+
+import vistaEjemplo.consultas.AtencionCita;
+import vistaEjemplo.consultas.CierreOperacion;
+import vistaEjemplo.consultas.CitaEspecialista;
+import vistaEjemplo.consultas.CitaPrimaria;
+import vistaEjemplo.consultas.Citaoperacion;
+import vistaEjemplo.consultas.CitasPaciente;
+import vistaEjemplo.consultas.HistorialPaciente;
+import vistaEjemplo.consultas.Presentacion;
+import vistaEjemplo.crud.AltaMedico;
+import vistaEjemplo.crud.AltaPaciente;
+import vistaEjemplo.crud.BajaPaciente;
+import vistaEjemplo.crud.ConsultaMedico;
+import vistaEjemplo.crud.ConsultaPaciente;
+import vistaEjemplo.crud.ModificacionPaciente;
 
 public class UI extends JFrame {
 

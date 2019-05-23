@@ -1,4 +1,4 @@
-package crud;
+package vistaEjemplo.crud;
 import java.awt.Font;
 
 import javax.swing.GroupLayout;
