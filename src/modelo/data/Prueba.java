@@ -1,4 +1,4 @@
-package modelo;
+package modelo.data;
 
 public class Prueba {
 
