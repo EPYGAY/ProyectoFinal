@@ -1,4 +1,4 @@
-package modelo.data;
+package utiles;
 
 public enum TipoIntervencion {
 
