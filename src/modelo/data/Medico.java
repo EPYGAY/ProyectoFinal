@@ -1,5 +1,7 @@
 package modelo.data;
 
+import utiles.Especialidad;
+
 public class Medico extends Persona {
 	private Horario horario;
 	private Especialidad especialidad;

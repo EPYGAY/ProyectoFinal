@@ -1,5 +1,7 @@
 package modelo.data;
 
+import utiles.TipoIntervencion;
+
 public class Intervencion {
 
 	private String ID;
