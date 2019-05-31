@@ -1,6 +1,7 @@
 package modelo.data;
 
 import java.util.Date;
+import java.util.regex.Pattern;
 
 public class Paciente extends Persona{
 	
@@ -13,6 +14,10 @@ private Date fechaNacimiento;
 	public String obtenerId() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+		@Override
+	public  Respuesta validarCampos(String campo, String patron, String mensaje) {
+			return new Respuesta(Pattern.matches(patron,campo),mensaje);
 	}
 
 }

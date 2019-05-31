@@ -14,4 +14,6 @@ public abstract class Persona {
 	//de diferente forma al de los medicos
 	public abstract String obtenerId();
 	
+	public abstract Respuesta validarCampos(String campo, String patron, String mensaje);
+	
 }
