@@ -2,7 +2,6 @@ package control.logica;
 
 import java.awt.EventQueue;
 
-import vistaEjemplo.ventana.UI;
 
 public class Principal {
 
