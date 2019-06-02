@@ -12,10 +12,11 @@ public class ParaUI extends UI {
 	private Facade facade= new Facade();
 	public ParaUI() {
 		
-		/*panelMensajeAltaPaciente.getBtnAplicr().addActionListener(new ActionListener() {
+		alta.panelMensajeAltaPaciente.getBtnAplicr().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			System.out.println("Hola");
 			}
-		});*/
+		});
 		
 	}
 

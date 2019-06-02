@@ -38,7 +38,7 @@ public class UI extends JFrame {
 	private JMenuItem mntmPedirOperacion;
 	private JMenuItem mntmConsultarCitas;
 	private JMenuItem mntmVerHistorial;
-	
+	protected PanelAltaPaciente alta=new PanelAltaPaciente();
 
 	public UI() {
 		
@@ -55,7 +55,7 @@ public class UI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 		//Los paneles
-		PanelAltaPaciente alta=new PanelAltaPaciente();
+		
 		contentPane.add(alta,"PanelAltaPaciente");
 		
 		PanelBajaModificacionConsultaPaciente baja=new PanelBajaModificacionConsultaPaciente("BAJA PACIENTE",true,true,true,true,true);
