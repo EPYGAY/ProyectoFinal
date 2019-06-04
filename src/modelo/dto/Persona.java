@@ -1,5 +1,7 @@
 package modelo.dto;
 
+
+
 public abstract class Persona {
 	
 	private String nombre,direccion,telefono,apellidos;
@@ -64,7 +66,7 @@ public abstract class Persona {
 		this.eliminado = eliminado;
 	}
 	
-	
+	public abstract Respuesta validarCampos(String campo, String patron, String mensaje);
 	
 	
 	
