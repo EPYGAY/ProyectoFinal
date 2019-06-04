@@ -1,5 +1,8 @@
 package modelo.dto;
 
+import java.util.regex.Pattern;
+
+
 import utiles.Especialidad;
 
 public class Medico extends Persona {
@@ -18,5 +21,9 @@ public class Medico extends Persona {
 	}
 	public void setEspecialidad(Especialidad especialidad) {
 		this.especialidad = especialidad;
+	}
+	@Override
+	public Respuesta validarCampos(String campo, String patron, String mensaje) {
+			return new Respuesta(Pattern.matches(patron,campo),mensaje);
 	}
 }

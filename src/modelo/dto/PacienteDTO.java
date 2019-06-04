@@ -1,6 +1,9 @@
 package modelo.dto;
 
 import java.util.Date;
+import java.util.regex.Pattern;
+
+
 
 public class PacienteDTO extends Persona {
 
@@ -21,7 +24,11 @@ public class PacienteDTO extends Persona {
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
-	
+
+	@Override
+	public Respuesta validarCampos(String campo, String patron, String mensaje) {
+			return new Respuesta(Pattern.matches(patron,campo),mensaje);
+	}
 	
 
 	
