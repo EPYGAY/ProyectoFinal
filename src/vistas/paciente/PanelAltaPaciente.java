@@ -26,12 +26,14 @@ public class PanelAltaPaciente extends JPanel {
 	public PanelDatosPersonales panelDatosPersonales;
 	public PanelMensaje panelMensaje;
 	
-	public PanelAltaPaciente(String operacion, boolean nombre,  boolean apellidos, boolean direccion, boolean telefono, boolean nacimiento, String imagen) {
+	public PanelAltaPaciente(String operacion, boolean nombre,  boolean apellidos, boolean direccion, boolean telefono, boolean nacimiento,boolean visibilidadIdtxt,boolean visibilidadIdlbl, String imagen) {
 		setBackground(new Color(240, 230, 140));
 		
 		JLabel lblAltaPaciente = new JLabel(operacion);
 		lblAltaPaciente.setFont(new Font("Tahoma", Font.BOLD, 22));
 		panelDatosPersonales=new PanelDatosPersonales();
+		panelDatosPersonales.lblID.setVisible(visibilidadIdlbl);
+		panelDatosPersonales.getTxtID().setVisible(visibilidadIdtxt);
 	
 		panelDatosPersonales.setBackground(new Color(240, 230, 140));
 		JPanel panel_1 = new JPanel();

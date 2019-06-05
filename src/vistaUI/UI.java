@@ -39,7 +39,7 @@ public class UI extends JFrame {
 	//PANELES
 	 protected PanelInicio inicio=new PanelInicio();
 	//Paciente
-	 protected PanelAltaPaciente altaPaciente=new PanelAltaPaciente("ALTA PACIENTE", true, true, true, true, true, "imagenes\\altaPaciente.png");
+	 protected PanelAltaPaciente altaPaciente=new PanelAltaPaciente("ALTA PACIENTE", true, true, true, true, true,false,false, "imagenes\\altaPaciente.png");
 	 protected PanelBajaModificacionConsultaPaciente bajaPaciente=new PanelBajaModificacionConsultaPaciente("BAJA PACIENTE",false,false,false,false,false,true,true,"imagenes\\bajaPacente.png");
 	 protected  PanelBajaModificacionConsultaPaciente consultaPaciente= new PanelBajaModificacionConsultaPaciente("CONSULTA PACINETE", false,false,false,false,false,true,false,"imagenes\\consultarPaciente.png");
 	 protected  PanelBajaModificacionConsultaPaciente modificacionPaciente=new PanelBajaModificacionConsultaPaciente("MODIFICACION PACIENTE",false,false,true,true,false,true,true,"imagenes\\modificarPaciente.png");

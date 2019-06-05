@@ -34,8 +34,7 @@ public class PacienteNucleo {
 	}
 	public boolean bajaPaciente(PersonaMV paciente) {
 		PacienteDTO pacienteDTO= dao.consultar(paciente.getID());
-		pacienteDTO.setEliminado(true);
-		return  dao.modificar(pacienteDTO);
+		return  dao.eliminar(pacienteDTO);
 	}
 	
 	public PersonaMV obtenerPaciente(String id) {
