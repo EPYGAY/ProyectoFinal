@@ -1,28 +1,21 @@
 package modelo.vista;
 
-import java.util.Date;
 
-import modelo.dto.Horario;
-import utiles.Especialidad;
-
-public class MedicoActivoMV {
-	private String nombre, apellidos, direccion, telefono;
-	private Especialidad especialidad;
-	private Horario horario;
+public class PersonaMV {
+	private String nombre, apellidos, direccion, telefono, fechaNacimiento;
 	private Long ID;
 
-	public MedicoActivoMV() {
+	public PersonaMV() {
 	}
 
-	public MedicoActivoMV(String nombre, String apellidos, String direccion, String telefono,Especialidad especialidad, Horario horario,
+	public PersonaMV(String nombre, String apellidos, String direccion, String telefono, String fechaNacimiento,
 			Long iD) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.direccion = direccion;
 		this.telefono = telefono;
-		this.especialidad=especialidad;
-		this.horario=horario;
+		this.fechaNacimiento = fechaNacimiento;
 		ID = iD;
 	}
 
@@ -58,20 +51,14 @@ public class MedicoActivoMV {
 		this.telefono = telefono;
 	}
 
-	public Especialidad getEspecialidad() {
-		return especialidad;
+
+
+	public String getFechaNacimiento() {
+		return fechaNacimiento;
 	}
 
-	public void setEspecialidad(Especialidad especialidad) {
-		this.especialidad = especialidad;
-	}
-
-	public Horario getHorario() {
-		return horario;
-	}
-
-	public void setHorario(Horario horario) {
-		this.horario = horario;
+	public void setFechaNacimiento(String fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
 	}
 
 	public Long getID() {
@@ -81,4 +68,6 @@ public class MedicoActivoMV {
 	public void setID(Long iD) {
 		ID = iD;
 	}
+
+
 }

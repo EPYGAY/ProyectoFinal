@@ -1,16 +1,14 @@
 package modelo.vista;
 
-import java.util.Date;
 
 public class PacienteMV {
-	private String nombre, apellidos, direccion, telefono;
-	private Date fechaNacimiento;
+	private String nombre, apellidos, direccion, telefono,fechaNacimiento;
 	private Long ID;
 
 	public PacienteMV() {
 	}
 
-	public PacienteMV(String nombre, String apellidos, String direccion, String telefono, Date fechaNacimiento,
+	public PacienteMV(String nombre, String apellidos, String direccion, String telefono, String fechaNacimiento,
 			Long iD) {
 		super();
 		this.nombre = nombre;
@@ -53,11 +51,11 @@ public class PacienteMV {
 		this.telefono = telefono;
 	}
 
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
@@ -68,6 +66,10 @@ public class PacienteMV {
 	public void setID(Long iD) {
 		ID = iD;
 	}
+
+	
+
+
 
 
 }

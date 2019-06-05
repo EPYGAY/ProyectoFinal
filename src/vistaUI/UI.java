@@ -1,93 +1,100 @@
 package vistaUI;
 
-import java.awt.EventQueue;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import java.awt.CardLayout;
-import javax.swing.JMenuBar;
-import java.awt.Color;
-import javax.swing.SwingConstants;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-import vistasMedico.PanelAltaBajaMedico;
-import vistasMedico.PanelAtenderCitaMedico;
-import vistasMedico.PanelConsultaMedico;
-import vistasPaciente.PanelAltaPaciente;
-import vistasPaciente.PanelBajaModificacionConsultaPaciente;
-import vistasPaciente.PanelPedirCitaPrimarioyEspecialistaPaciente;
-import vistasPaciente.PanelPedirCitaOperacionPaciente;
+import vista.comunes.PanelCierreOperacion;
+import vista.comunes.PanelDatosPersonales;
+import vista.comunes.PanelInicio;
+import vista.comunes.PanelMensaje;
+import vistas.medico.PanelAltaMedico;
+import vistas.medico.PanelAtenderCitaMedico;
+import vistas.medico.PanelConsultaBajaMedico;
+import vistas.paciente.PanelAltaPaciente;
+import vistas.paciente.PanelBajaModificacionConsultaPaciente;
+import vistas.paciente.PanelConsultarCitas;
+import vistas.paciente.PanelPedirCitaOperacionPaciente;
+import vistas.paciente.PanelPedirCitaPrimarioyEspecialistaPaciente;
+import vistas.paciente.PanelVerHistorialPaciente;
 
 public class UI extends JFrame {
 
-	protected JPanel contentPane;
-	protected JMenuItem mntmAlta;
-	private JMenuItem mntmBaja;
-	private JMenuItem mntmModificacion;
-	private JMenuItem mntmConsulta;
-	private JMenuItem mntmPedirCitaPrimaria;
-	private JMenuItem mntmPedirCitaEspecialista;
-	private JMenuItem mntmPedirOperacion;
-	private JMenuItem mntmConsultarCitas;
-	private JMenuItem mntmVerHistorial;
-	protected PanelAltaPaciente alta=new PanelAltaPaciente();
-
+	private JPanel contentPane;
+	//PANELES
+	 protected PanelInicio inicio=new PanelInicio();
+	//Paciente
+	 protected PanelAltaPaciente altaPaciente=new PanelAltaPaciente("ALTA PACIENTE", true, true, true, true, true, "imagenes\\altaPaciente.png");
+	 protected PanelBajaModificacionConsultaPaciente bajaPaciente=new PanelBajaModificacionConsultaPaciente("BAJA PACIENTE",false,false,false,false,false,true,true,"imagenes\\bajaPacente.png");
+	 protected  PanelBajaModificacionConsultaPaciente consultaPaciente= new PanelBajaModificacionConsultaPaciente("CONSULTA PACINETE", false,false,false,false,false,true,false,"imagenes\\consultarPaciente.png");
+	 protected  PanelBajaModificacionConsultaPaciente modificacionPaciente=new PanelBajaModificacionConsultaPaciente("MODIFICACION PACIENTE",false,false,true,true,false,true,true,"imagenes\\modificarPaciente.png");
+	 protected  PanelConsultarCitas consultaCitaPaciente=new PanelConsultarCitas();
+	 protected  PanelVerHistorialPaciente verHistotialPaciente=new PanelVerHistorialPaciente();
+	//Medico
+	 protected PanelAltaMedico altaMedico= new PanelAltaMedico("ALTA MEDICO",true);
+	 protected PanelConsultaBajaMedico bajaMedico= new PanelConsultaBajaMedico("BAJA MEDICO",true);
+	 protected PanelConsultaBajaMedico consultaMedico= new PanelConsultaBajaMedico("CONSULTA MEDICO",false);
+	 protected PanelAtenderCitaMedico atenderCitaMedico= new PanelAtenderCitaMedico();
+	 protected PanelPedirCitaPrimarioyEspecialistaPaciente citaPrimario= new PanelPedirCitaPrimarioyEspecialistaPaciente("CITA ATENCION PRIMARIA","Medico",true,true);
+	 protected PanelPedirCitaPrimarioyEspecialistaPaciente citaEspecialista= new PanelPedirCitaPrimarioyEspecialistaPaciente("CITA ESPECIALISTA","Especialista",false,false);
+	 protected PanelPedirCitaOperacionPaciente operacion= new PanelPedirCitaOperacionPaciente();
+	 //Operacion
+	 protected PanelCierreOperacion cierreOperacion= new PanelCierreOperacion();
+	
+	
 	public UI() {
-		
-		
+
 		setAutoRequestFocus(false);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(90, 50, 1200, 690);
 
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(204, 204, 51));
-		contentPane.setForeground(new Color(60, 179, 113));
+		contentPane.setBackground(new Color(240, 230, 140));
+		contentPane.setForeground(new Color(240, 230, 140));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
-		//Los paneles
 		
-		contentPane.add(alta,"PanelAltaPaciente");
+	
 		
-		PanelBajaModificacionConsultaPaciente baja=new PanelBajaModificacionConsultaPaciente("BAJA PACIENTE",true,true,true,true,true);
-		contentPane.add(baja,"PanelBajaModificacionConsultaPaciente");
-		
-		PanelBajaModificacionConsultaPaciente modificacion=new PanelBajaModificacionConsultaPaciente("MODIFICACION PACIENTE",false,false,false,false,true);
-		contentPane.add(modificacion,"PanelBajaModificacionConsultaPaciente");
-		
-		PanelBajaModificacionConsultaPaciente consulta= new PanelBajaModificacionConsultaPaciente("CONSULTA PACINETE", true,true,true,true,true);
-		contentPane.add(consulta,"PanelBajaModificacionConsultaPaciente");
-		
-		PanelPedirCitaPrimarioyEspecialistaPaciente citaPrimario= new PanelPedirCitaPrimarioyEspecialistaPaciente("CITA ATENCION PRIMARIA","Medico");
-		contentPane.add(citaPrimario,"PanelPedirCitaPrimarioyEspecialistaPaciente");
-		
-		PanelPedirCitaPrimarioyEspecialistaPaciente citaEspecialista= new PanelPedirCitaPrimarioyEspecialistaPaciente("CITA ESPECIALISTA","Especialista");
-		contentPane.add(citaEspecialista,"PanelPedirCitaPrimarioyEspecialistaPaciente");
-		
-		PanelPedirCitaOperacionPaciente operacion= new PanelPedirCitaOperacionPaciente();
+		contentPane.add(inicio);
+		//PACIENTE
+		contentPane.add(altaPaciente,"PanelAltaPaciente");
+		contentPane.add(bajaPaciente,"PanelBajaPaciente");
+		contentPane.add(consultaPaciente,"PanelConsultaPaciente");
+		contentPane.add(modificacionPaciente,"PanelModificacionPaciente");
+		contentPane.add(citaPrimario,"PanelPedirCitaPrimarioPaciente");
+		contentPane.add(citaEspecialista,"PanelPedirCitaEspecialistaPaciente");
 		contentPane.add(operacion,"PanelPedirCitaOperacionPaciente");
+		contentPane.add(consultaCitaPaciente,"PanelConsultaCitaPaciente");
+		contentPane.add(verHistotialPaciente,"PanelVerHistorialPaciente");
 		
-		PanelAltaBajaMedico altaMedico= new PanelAltaBajaMedico("ALTA MEDICO");
-		contentPane.add(altaMedico,"PanelAltaBajaMedico");
-		
-		PanelAltaBajaMedico bajaMedico= new PanelAltaBajaMedico("BAJA MEDICO");
-		contentPane.add(bajaMedico,"PanelAltaBajaMedico");
-		
-		PanelConsultaMedico consultaMedico= new PanelConsultaMedico();
+		//MEDICO
+		contentPane.add(altaMedico,"PanelAltaMedico");
+		contentPane.add(bajaMedico,"PanelBajaMedico");
 		contentPane.add(consultaMedico,"PanelConsultaMedico");
-		
-		PanelAtenderCitaMedico atenderCitaMedico= new PanelAtenderCitaMedico();
 		contentPane.add(atenderCitaMedico,"PanelAtenderCitaMedico");
-
+		
+		//OPERACION
+		contentPane.add(cierreOperacion,"PanelCierreOperacion");
+		
+		
 		JPanel panelinicio = new JPanel();
 		panelinicio.setBackground(new Color(204, 204, 51));
 		contentPane.add(panelinicio, "name_969325539976868");
@@ -106,11 +113,11 @@ public class UI extends JFrame {
 		setJMenuBar(menuBar);
 
 		JMenu mnPaciente = new JMenu("Paciente");
-		mnPaciente.setBackground(new Color(204, 204, 51));
+		mnPaciente.setBackground(new Color(218, 165, 32));
 		mnPaciente.setFont(new Font("Alef", Font.PLAIN, 32));
 		menuBar.add(mnPaciente);
-
-		mntmAlta = new JMenuItem("Alta");
+//ALTA PACIENTE
+		JMenuItem mntmAlta = new JMenuItem("Alta");
 		mntmAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				asociarPanel("PanelAltaPaciente");
@@ -120,33 +127,35 @@ public class UI extends JFrame {
 		mntmAlta.setFont(new Font("Alef", Font.BOLD, 20));
 		mntmAlta.setBackground(new Color(204, 102, 102));
 		mnPaciente.add(mntmAlta);
-
-		mntmBaja = new JMenuItem("Baja");
+//BAJA PACIENTE
+		
+		JMenuItem mntmBaja = new JMenuItem("Baja");
 		mntmBaja.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				asociarPanel("PanelBajaModificacionConsultaPaciente");
+			public void actionPerformed(ActionEvent arg0) {
+				asociarPanel("PanelBajaPaciente");
 			}
 		});
 		mntmBaja.setHorizontalAlignment(SwingConstants.CENTER);
 		mntmBaja.setFont(new Font("Alef", Font.BOLD, 20));
 		mntmBaja.setBackground(new Color(204, 102, 102));
 		mnPaciente.add(mntmBaja);
-
-		mntmModificacion = new JMenuItem("Modificacion");
+	
+//MODIFICACION PACIENTE
+		JMenuItem mntmModificacion = new JMenuItem("Modificacion");
 		mntmModificacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				asociarPanel("PanelBajaModificacionConsultaPaciente");
+				asociarPanel("PanelModificacionPaciente");
 			}
 		});
 		mntmModificacion.setHorizontalAlignment(SwingConstants.CENTER);
 		mntmModificacion.setFont(new Font("Alef", Font.BOLD, 20));
 		mntmModificacion.setBackground(new Color(204, 102, 102));
 		mnPaciente.add(mntmModificacion);
-
-		mntmConsulta = new JMenuItem("Consulta");
+//CONSULTA PACIENTE 
+		JMenuItem mntmConsulta = new JMenuItem("Consulta");
 		mntmConsulta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				asociarPanel("PanelBajaModificacionConsultaPaciente");
+				asociarPanel("PanelConsultaPaciente");
 			}
 		});
 		mntmConsulta.setHorizontalAlignment(SwingConstants.CENTER);
@@ -154,10 +163,10 @@ public class UI extends JFrame {
 		mntmConsulta.setBackground(new Color(204, 102, 102));
 		mnPaciente.add(mntmConsulta);
 
-		mntmPedirCitaPrimaria = new JMenuItem("Pedir Cita Primaria");
+		JMenuItem mntmPedirCitaPrimaria = new JMenuItem("Pedir Cita Primaria");
 		mntmPedirCitaPrimaria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				asociarPanel("PanelPedirCitaPrimarioyEspecialistaPaciente");
+				asociarPanel("PanelPedirCitaPrimarioPaciente");
 				
 			}
 		});
@@ -166,10 +175,10 @@ public class UI extends JFrame {
 		mntmPedirCitaPrimaria.setBackground(new Color(204, 102, 102));
 		mnPaciente.add(mntmPedirCitaPrimaria);
 
-		mntmPedirCitaEspecialista = new JMenuItem("Pedir Cita Especialista");
+		JMenuItem mntmPedirCitaEspecialista = new JMenuItem("Pedir Cita Especialista");
 		mntmPedirCitaEspecialista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				asociarPanel("PanelPedirCitaPrimarioyEspecialistaPaciente");
+				asociarPanel("PanelPedirCitaEspecialistaPaciente");
 			}
 		});
 		mntmPedirCitaEspecialista.setHorizontalAlignment(SwingConstants.CENTER);
@@ -177,7 +186,7 @@ public class UI extends JFrame {
 		mntmPedirCitaEspecialista.setBackground(new Color(204, 102, 102));
 		mnPaciente.add(mntmPedirCitaEspecialista);
 
-		mntmPedirOperacion = new JMenuItem("Pedir Operacion");
+		JMenuItem mntmPedirOperacion = new JMenuItem("Pedir Operacion");
 		mntmPedirOperacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				asociarPanel("PanelPedirCitaOperacionPaciente");
@@ -189,74 +198,89 @@ public class UI extends JFrame {
 		mntmPedirOperacion.setBackground(new Color(204, 102, 102));
 		mnPaciente.add(mntmPedirOperacion);
 
-		mntmConsultarCitas = new JMenuItem("Consultar citas");
+		JMenuItem mntmConsultarCitas = new JMenuItem("Consultar citas");
+		mntmConsultarCitas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				asociarPanel("PanelConsultaCitaPaciente");
+			}
+		});
 		mntmConsultarCitas.setHorizontalAlignment(SwingConstants.CENTER);
 		mntmConsultarCitas.setFont(new Font("Alef", Font.BOLD, 20));
 		mntmConsultarCitas.setBackground(new Color(204, 102, 102));
 		mnPaciente.add(mntmConsultarCitas);
 
-		mntmVerHistorial = new JMenuItem("Ver Historial");
+		JMenuItem mntmVerHistorial = new JMenuItem("Ver Historial");
+		mntmVerHistorial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				asociarPanel("PanelVerHistorialPaciente");
+			}
+		});
 		mntmVerHistorial.setHorizontalAlignment(SwingConstants.CENTER);
 		mntmVerHistorial.setFont(new Font("Alef", Font.BOLD, 20));
 		mntmVerHistorial.setBackground(new Color(204, 102, 102));
 		mnPaciente.add(mntmVerHistorial);
 
 		JMenu mnMedico = new JMenu("Medico");
-		mnMedico.setBackground(new Color(204, 204, 51));
+		mnMedico.setBackground(new Color(139, 0, 139));
 		mnMedico.setHorizontalAlignment(SwingConstants.CENTER);
 		mnMedico.setFont(new Font("Alef", Font.PLAIN, 32));
 		menuBar.add(mnMedico);
 
-		JMenuItem mntmAltaMedico = new JMenuItem("Alta");
-		mntmAltaMedico.addActionListener(new ActionListener() {
+		JMenuItem mntmAlta_1 = new JMenuItem("Alta");
+		mntmAlta_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				asociarPanel("PanelAltaBajaMedico");
+				asociarPanel("PanelAltaMedico");
 			}
 		});
-		mntmAltaMedico.setHorizontalAlignment(SwingConstants.CENTER);
-		mntmAltaMedico.setBackground(new Color(102, 102, 255));
-		mntmAltaMedico.setFont(new Font("Alef", Font.BOLD, 22));
-		mnMedico.add(mntmAltaMedico);
+		mntmAlta_1.setHorizontalAlignment(SwingConstants.CENTER);
+		mntmAlta_1.setBackground(new Color(102, 102, 255));
+		mntmAlta_1.setFont(new Font("Alef", Font.BOLD, 22));
+		mnMedico.add(mntmAlta_1);
 
-		JMenuItem mntmBajaMedico = new JMenuItem("Baja");
-		mntmBajaMedico.addActionListener(new ActionListener() {
+		JMenuItem mntmBaja_1 = new JMenuItem("Baja");
+		mntmBaja_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				asociarPanel("PanelAltaBajaMedico");
+				asociarPanel("PanelBajaMedico");
 			}
 		});
-		mntmBajaMedico.setHorizontalAlignment(SwingConstants.CENTER);
-		mntmBajaMedico.setBackground(new Color(102, 102, 255));
-		mntmBajaMedico.setFont(new Font("Alef", Font.BOLD, 22));
-		mnMedico.add(mntmBajaMedico);
+		mntmBaja_1.setHorizontalAlignment(SwingConstants.CENTER);
+		mntmBaja_1.setBackground(new Color(102, 102, 255));
+		mntmBaja_1.setFont(new Font("Alef", Font.BOLD, 22));
+		mnMedico.add(mntmBaja_1);
 
-		JMenuItem mntmConsultaMedico = new JMenuItem("Consulta");
-		mntmConsultaMedico.addActionListener(new ActionListener() {
+		JMenuItem mntmConsulta_1 = new JMenuItem("Consulta");
+		mntmConsulta_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				asociarPanel("PanelConsultaMedico");
 			}
 		});
-		mntmConsultaMedico.setHorizontalAlignment(SwingConstants.CENTER);
-		mntmConsultaMedico.setBackground(new Color(102, 102, 255));
-		mntmConsultaMedico.setFont(new Font("Alef", Font.BOLD, 22));
-		mnMedico.add(mntmConsultaMedico);
+		mntmConsulta_1.setHorizontalAlignment(SwingConstants.CENTER);
+		mntmConsulta_1.setBackground(new Color(102, 102, 255));
+		mntmConsulta_1.setFont(new Font("Alef", Font.BOLD, 22));
+		mnMedico.add(mntmConsulta_1);
 
-		JMenuItem mntmAtenderCitaMedico = new JMenuItem("Atender cita");
-		mntmAtenderCitaMedico.addActionListener(new ActionListener() {
+		JMenuItem mntmAtenderCita = new JMenuItem("Atender cita");
+		mntmAtenderCita.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				asociarPanel("PanelAtenderCitaMedico");
 			}
 		});
-		mntmAtenderCitaMedico.setHorizontalAlignment(SwingConstants.CENTER);
-		mntmAtenderCitaMedico.setBackground(new Color(102, 102, 255));
-		mntmAtenderCitaMedico.setFont(new Font("Alef", Font.BOLD, 22));
-		mnMedico.add(mntmAtenderCitaMedico);
+		mntmAtenderCita.setHorizontalAlignment(SwingConstants.CENTER);
+		mntmAtenderCita.setBackground(new Color(102, 102, 255));
+		mntmAtenderCita.setFont(new Font("Alef", Font.BOLD, 22));
+		mnMedico.add(mntmAtenderCita);
 
 		JMenu mnOperacion = new JMenu("Operacion");
-		mnOperacion.setBackground(new Color(204, 204, 51));
+		mnOperacion.setBackground(new Color(139, 69, 19));
 		mnOperacion.setFont(new Font("Alef", Font.PLAIN, 32));
 		menuBar.add(mnOperacion);
 
 		JMenuItem mntmCerrarOperacion = new JMenuItem("Cerrar Operacion");
+		mntmCerrarOperacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				asociarPanel("PanelCierreOperacion");
+			}
+		});
 		mntmCerrarOperacion.setHorizontalAlignment(SwingConstants.CENTER);
 		mntmCerrarOperacion.setBackground(new Color(255, 204, 153));
 		mntmCerrarOperacion.setFont(new Font("Alef", Font.BOLD, 22));
@@ -268,5 +292,69 @@ public class UI extends JFrame {
 	private void asociarPanel(String string) {
 		((CardLayout)contentPane.getLayout()).show(contentPane,string);
 	}
+	
+	//Alta
+	public PanelDatosPersonales getPanelDatosPersonalesAltaPaciente() {
+		return altaPaciente.getPanelDatosPersonales();
+	}
+	
+	public PanelMensaje getTMensaje() {
+		return altaPaciente.getPanelMensaje();
+	}
+	
+	//Consulta
+	public PanelDatosPersonales getPanelDatosPersonalesConsultaPaciente() {
+		return consultaPaciente.getPanelDatosPersonales();
+	}
+	
+	public JComboBox getComboBoxIdConsultaPaciente() {
+		return consultaPaciente.getComboBoxId();
+	}
+	//Baja
+	public JComboBox getComboBoxIdBajaPaciente() {
+		return bajaPaciente.getComboBoxId();
+	}
+	
+	public PanelDatosPersonales getPanelDatosPersonalesBajaPaciente() {
+		return bajaPaciente.getPanelDatosPersonales();
+	}
+	//Modificacion
+	public JComboBox getComboBoxIdModificacionPaciente() {
+		return modificacionPaciente.getComboBoxId();
+	}
+	
+	public PanelDatosPersonales getPanelDatosPersonalesModificacionPaciente() {
+		return modificacionPaciente.getPanelDatosPersonales();
+	}
+	
+//MEDICO
+	
+	public JButton getBtnAltaDoctor() {
+		return altaMedico.getBtnAlta();
+	}
+	
+	public PanelDatosPersonales getPanelDatosPesonalesAltaDoctor() {
+		return altaMedico.getPanelDatosPersonales();
+	}
 
+	public JComboBox getComboBoxIdConsultaDoctor() {
+		return consultaMedico.getComboId();
+	}
+	
+	public PanelDatosPersonales getPanelDatosPersonalesConsultaDoctor() {
+		return consultaMedico.getPanelDatosPersonales();
+	}
+	
+	public PanelDatosPersonales getPanelDatosPesonalesBajaDoctor() {
+		return bajaMedico.getPanelDatosPersonales();
+	}
+
+	public JComboBox getComboBoxIdBajaDoctor() {
+		return bajaMedico.getComboId();
+	}
+	
+	public JButton getBtnBajaDoctor() {
+		return bajaMedico.getBtnBaja();
+	}
+	
 }

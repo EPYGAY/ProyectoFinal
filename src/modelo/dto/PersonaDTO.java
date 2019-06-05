@@ -1,15 +1,17 @@
 package modelo.dto;
 
-public abstract class Persona {
+import java.io.Serializable;
+
+public abstract class PersonaDTO implements Serializable {
 	
 	private String nombre,direccion,telefono,apellidos;
 	private Long ID;
 	private boolean eliminado=false;
 	
-	public Persona() {
+	public PersonaDTO() {
 	}
 
-	public Persona(String nombre,String apellidos, String direccion, String telefono) {
+	public PersonaDTO(String nombre,String apellidos, String direccion, String telefono) {
 		this.nombre = nombre;
 		this.direccion = direccion;
 		this.telefono = telefono;
@@ -63,6 +65,12 @@ public abstract class Persona {
 	public void setEliminado(boolean eliminado) {
 		this.eliminado = eliminado;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return this.ID.equals(((PersonaDTO)obj).ID);
+	}
+	
 	
 	
 	
