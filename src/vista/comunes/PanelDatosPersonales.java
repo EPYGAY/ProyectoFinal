@@ -19,18 +19,19 @@ public class PanelDatosPersonales extends JPanel{
 	public JTextField textTelefono;
 	public JLabel lblNacimiento;
 	public JLabel lblTelefono;
+	public JLabel lblID;
 	
 	public PanelDatosPersonales() {
 		setBackground(new Color(240, 230, 140));
 		
 		
 		
-		JLabel lblID = new JLabel("ID");
+		lblID = new JLabel("ID");
 		lblID.setHorizontalAlignment(SwingConstants.CENTER);
 		lblID.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		txtNombre = new JTextField();
-		txtNombre.setFont(new Font("Tahoma", Font.BOLD, 12));
+		txtNombre.setFont(new Font("Tahoma", Font.BOLD, 14));
 		txtNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		txtNombre.setColumns(10);
@@ -38,7 +39,7 @@ public class PanelDatosPersonales extends JPanel{
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		txtaApellido = new JTextField();
-		txtaApellido.setFont(new Font("Tahoma", Font.BOLD, 12));
+		txtaApellido.setFont(new Font("Tahoma", Font.BOLD, 14));
 		txtaApellido.setHorizontalAlignment(SwingConstants.CENTER);
 		txtaApellido.setColumns(10);
 		
@@ -47,7 +48,7 @@ public class PanelDatosPersonales extends JPanel{
 		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		txtDireccion = new JTextField();
-		txtDireccion.setFont(new Font("Tahoma", Font.BOLD, 12));
+		txtDireccion.setFont(new Font("Tahoma", Font.BOLD, 14));
 		txtDireccion.setHorizontalAlignment(SwingConstants.CENTER);
 		txtDireccion.setColumns(10);
 		
@@ -55,17 +56,18 @@ public class PanelDatosPersonales extends JPanel{
 		lblDireccion.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		txtID = new JTextField();
-		txtID.setFont(new Font("Tahoma", Font.BOLD, 12));
+		txtID.setEnabled(false);
+		txtID.setFont(new Font("Tahoma", Font.BOLD, 14));
 		txtID.setHorizontalAlignment(SwingConstants.CENTER);
 		txtID.setColumns(10);
 		
 		textNacimiento = new JTextField();
-		textNacimiento.setFont(new Font("Tahoma", Font.BOLD, 12));
+		textNacimiento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textNacimiento.setHorizontalAlignment(SwingConstants.CENTER);
 		textNacimiento.setColumns(10);
 		
 		textTelefono = new JTextField();
-		textTelefono.setFont(new Font("Tahoma", Font.BOLD, 12));
+		textTelefono.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textTelefono.setHorizontalAlignment(SwingConstants.CENTER);
 		textTelefono.setColumns(10);
 		

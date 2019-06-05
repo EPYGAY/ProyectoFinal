@@ -16,7 +16,9 @@ public class ControladorPanelDatosPersonales {
 
 	public PersonaMV obtenerDatos(PanelDatosPersonales panel) {
 		PersonaMV modelo = new PersonaMV();
-		modelo.setID(new Long(panel.txtID.getText()));
+		if (!panel.txtID.getText().isEmpty()) {
+			modelo.setID(new Long(panel.txtID.getText()));
+		}
 		modelo.setNombre(panel.txtNombre.getText());
 		modelo.setApellidos(panel.txtaApellido.getText());
 		modelo.setDireccion(panel.txtDireccion.getText());

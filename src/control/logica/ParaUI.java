@@ -54,7 +54,8 @@ public class ParaUI extends UI {
 		modificacionPaciente.panelMensaje.getBtnAplicr().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				facade.modificarPaciente(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesModificacionPaciente()));
-				controladorMensaje.mostrarMensajes(bajaPaciente.getPanelMensaje(), "Paciente modificado correctamente");
+				controladorPanelDatosPersonales.vaciarDatos(modificacionPaciente.getPanelDatosPersonales());
+				controladorMensaje.mostrarMensajes(modificacionPaciente.getPanelMensaje(), "Paciente modificado correctamente");
 			}
 		});
 		ActionComboPaciente actionComboPacienteModificacion=new ActionComboPaciente(getComboBoxIdModificacionPaciente(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesModificacionPaciente());

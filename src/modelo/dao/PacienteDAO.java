@@ -36,6 +36,12 @@ public class PacienteDAO {
 		AccesoFichero<PacienteDTO> acceso = new AccesoFichero<PacienteDTO>(path, false);
 		return acceso.override(paciente);
 	}
+	public boolean eliminar(PacienteDTO paciente) {
+		String idPaciente=String.valueOf(paciente.getID());
+		String path = rutaCarpeta + File.separator + idPaciente + extension;
+		AccesoFichero<PacienteDTO> acceso = new AccesoFichero<PacienteDTO>(path, false);
+		return acceso.delete();
+	}
 
 	public ArrayList<String> obtenerTodosLosId() {
 		AccesoFichero<PacienteDTO> acceso = new AccesoFichero<>(rutaCarpeta, false);

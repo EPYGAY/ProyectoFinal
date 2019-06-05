@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 
 
 public class Principal {
-//HOLA
+
 	/**
 	 * Launch the application.
 	 */
