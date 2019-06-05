@@ -21,10 +21,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class PanelAltaMedico extends JPanel {
-
-	private JButton btnAlta;
 	private PanelDatosPersonales panelDatosPersonales;
-	public PanelAltaMedico(String nombre, boolean mostrarBtnAlta) {
+	public PanelAltaMedico(String nombre) {
 		setBackground(new Color(240, 230, 140));
 		
 		JLabel lblNewLabel = new JLabel(nombre);
@@ -40,10 +38,10 @@ public class PanelAltaMedico extends JPanel {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(240, 230, 140));
-		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		PanelDatosPersonalesSegundParte panelDatosPersonalesSegundParte = new PanelDatosPersonalesSegundParte(true, true, true, true, true);
+		panel_1.setLayout(new BorderLayout(0, 0));
+		PanelDatosPersonalesSegundParte panelDatosPersonalesSegundParte = new PanelDatosPersonalesSegundParte();
 		panelDatosPersonalesSegundParte.setBackground(new Color(240, 230, 140));
-		panel_1.add(panelDatosPersonalesSegundParte);
+		panel_1.add(panelDatosPersonalesSegundParte, BorderLayout.EAST);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(new BorderLayout(0, 0));
@@ -51,59 +49,40 @@ public class PanelAltaMedico extends JPanel {
 		
 		panelMensaje.setBackground(new Color(240, 230, 140));
 		panel_2.add(panelMensaje);
-		
-		btnAlta = new JButton("Alta");
-		btnAlta.setVisible(mostrarBtnAlta);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(56)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(22)
 							.addComponent(lblNewLabel))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 482, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnAlta))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE)))
+							.addGap(56)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 514, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(17)
-							.addComponent(lblNewLabel)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 156, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED))
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(btnAlta)
-							.addGap(117)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(lblNewLabel)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)
+					.addGap(52)
 					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addGap(280))
 		);
 		setLayout(groupLayout);
 
 		
 	}
-	public JButton getBtnAlta() {
-		return btnAlta;
-	}
-	public void setBtnAlta(JButton btnAlta) {
-		this.btnAlta = btnAlta;
-	}
+	
 	public PanelDatosPersonales getPanelDatosPersonales() {
 		return panelDatosPersonales;
 	}
