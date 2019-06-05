@@ -22,14 +22,6 @@ public class DoctorNucleo {
 		return dao.guardar(doctorDTO);
 	}
 
-	public boolean modificarDoctor(PersonaMV doctor) {
-		DoctorDTO doctorDTO = dao.consultar(doctor.getID());
-		doctorDTO.setNombre(doctor.getNombre());
-		doctorDTO.setApellidos(doctor.getApellidos());
-		doctorDTO.setDireccion(doctor.getDireccion());
-		doctorDTO.setTelefono(doctor.getTelefono());
-		return dao.modificar(doctorDTO);
-	}
 
 	public boolean bajaDoctor(PersonaMV doctor) {
 		DoctorDTO doctorDTO = dao.consultar(doctor.getID());

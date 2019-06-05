@@ -23,7 +23,10 @@ public class PanelConsultaBajaMedico extends JPanel {
 	private JTextField textEspecialidad;
 	private JTextField textHorario;
 	private JTextField textConsulta;
-	private PanelMensaje panelMensaje;
+	public PanelMensaje panelMensaje;
+	public PanelDatosPersonales panelDatosPersonales;
+	
+
 	public PanelConsultaBajaMedico(String name, boolean visibilidadPanel) {
 		setBackground(new Color(240, 230, 140));
 		
@@ -34,7 +37,9 @@ public class PanelConsultaBajaMedico extends JPanel {
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout(0, 0));
-		PanelDatosPersonales panelDatosPersonales = new PanelDatosPersonales();
+		panelDatosPersonales = new PanelDatosPersonales();
+		panelDatosPersonales.getTextNacimiento().setVisible(false);
+		panelDatosPersonales.getLblNacimiento().setVisible(false);
 		panelDatosPersonales.getTxtaApellido().setEditable(false);
 		panelDatosPersonales.getTxtNombre().setEditable(false);
 		panelDatosPersonales.getTxtDireccion().setEditable(false);
@@ -135,6 +140,52 @@ public class PanelConsultaBajaMedico extends JPanel {
 	public JComboBox getComboId() {
 		return panelCombo.comboBoxID;
 	}
-	
+
+	public PanelComboBox getPanelCombo() {
+		return panelCombo;
+	}
+
+	public void setPanelCombo(PanelComboBox panelCombo) {
+		this.panelCombo = panelCombo;
+	}
+
+	public JTextField getTextEspecialidad() {
+		return textEspecialidad;
+	}
+
+	public void setTextEspecialidad(JTextField textEspecialidad) {
+		this.textEspecialidad = textEspecialidad;
+	}
+
+	public JTextField getTextHorario() {
+		return textHorario;
+	}
+
+	public void setTextHorario(JTextField textHorario) {
+		this.textHorario = textHorario;
+	}
+
+	public JTextField getTextConsulta() {
+		return textConsulta;
+	}
+
+	public void setTextConsulta(JTextField textConsulta) {
+		this.textConsulta = textConsulta;
+	}
+
+	public PanelMensaje getPanelMensaje() {
+		return panelMensaje;
+	}
+
+	public void setPanelMensaje(PanelMensaje panelMensaje) {
+		this.panelMensaje = panelMensaje;
+	}
+	public PanelDatosPersonales getPanelDatosPersonales() {
+		return panelDatosPersonales;
+	}
+
+	public void setPanelDatosPersonales(PanelDatosPersonales panelDatosPersonales) {
+		this.panelDatosPersonales = panelDatosPersonales;
+	}
 	
 }

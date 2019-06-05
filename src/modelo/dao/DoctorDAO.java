@@ -8,7 +8,7 @@ import modelo.dto.DoctorDTO;
 
 public class DoctorDAO {
 	private String rutaCarpeta = "doctor";
-	private String extension = ".doc";
+	private String extension = ".doct";
 	private String nombreFichero = "listaDoctores";
 	private AccesoColeccion<DoctorDTO> acceso;
 

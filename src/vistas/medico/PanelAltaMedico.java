@@ -21,7 +21,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class PanelAltaMedico extends JPanel {
-	private PanelDatosPersonales panelDatosPersonales;
+	public PanelDatosPersonales panelDatosPersonales;
+	public PanelMensaje panelMensaje;
 	public PanelAltaMedico(String nombre) {
 		setBackground(new Color(240, 230, 140));
 		
@@ -33,6 +34,8 @@ public class PanelAltaMedico extends JPanel {
 		panel.setBackground(new Color(240, 230, 140));
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		panelDatosPersonales = new PanelDatosPersonales();
+		panelDatosPersonales.getTxtID().setVisible(false);
+		panelDatosPersonales.lblID.setVisible(false);
 		panelDatosPersonales.setBackground(new Color(240, 230, 140));
 		panel.add(panelDatosPersonales);
 		
@@ -43,12 +46,13 @@ public class PanelAltaMedico extends JPanel {
 		panelDatosPersonalesSegundParte.setBackground(new Color(240, 230, 140));
 		panel_1.add(panelDatosPersonalesSegundParte, BorderLayout.EAST);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setLayout(new BorderLayout(0, 0));
-		PanelMensaje panelMensaje = new PanelMensaje();
+		JPanel panel_Mensaje2 = new JPanel();
+		panel_Mensaje2.setLayout(new BorderLayout(0, 0));
+		panelMensaje = new PanelMensaje();
+		panel_Mensaje2.add(panelMensaje);
 		
-		panelMensaje.setBackground(new Color(240, 230, 140));
-		panel_2.add(panelMensaje);
+		panel_Mensaje2.setBackground(new Color(240, 230, 140));
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -61,7 +65,7 @@ public class PanelAltaMedico extends JPanel {
 							.addGap(56)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panel_Mensaje2, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE)
 								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 514, GroupLayout.PREFERRED_SIZE))))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
@@ -75,20 +79,21 @@ public class PanelAltaMedico extends JPanel {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)
 					.addGap(52)
-					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+					.addComponent(panel_Mensaje2, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 					.addGap(280))
 		);
 		setLayout(groupLayout);
 
 		
 	}
-	
 	public PanelDatosPersonales getPanelDatosPersonales() {
 		return panelDatosPersonales;
 	}
 	public void setPanelDatosPersonales(PanelDatosPersonales panelDatosPersonales) {
 		this.panelDatosPersonales = panelDatosPersonales;
 	}
+	
+	
 	
 	
 }

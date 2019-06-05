@@ -28,6 +28,7 @@ public class ParaUI extends UI {
 	
 	
 	public ParaUI() {
+		
 		altaPaciente.panelMensaje.getBtnAplicr().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				facade.guardarPaciente(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesAltaPaciente()));
@@ -42,12 +43,12 @@ public class ParaUI extends UI {
 		
 		bajaPaciente.panelMensaje.getBtnAplicr().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				facade.darBajaPaciente(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesBajaPaciente()));
+				facade.darBajaPaciente(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesBajaDoctor()));
 				controladorPanelDatosPersonales.vaciarDatos(bajaPaciente.getPanelDatosPersonales());
 				controladorMensaje.mostrarMensajes(bajaPaciente.getPanelMensaje(), "Paciente dado de baja correctamente");
 			}
 		});
-		ActionComboPaciente actionComboPacienteBaja=new ActionComboPaciente(getComboBoxIdBajaPaciente(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesBajaPaciente());
+		ActionComboPaciente actionComboPacienteBaja=new ActionComboPaciente(getComboBoxIdBajaPaciente(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesBajaDoctor());
 		getComboBoxIdBajaPaciente().addFocusListener(actionComboPacienteBaja);
 		getComboBoxIdBajaPaciente().addItemListener(actionComboPacienteBaja);
 		
@@ -62,6 +63,28 @@ public class ParaUI extends UI {
 		getComboBoxIdModificacionPaciente().addFocusListener(actionComboPacienteModificacion);
 		getComboBoxIdModificacionPaciente().addItemListener(actionComboPacienteModificacion);
 	
+		//PACIENTES 
+		altaMedico.panelMensaje.btnAplicr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				facade.guardarDoctor(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPesonalesAltaDoctor()));
+				controladorPanelDatosPersonales.vaciarDatos(altaMedico.getPanelDatosPersonales());
+			}
+		});
+		ActionComboDoctor actionComboDoctorConsulta=new ActionComboDoctor(getComboBoxIdConsultaDoctor(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesConsultaDoctor());
+		getComboBoxIdConsultaDoctor().addFocusListener(actionComboDoctorConsulta);
+		getComboBoxIdConsultaDoctor().addItemListener(actionComboDoctorConsulta);
+		
+		ActionComboDoctor actionComboDoctorBaja=new ActionComboDoctor(getComboBoxIdBajaDoctor(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesBajaDoctor());
+		getComboBoxIdBajaDoctor().addFocusListener(actionComboDoctorBaja);
+		getComboBoxIdBajaDoctor().addItemListener(actionComboDoctorBaja);
+		
+		bajaMedico.panelMensaje.btnAplicr.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				facade.darBajaDoctor(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPesonalesBajaDoctor()));
+				controladorPanelDatosPersonales.vaciarDatos(bajaMedico.getPanelDatosPersonales());
+			}
+		});
+		
 		
 	}
 
