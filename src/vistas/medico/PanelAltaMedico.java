@@ -93,7 +93,13 @@ public class PanelAltaMedico extends JPanel {
 		this.panelDatosPersonales = panelDatosPersonales;
 	}
 	
-	
+	public PanelMensaje getPanelMensaje() {
+		return panelMensaje;
+	}
+
+	public void setPanelMensaje(PanelMensaje panelMensaje) {
+		this.panelMensaje = panelMensaje;
+	}
 	
 	
 }

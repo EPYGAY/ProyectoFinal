@@ -16,6 +16,8 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.ImageIcon;
 import java.awt.BorderLayout;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class PanelBajaModificacionConsultaPaciente extends JPanel {
 	
@@ -35,6 +37,7 @@ public class PanelBajaModificacionConsultaPaciente extends JPanel {
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(imagen));
 		panelPaciente = new PanelGeneralPaciente();
+		
 		panelPaciente.getPanelDatosPersonales().txtNombre.setEditable(false);
 		panelPaciente.getPanelDatosPersonales().txtNombre.setEditable(false);
 		panelPaciente.getPanelDatosPersonales().txtNombre.setEditable(false);

@@ -32,6 +32,8 @@ import vistas.paciente.PanelConsultarCitas;
 import vistas.paciente.PanelPedirCitaOperacionPaciente;
 import vistas.paciente.PanelPedirCitaPrimarioyEspecialistaPaciente;
 import vistas.paciente.PanelVerHistorialPaciente;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class UI extends JFrame {
 
@@ -111,6 +113,8 @@ public class UI extends JFrame {
 		setJMenuBar(menuBar);
 
 		JMenu mnPaciente = new JMenu("Paciente");
+		
+		
 		mnPaciente.setBackground(new Color(218, 165, 32));
 		mnPaciente.setFont(new Font("Alef", Font.PLAIN, 32));
 		menuBar.add(mnPaciente);
@@ -219,6 +223,7 @@ public class UI extends JFrame {
 		mnPaciente.add(mntmVerHistorial);
 
 		JMenu mnMedico = new JMenu("Medico");
+		
 		mnMedico.setBackground(new Color(139, 0, 139));
 		mnMedico.setHorizontalAlignment(SwingConstants.CENTER);
 		mnMedico.setFont(new Font("Alef", Font.PLAIN, 32));
@@ -290,20 +295,40 @@ public class UI extends JFrame {
 	private void asociarPanel(String string) {
 		((CardLayout)contentPane.getLayout()).show(contentPane,string);
 	}
-	
-	//Alta
-	public PanelDatosPersonales getPanelDatosPersonalesAltaPaciente() {
-		return altaPaciente.getPanelDatosPersonales();
-	}
-	
 	public PanelMensaje getTMensaje() {
 		return altaPaciente.getPanelMensaje();
 	}
 	
-	//Consulta
+	//PACIENTE
+	
+	public PanelDatosPersonales getPanelDatosPersonalesAltaPaciente() {
+		return altaPaciente.getPanelDatosPersonales();
+	}
+	public PanelDatosPersonales getPanelDatosPersonalesModificacionPaciente() {
+		return modificacionPaciente.getPanelDatosPersonales();
+	}
+	
+	public PanelDatosPersonales getPanelDatosPersonalesBajaPaciente() {
+		return bajaPaciente.getPanelDatosPersonales();
+	}
+	
 	public PanelDatosPersonales getPanelDatosPersonalesConsultaPaciente() {
 		return consultaPaciente.getPanelDatosPersonales();
 	}
+
+	public JComboBox getComboBoxIdBajaPaciente() {
+		return bajaPaciente.getComboBoxId();
+	}
+	
+	public JComboBox getComboBoxIdModificacionPaciente() {
+		return modificacionPaciente.getComboBoxId();
+	}
+	
+	public JComboBox getComboBoxIdConsultaPaciente() {
+		return consultaPaciente.getComboBoxId();
+	}
+	
+	//DOCTOR
 	
 	public PanelDatosPersonales getPanelDatosPersonalesConsultaDoctor() {
 		return consultaMedico.getPanelDatosPersonales();
@@ -313,45 +338,17 @@ public class UI extends JFrame {
 		return bajaMedico.getPanelDatosPersonales();
 	}
 	
-	public JComboBox getComboBoxIdConsultaPaciente() {
-		return consultaPaciente.getComboBoxId();
-	}
-	//Baja
-	public PanelDatosPersonales getPanelDatosPesonalesBajaDoctor() {
-		return bajaMedico.getPanelDatosPersonales();
+	public PanelDatosPersonales getPanelDatosPesonalesAltaDoctor() {
+		return altaMedico.getPanelDatosPersonales();
 	}
 
 	public JComboBox getComboBoxIdBajaDoctor() {
 		return bajaMedico.getComboId();
 	}
-	//Modificacion
-	public JComboBox getComboBoxIdModificacionPaciente() {
-		return modificacionPaciente.getComboBoxId();
-	}
-	
-	public PanelDatosPersonales getPanelDatosPersonalesModificacionPaciente() {
-		return modificacionPaciente.getPanelDatosPersonales();
-	}
-	
-//MEDICO
-	
-
-	public PanelDatosPersonales getPanelDatosPesonalesAltaDoctor() {
-		return altaMedico.getPanelDatosPersonales();
-	}
 
 	public JComboBox getComboBoxIdConsultaDoctor() {
 		return consultaMedico.getComboId();
 	}
-	
-	public JComboBox getComboBoxIdBajaPaciente() {
-		return bajaPaciente.getComboBoxId();
-	}
-	
-	public PanelDatosPersonales getPanelDatosPersonalesBajaPaciente() {
-		return bajaPaciente.getPanelDatosPersonales();
-	}
-
 	
 	
 	
