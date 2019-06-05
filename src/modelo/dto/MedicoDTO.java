@@ -1,19 +1,26 @@
 package modelo.dto;
 
 import java.io.Serializable;
+import java.util.regex.Pattern;
 
 import utiles.Especialidad;
 
-public class DoctorDTO extends PersonaDTO implements Serializable{
+public class MedicoDTO extends PersonaDTO implements Serializable{
 	private Horario horario;
 	private Especialidad especialidad;
 
-	public DoctorDTO() {
+	public MedicoDTO() {
 	}
-	public DoctorDTO(String nombre, String apellidos, String direccion, String telefono, Horario horario,
-			Especialidad especialidad) {
+	public MedicoDTO(String nombre, String apellidos, String direccion, String telefono,
+			Especialidad especialidad, Horario horario) {
 		super(nombre, apellidos, direccion, telefono);
 		this.horario = horario;
+		this.especialidad = especialidad;
+	}
+	public Especialidad getEspecialidad() {
+		return especialidad;
+	}
+	public void setEspecialidad(Especialidad especialidad) {
 		this.especialidad = especialidad;
 	}
 	public Horario getHorario() {
@@ -22,17 +29,8 @@ public class DoctorDTO extends PersonaDTO implements Serializable{
 	public void setHorario(Horario horario) {
 		this.horario = horario;
 	}
-	public Especialidad getEspecialidad() {
-		return especialidad;
-	}
-	public void setEspecialidad(Especialidad especialidad) {
-		this.especialidad = especialidad;
-	}
 	@Override
 	public Respuesta validarCampos(String campo, String patron, String mensaje) {
-		// TODO Auto-generated method stub
-		return null;
+			return new Respuesta(Pattern.matches(patron,campo),mensaje);
 	}
-	
-
 }
