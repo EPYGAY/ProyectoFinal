@@ -6,13 +6,13 @@ public class Intervencion {
 
 	private String ID;
 	private PacienteDTO paciente;
-	private Medico medicoSolicitante;
-	private Medico medicoIntervencion;
+	private DoctorDTO medicoSolicitante;
+	private DoctorDTO medicoIntervencion;
 	private TipoIntervencion intervencion;
 	private boolean confirmacionRealizacion;
 	private String resultado;
 
-	public Intervencion(String iD, PacienteDTO paciente, Medico medicoSolicitante, Medico medicoIntervencion,
+	public Intervencion(String iD, PacienteDTO paciente, DoctorDTO medicoSolicitante, DoctorDTO medicoIntervencion,
 			TipoIntervencion intervencion, boolean confirmacionRealizacion, String resultado) {
 		super();
 		ID = obtenerId();

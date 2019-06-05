@@ -5,12 +5,12 @@ import java.util.Date;
 public class Cita {
 	private String ID;
 	private PacienteDTO paciente;
-	private Medico medico;
+	private DoctorDTO medico;
 	private Date fecha;
 	private boolean confirmacionFecha;
 	private String observaciones;
 	
-	public Cita(PacienteDTO paciente, Medico medico, Date fecha, boolean confirmacionFecha,
+	public Cita(PacienteDTO paciente, DoctorDTO medico, Date fecha, boolean confirmacionFecha,
 			String observaciones) {
 		ID = obtnerId();
 		this.paciente = paciente;

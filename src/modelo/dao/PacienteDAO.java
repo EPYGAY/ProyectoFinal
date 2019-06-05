@@ -1,5 +1,6 @@
 package modelo.dao;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,33 +19,35 @@ public class PacienteDAO {
 	public boolean guardar(PacienteDTO paciente) {
 		Long IDpaciente = obtnerIDpaciente();
 		paciente.setID(IDpaciente);
-		String path = rutaCarpeta + "/" + IDpaciente + extension;
+		String path = rutaCarpeta + File.separator + IDpaciente + extension;
 		AccesoFichero<PacienteDTO> acceso = new AccesoFichero<PacienteDTO>(path, true);
 		return acceso.save(paciente);
 	}
 
 	public PacienteDTO consultar(Long id) {
-		String path = rutaCarpeta + "/" + String.valueOf(id) + extension;
+		String path = rutaCarpeta + File.separator + String.valueOf(id) + extension;
 		AccesoFichero<PacienteDTO> acceso = new AccesoFichero<PacienteDTO>(path, false);
 		return acceso.getOne();
 	}
 	
 	public boolean modificar(PacienteDTO paciente) {
 		String idPaciente=String.valueOf(paciente.getID());
-		String path = rutaCarpeta + "/" + idPaciente + extension;
+		String path = rutaCarpeta + File.separator + idPaciente + extension;
 		AccesoFichero<PacienteDTO> acceso = new AccesoFichero<PacienteDTO>(path, false);
 		return acceso.override(paciente);
 	}
 
-	public List<String> obtenerTodosLosId() {
+	public ArrayList<String> obtenerTodosLosId() {
 		AccesoFichero<PacienteDTO> acceso = new AccesoFichero<>(rutaCarpeta, false);
 		List<String> lista = acceso.listarElementosPorNombre();
-		List<String> listaId= new ArrayList<>(); 
+		ArrayList<String> listaId= new ArrayList<>(); 
 		for (String nombre : lista) {
 			String idTexto = nombre.replace(extension, "");
-			listaId.add(idTexto);
+			if(!consultar(new Long(idTexto)).isEliminado()) {
+				listaId.add(idTexto);
+			}
 		}
-		return lista;
+		return listaId;
 	}
 
 	private Long obtnerIDpaciente() {
@@ -58,7 +61,10 @@ public class PacienteDAO {
 				idFinal = idAux;
 			}
 		}
-		return idFinal;
+		if(null==idFinal) {
+			idFinal=0L;
+		}
+		return idFinal+1;
 	}
 
 }
