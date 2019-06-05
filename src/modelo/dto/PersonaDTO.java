@@ -66,11 +66,12 @@ public abstract class PersonaDTO implements Serializable {
 		this.eliminado = eliminado;
 	}
 	
+	public abstract Respuesta validarCampos(String campo, String patron, String mensaje);
+	
 	@Override
 	public boolean equals(Object obj) {
 		return this.ID.equals(((PersonaDTO)obj).ID);
 	}
-	
 	
 	
 	
