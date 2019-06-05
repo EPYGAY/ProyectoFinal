@@ -13,32 +13,65 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import vista.comunes.PanelComboBox;
 import vista.comunes.PanelDatosPersonales;
+
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import vista.comunes.PanelMensaje;
 
 public class PanelConsultaBajaMedico extends JPanel {
-	
-	private PanelAltaMedico panelAltaBajaMedico;
 	private PanelComboBox panelCombo;
-	private JButton btnBaja;
-	public PanelConsultaBajaMedico(String name,boolean mostrarBtnBaja) {
+	private JTextField textEspecialidad;
+	private JTextField textHorario;
+	private JTextField textConsulta;
+	private PanelMensaje panelMensaje;
+	public PanelConsultaBajaMedico(String name, boolean visibilidadPanel) {
 		setBackground(new Color(240, 230, 140));
 		
 		JLabel lblConsultaMedico = new JLabel(name);
 		lblConsultaMedico.setFont(new Font("Tahoma", Font.BOLD, 22));
+		panelCombo=new PanelComboBox("Medido", "ID");
+		panelCombo.setBackground(new Color(240, 230, 140));
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout(0, 0));
-		panelCombo=new PanelComboBox("Medido", "ID");
-		panelCombo.setBackground(new Color(240, 230, 140));
-		panel.add(panelCombo);
-		panelAltaBajaMedico = new PanelAltaMedico("",false);
-		panelAltaBajaMedico.getPanelDatosPersonales().setBackground(new Color(240, 230, 140));
-		panelAltaBajaMedico.setBackground(new Color(240, 230, 140));
+		PanelDatosPersonales panelDatosPersonales = new PanelDatosPersonales();
+		panelDatosPersonales.getTxtaApellido().setEditable(false);
+		panelDatosPersonales.getTxtNombre().setEditable(false);
+		panelDatosPersonales.getTxtDireccion().setEditable(false);
+		panelDatosPersonales.getTextTelefono().setEditable(false);
+		panelDatosPersonales.getTextNacimiento().setEditable(false);
+		panel.add(panelDatosPersonales);
 		
-		btnBaja = new JButton("BAJA");
-		btnBaja.setVisible(mostrarBtnBaja);
+		JLabel lblEspecialidad = new JLabel("Especialidad");
+		lblEspecialidad.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		
+		JLabel lblHorario = new JLabel("Horario");
+		lblHorario.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		
+		JLabel lblConsulta = new JLabel("Consulta");
+		lblConsulta.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		
+		textEspecialidad = new JTextField();
+		textEspecialidad.setEditable(false);
+		textEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
+		textEspecialidad.setColumns(10);
+		
+		textHorario = new JTextField();
+		textHorario.setEditable(false);
+		textHorario.setFont(new Font("Tahoma", Font.BOLD, 14));
+		textHorario.setColumns(10);
+		
+		textConsulta = new JTextField();
+		textConsulta.setEditable(false);
+		textConsulta.setFont(new Font("Tahoma", Font.BOLD, 14));
+		textConsulta.setColumns(10);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(new Color(240, 230, 140));
+		panel_1.setLayout(new BorderLayout(0, 0));
+		panelMensaje = new PanelMensaje();
+		panelMensaje.setVisible(visibilidadPanel);
+		panel_1.add(panelMensaje);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -46,29 +79,55 @@ public class PanelConsultaBajaMedico extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
-								.addComponent(lblConsultaMedico, Alignment.LEADING))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnBaja, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE))
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 401, GroupLayout.PREFERRED_SIZE)
+								.addComponent(panelCombo, GroupLayout.PREFERRED_SIZE, 633, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblConsultaMedico)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(22)
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addGroup(groupLayout.createSequentialGroup()
+											.addGap(28)
+											.addComponent(lblConsulta)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(textConsulta, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE))
+										.addGroup(groupLayout.createSequentialGroup()
+											.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+												.addComponent(lblHorario)
+												.addComponent(lblEspecialidad))
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+												.addComponent(textHorario, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
+												.addComponent(textEspecialidad, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)))))))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(88)
-							.addComponent(panelAltaBajaMedico, GroupLayout.PREFERRED_SIZE, 649, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(104, Short.MAX_VALUE))
+							.addGap(41)
+							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 565, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(25, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(26)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblConsultaMedico)
-							.addGap(18)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnBaja, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap()
+					.addComponent(lblConsultaMedico)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(panelCombo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panelAltaBajaMedico, GroupLayout.PREFERRED_SIZE, 451, GroupLayout.PREFERRED_SIZE)
-					.addGap(68))
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblEspecialidad)
+						.addComponent(textEspecialidad, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+					.addGap(10)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textHorario, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblHorario))
+					.addGap(7)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textConsulta, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblConsulta))
+					.addGap(38)
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(98, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 	}
@@ -77,11 +136,5 @@ public class PanelConsultaBajaMedico extends JPanel {
 		return panelCombo.comboBoxID;
 	}
 	
-	public PanelDatosPersonales getPanelDatosPersonales() {
-		return panelAltaBajaMedico.getPanelDatosPersonales();
-	}
 	
-	public JButton getBtnBaja() {
-		return btnBaja;
-	}
 }

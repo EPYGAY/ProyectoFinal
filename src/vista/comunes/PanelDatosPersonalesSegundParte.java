@@ -16,7 +16,7 @@ public class PanelDatosPersonalesSegundParte extends JPanel{
 	public JComboBox comboBox_1;
 	public JComboBox comboBox_2;
 	
-	public PanelDatosPersonalesSegundParte(boolean b1,boolean b2,boolean b3, boolean b4, boolean visibleNacimiento) {
+	public PanelDatosPersonalesSegundParte() {
 		setBackground(new Color(240, 230, 140));
 		
 		JLabel lblApellido = new JLabel("Especialidad");
@@ -32,10 +32,13 @@ public class PanelDatosPersonalesSegundParte extends JPanel{
 		lblHorario.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		
 		comboBox = new JComboBox();
+		comboBox.setEditable(true);
 		
 		comboBox_1 = new JComboBox();
+		comboBox_1.setEditable(true);
 		
 		comboBox_2 = new JComboBox();
+		comboBox_2.setEditable(true);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -77,5 +80,37 @@ public class PanelDatosPersonalesSegundParte extends JPanel{
 					.addContainerGap(174, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
+	}
+
+	public JLabel getLblHorario() {
+		return lblHorario;
+	}
+
+	public void setLblHorario(JLabel lblHorario) {
+		this.lblHorario = lblHorario;
+	}
+
+	public JComboBox getComboBox() {
+		return comboBox;
+	}
+
+	public void setComboBox(JComboBox comboBox) {
+		this.comboBox = comboBox;
+	}
+
+	public JComboBox getComboBox_1() {
+		return comboBox_1;
+	}
+
+	public void setComboBox_1(JComboBox comboBox_1) {
+		this.comboBox_1 = comboBox_1;
+	}
+
+	public JComboBox getComboBox_2() {
+		return comboBox_2;
+	}
+
+	public void setComboBox_2(JComboBox comboBox_2) {
+		this.comboBox_2 = comboBox_2;
 	}
 }
