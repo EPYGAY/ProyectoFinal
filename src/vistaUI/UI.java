@@ -34,11 +34,16 @@ import vistas.paciente.PanelPedirCitaPrimarioyEspecialistaPaciente;
 import vistas.paciente.PanelVerHistorialPaciente;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.swing.JTextField;
 
 public class UI extends JFrame {
 
 	private JPanel contentPane;
 	//PANELES
+	//
 	 protected PanelInicio inicio=new PanelInicio();
 	//Paciente
 	 protected PanelAltaPaciente altaPaciente=new PanelAltaPaciente("ALTA PACIENTE", true, true, true, true, true,false,false, "imagenes\\altaPaciente.png");
@@ -57,6 +62,7 @@ public class UI extends JFrame {
 	 protected PanelPedirCitaOperacionPaciente operacion= new PanelPedirCitaOperacionPaciente();
 	 //Operacion
 	 protected PanelCierreOperacion cierreOperacion= new PanelCierreOperacion();
+	 private JTextField fecha;
 	
 	
 	public UI() {
@@ -288,6 +294,17 @@ public class UI extends JFrame {
 		mntmCerrarOperacion.setBackground(new Color(255, 204, 153));
 		mntmCerrarOperacion.setFont(new Font("Alef", Font.BOLD, 22));
 		mnOperacion.add(mntmCerrarOperacion);
+		
+		fecha = new JTextField();
+		fecha.setFont(new Font("Tahoma", Font.BOLD, 22));
+		fecha.setEditable(false);
+		menuBar.add(fecha);
+		fecha.setColumns(10);
+		
+		 //FECHA DEL SISTEMA
+        Date sistFecha=new Date();
+        SimpleDateFormat formato=new SimpleDateFormat(" dd / MM / YYYY");
+        fecha.setText(formato.format(sistFecha));
 
 		
 
