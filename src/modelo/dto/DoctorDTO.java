@@ -5,6 +5,7 @@ import java.io.Serializable;
 import utiles.Especialidad;
 
 public class DoctorDTO extends PersonaDTO implements Serializable{
+	
 	private Horario horario;
 	private Especialidad especialidad;
 

@@ -2,8 +2,7 @@ package control.logica;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
+
 
 import facade.Facade;
 
@@ -37,6 +36,10 @@ public class ParaUI extends UI {
 		getComboBoxIdBajaPaciente().addFocusListener(actionComboPacienteBaja);
 		getComboBoxIdBajaPaciente().addItemListener(actionComboPacienteBaja);
 		
+		ActionComboPaciente actionComboPacienteVerHistorial=new ActionComboPaciente(getComboBoxIdVerHistorialPaciente(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesModificacionPaciente());
+		getComboBoxIdVerHistorialPaciente().addFocusListener(actionComboPacienteVerHistorial);
+		getComboBoxIdVerHistorialPaciente().addItemListener(actionComboPacienteVerHistorial);	
+		
 		modificacionPaciente.panelMensaje.getBtnAplicr().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				facade.modificarPaciente(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesModificacionPaciente()));
@@ -49,16 +52,18 @@ public class ParaUI extends UI {
 		getComboBoxIdModificacionPaciente().addFocusListener(actionComboPacienteModificacion);
 		getComboBoxIdModificacionPaciente().addItemListener(actionComboPacienteModificacion);
 		
+		
 		bajaPaciente.panelMensaje.getBtnAplicr().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				facade.darBajaPaciente(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesBajaPaciente()));
 				controladorPanelDatosPersonales.vaciarDatos(bajaPaciente.getPanelDatosPersonales());
 				controladorMensaje.mostrarMensajes(bajaPaciente.getPanelMensaje(), "Paciente dado de baja correctamente");
 				
+				
 			}
 		});
 		
-			
+		
 		
 		
 		//PACIENTES 

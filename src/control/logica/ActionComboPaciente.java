@@ -26,13 +26,13 @@ public class ActionComboPaciente implements FocusListener,ItemListener{
 		this.controlador=controlador;
 	}
 
-
+	
 	@Override
 	public void focusGained(FocusEvent arg0) {
 		combo.removeAllItems();
 		ArrayList<String> listaIds=facade.listadoIdPacientes();
 		for(String id:listaIds) {
-			combo.addItem(id);
+				combo.addItem(id);
 		}
 		
 	}

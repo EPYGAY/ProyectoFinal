@@ -12,13 +12,14 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
-public class AccesoFichero<T> {
+public class DAO<T> {
 
 	private File file;
 
-	public AccesoFichero(String path, boolean create) {
+	public DAO(String path, boolean create) {
 		if (create) {
 			this.file = createFile(path);
 		} else {
@@ -52,7 +53,8 @@ public class AccesoFichero<T> {
 		}
 		return list;
 	}
-
+	
+	
 	public T get(T buscado) {
 		T obj = null;
 		T auxiliar = null;
@@ -119,7 +121,7 @@ public class AccesoFichero<T> {
 	public boolean save(T object) {
 		return this.save(object, true);
 	}
-
+	
 	public boolean override(T object) {
 		return this.save(object, false);
 	}
@@ -144,6 +146,7 @@ public class AccesoFichero<T> {
 		}
 		return true;
 	}
+	
 
 	private File createFile(String path) {
 		String pattern = Pattern.quote(System.getProperty("file.separator"));

@@ -2,6 +2,7 @@ package vistas.paciente;
 import java.awt.Font;
 
 import javax.swing.GroupLayout;
+import javax.swing.JComboBox;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,16 +10,31 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.table.DefaultTableModel;
+
+import vista.comunes.PanelComboBox;
+import vista.comunes.PanelDatosPersonales;
+
 import java.awt.Color;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 
 public class PanelVerHistorialPaciente extends JPanel {
 	private JTable tableConsultas;
 	private JTable tableTratamiento;
+	public PanelComboBox panelComboBox;
+	public PanelDatosPersonales panelDatosPersonales;
 
-	/**
-	 * Create the panel.
-	 */
+	public PanelDatosPersonales getPanelDatosPersonales() {
+		return panelDatosPersonales;
+	}
+
+	public void setPanelDatosPersonales(PanelDatosPersonales panelDatosPersonales) {
+		this.panelDatosPersonales = panelDatosPersonales;
+	}
+
 	public PanelVerHistorialPaciente() {
+		
+		
 		setBackground(new Color(240, 230, 140));
 		JLabel lblCierreOperaciones = new JLabel("Historial Paciente ");
 		lblCierreOperaciones.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -30,37 +46,43 @@ public class PanelVerHistorialPaciente extends JPanel {
 		JLabel lblTratamientos = new JLabel("Tratamientos");
 		
 		JLabel lblCitas = new JLabel("Citas/Operaciones");
+		panelComboBox = new PanelComboBox("Paciente", "id");
+		
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(33)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblCitas)
+						.addComponent(lblCierreOperaciones, GroupLayout.PREFERRED_SIZE, 346, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panelComboBox, GroupLayout.PREFERRED_SIZE, 701, GroupLayout.PREFERRED_SIZE)
 						.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 1115, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblTratamientos)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 1115, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblCitas)
-						.addComponent(lblCierreOperaciones, GroupLayout.PREFERRED_SIZE, 346, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(55, Short.MAX_VALUE))
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 1115, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(43)
+					.addContainerGap()
 					.addComponent(lblCierreOperaciones, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+					.addGap(9)
+					.addComponent(panelComboBox, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(lblCitas)
-					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 237, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(lblTratamientos)
+					.addGap(36)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 246, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(47, Short.MAX_VALUE))
+					.addComponent(lblTratamientos)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(114, Short.MAX_VALUE))
 		);
 		
 		String nombresColumnasT[]={"Paciente","medicamento","posologia", "fecha inicio", "fecha fin"};
-		String dataT[][]={{"Gonzalo Berceo, Jonathan","omeprazol","cada 8 horas","10/06/2019","16/06/2019"}};
+		String dataT[][]={/*datos a rellenar*/};
 		Font font = new Font("Tahoma", Font.PLAIN, 16);
 		DefaultTableModel defaultTableModelT = new DefaultTableModel(dataT,nombresColumnasT);
 		tableTratamiento = new JTable(defaultTableModelT);
@@ -71,7 +93,7 @@ public class PanelVerHistorialPaciente extends JPanel {
 		
 		
 		String nombresColumnas[]={"Paciente	","tipo","fecha", "medico"};
-		String data[][]={{"Gonzalo Berceo, Jonathan","Consulta primaria","16/06/2019","Jovellanos pursuy,Benito"}};
+		String data[][]={/*datos a rellenar*/};
 		tableConsultas = new JTable();
 		tableConsultas.setFont(font);
 		tableConsultas.getTableHeader().setFont(font);
@@ -82,5 +104,17 @@ public class PanelVerHistorialPaciente extends JPanel {
 		
 		
 	}
+
+	public PanelComboBox getPanelComboBox() {
+		return panelComboBox;
+	}
+
+	public void setPanelComboBox(PanelComboBox panelComboBox) {
+		this.panelComboBox = panelComboBox;
+	}
+	public JComboBox getComboId() {
+		return panelComboBox.comboBoxID;
+	}
+	
 
 }

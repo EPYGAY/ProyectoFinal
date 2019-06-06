@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class AccesoColeccion<T> {
 	
 	private ArrayList<T> lista;
-	private AccesoFichero<ArrayList<T>> accesoFichero;
+	private DAO<ArrayList<T>> accesoFichero;
 	
 	public AccesoColeccion(String path,boolean create) {
-		accesoFichero=new AccesoFichero<>(path, create);
+		accesoFichero=new DAO<>(path, create);
 		lista=accesoFichero.getOne();
 		if(null==lista) {
 			lista=new ArrayList<>();

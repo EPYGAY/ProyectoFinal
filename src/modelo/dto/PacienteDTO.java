@@ -1,7 +1,6 @@
 package modelo.dto;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class PacienteDTO extends PersonaDTO implements Serializable{
 

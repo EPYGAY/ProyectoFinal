@@ -6,6 +6,7 @@ import javax.swing.JComboBox;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import vista.comunes.PanelComboBox;
 import vista.comunes.PanelDatosPersonales;
 import vista.comunes.PanelMensaje;
 
@@ -23,6 +24,7 @@ public class PanelBajaModificacionConsultaPaciente extends JPanel {
 	
 	public PanelGeneralPaciente panelPaciente;
 	public PanelMensaje panelMensaje;
+	public PanelComboBox panelCombo;
 	
 	public PanelBajaModificacionConsultaPaciente(String operacion,boolean nombre, boolean apellidos,boolean direccion,boolean telefono,boolean nacimiento, boolean visibleNacimiento, boolean visbilidadPanelMensaje, String imagen) {
 		setBackground(new Color(240, 230, 140));
@@ -101,7 +103,10 @@ public class PanelBajaModificacionConsultaPaciente extends JPanel {
 	public JComboBox getComboBoxId() {
 		return panelPaciente.getComboBoxId();
 	}
-
+	public PanelComboBox getPanelCombo() {
+		return panelCombo;
+	}
+	
 	public PanelDatosPersonales getPanelDatosPersonales() {
 		return panelPaciente.getPanelDatosPersonales();
 	}

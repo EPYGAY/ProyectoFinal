@@ -14,14 +14,14 @@ public class Facade {
 	public boolean guardarPaciente(PersonaMV pacienteMV) {
 		return pacienteNucleo.altaPaciente(pacienteMV);
 	}
+	public ArrayList<String> listadoIdPacientes(){
+		return pacienteNucleo.listadoIdPacientes();
+	}
 
 	public PersonaMV obtenerPaciente(String id) {
 		return pacienteNucleo.obtenerPaciente(id);
 	}
 	
-	public ArrayList<String> listadoIdPacientes(){
-		return pacienteNucleo.listadoIdPacientes();
-	}
 	
 	public boolean darBajaPaciente(PersonaMV pacienteMV) {
 		return pacienteNucleo.bajaPaciente(pacienteMV);

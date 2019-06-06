@@ -60,6 +60,14 @@ public class PanelGeneralPaciente extends JPanel {
 		return panelComboBox.comboBoxID;
 	}
 
+	public PanelComboBox getPanelComboBox() {
+		return panelComboBox;
+	}
+
+	public void setPanelComboBox(PanelComboBox panelComboBox) {
+		this.panelComboBox = panelComboBox;
+	}
+
 	public PanelDatosPersonales getPanelDatosPersonales() {
 		return panelDatosPersonales;
 	}
