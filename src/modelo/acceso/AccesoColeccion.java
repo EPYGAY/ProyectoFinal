@@ -1,6 +1,9 @@
 package modelo.acceso;
 
 import java.util.ArrayList;
+import java.util.Map;
+
+import modelo.dto.DoctorDTO;
 
 public class AccesoColeccion<T> {
 	
@@ -40,5 +43,5 @@ public class AccesoColeccion<T> {
 		return accesoFichero.override(lista);
 	}
 	
-	
 }
+

@@ -1,17 +1,17 @@
 package modelo.dao;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import modelo.acceso.AccesoColeccion;
 import modelo.dto.DoctorDTO;
 
-public class DoctorDAO {
+public class DoctorDAO implements Serializable{
 	private String rutaCarpeta = "doctor";
 	private String extension = ".doct";
 	private String nombreFichero = "listaDoctores";
 	private AccesoColeccion<DoctorDTO> acceso;
-
 	public DoctorDAO() {
 		String path = rutaCarpeta + File.separator  + nombreFichero + extension;
 		acceso = new AccesoColeccion<DoctorDTO>(path, true);

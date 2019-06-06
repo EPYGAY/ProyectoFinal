@@ -11,7 +11,7 @@ public class PacienteDAO {
 
 	private String rutaCarpeta = "cliente";
 	private String extension = ".cli";
-
+	private MapaPacienteDAO mapa= new MapaPacienteDAO();
 	public PacienteDAO() {
 
 	}
@@ -21,6 +21,7 @@ public class PacienteDAO {
 		paciente.setID(IDpaciente);
 		String path = rutaCarpeta + File.separator + IDpaciente + extension;
 		AccesoFichero<PacienteDTO> acceso = new AccesoFichero<PacienteDTO>(path, true);
+		mapa.registrarPaciente(paciente);
 		return acceso.save(paciente);
 	}
 
@@ -34,6 +35,7 @@ public class PacienteDAO {
 		String idPaciente=String.valueOf(paciente.getID());
 		String path = rutaCarpeta + File.separator + idPaciente + extension;
 		AccesoFichero<PacienteDTO> acceso = new AccesoFichero<PacienteDTO>(path, false);
+		mapa.actualizarPaciente(paciente);
 		return acceso.override(paciente);
 	}
 	public boolean eliminar(PacienteDTO paciente) {
