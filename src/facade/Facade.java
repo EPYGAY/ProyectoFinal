@@ -14,7 +14,7 @@ public class Facade {
 	public boolean guardarPaciente(PersonaMV pacienteMV) {
 		return pacienteNucleo.altaPaciente(pacienteMV);
 	}
-
+	
 	public PersonaMV obtenerPaciente(String id) {
 		return pacienteNucleo.obtenerPaciente(id);
 	}

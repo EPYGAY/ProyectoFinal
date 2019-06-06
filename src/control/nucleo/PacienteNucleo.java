@@ -2,6 +2,7 @@ package control.nucleo;
 
 import java.util.ArrayList;
 
+import modelo.dao.MapaPacienteDAO;
 import modelo.dao.PacienteDAO;
 import modelo.dto.PacienteDTO;
 import modelo.vista.PersonaMV;
