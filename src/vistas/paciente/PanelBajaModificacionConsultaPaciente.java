@@ -101,6 +101,12 @@ public class PanelBajaModificacionConsultaPaciente extends JPanel {
 	public JComboBox getComboBoxId() {
 		return panelPaciente.getComboBoxId();
 	}
+	
+
+	public JComboBox getComboBoxNombre() {
+		return panelPaciente.getComboBoxNombre();
+	}
+
 
 	public PanelDatosPersonales getPanelDatosPersonales() {
 		return panelPaciente.getPanelDatosPersonales();

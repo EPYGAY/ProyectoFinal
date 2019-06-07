@@ -32,7 +32,7 @@ public class PanelConsultaBajaMedico extends JPanel {
 		
 		JLabel lblConsultaMedico = new JLabel(name);
 		lblConsultaMedico.setFont(new Font("Tahoma", Font.BOLD, 22));
-		panelCombo=new PanelComboBox("Medido", "ID");
+		panelCombo=new PanelComboBox("Médico", "ID");
 		panelCombo.setBackground(new Color(240, 230, 140));
 		
 		JPanel panel = new JPanel();
@@ -138,7 +138,11 @@ public class PanelConsultaBajaMedico extends JPanel {
 	}
 	
 	public JComboBox getComboId() {
-		return panelCombo.comboBoxID;
+		return panelCombo.getComboBoxID();
+	}
+	
+	public JComboBox getComboNombre() {
+		return panelCombo.getComboBoxNombre();
 	}
 
 	public PanelComboBox getPanelCombo() {
@@ -187,5 +191,7 @@ public class PanelConsultaBajaMedico extends JPanel {
 	public void setPanelDatosPersonales(PanelDatosPersonales panelDatosPersonales) {
 		this.panelDatosPersonales = panelDatosPersonales;
 	}
+
+	
 	
 }

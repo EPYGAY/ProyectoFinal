@@ -1,17 +1,17 @@
-package modelo.acceso;
+package modelo.dao;
 
 import java.util.ArrayList;
 import java.util.Map;
 
 import modelo.dto.DoctorDTO;
 
-public class AccesoColeccion<T> {
+public class DAOColecciones<T> {
 	
 	private ArrayList<T> lista;
-	private AccesoFichero<ArrayList<T>> accesoFichero;
+	private DAO<ArrayList<T>> accesoFichero;
 	
-	public AccesoColeccion(String path,boolean create) {
-		accesoFichero=new AccesoFichero<>(path, create);
+	public DAOColecciones(String path,boolean create) {
+		accesoFichero=new DAO<>(path, create);
 		lista=accesoFichero.getOne();
 		if(null==lista) {
 			lista=new ArrayList<>();

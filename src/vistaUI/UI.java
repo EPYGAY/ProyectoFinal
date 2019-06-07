@@ -35,6 +35,7 @@ import vistas.paciente.PanelVerHistorialPaciente;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JTextField;
@@ -63,6 +64,7 @@ public class UI extends JFrame {
 	 //Operacion
 	 protected PanelCierreOperacion cierreOperacion= new PanelCierreOperacion();
 	 private JTextField fecha;
+	 private JTextField hora;
 	
 	
 	public UI() {
@@ -118,7 +120,7 @@ public class UI extends JFrame {
 		menuBar.setForeground(new Color(0, 0, 0));
 		setJMenuBar(menuBar);
 
-		JMenu mnPaciente = new JMenu("Paciente");
+		JMenu mnPaciente = new JMenu("   Paciente   ");
 		
 		
 		mnPaciente.setBackground(new Color(218, 165, 32));
@@ -209,7 +211,7 @@ public class UI extends JFrame {
 		JMenuItem mntmConsultarCitas = new JMenuItem("Consultar citas");
 		mntmConsultarCitas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				asociarPanel("PanelConsultaMedico");
+				asociarPanel("PanelConsultaCitaPaciente");
 			}
 		});
 		mntmConsultarCitas.setHorizontalAlignment(SwingConstants.CENTER);
@@ -228,7 +230,7 @@ public class UI extends JFrame {
 		mntmVerHistorial.setBackground(new Color(204, 102, 102));
 		mnPaciente.add(mntmVerHistorial);
 
-		JMenu mnMedico = new JMenu("Medico");
+		JMenu mnMedico = new JMenu("   Medico   ");
 		
 		mnMedico.setBackground(new Color(139, 0, 139));
 		mnMedico.setHorizontalAlignment(SwingConstants.CENTER);
@@ -279,7 +281,7 @@ public class UI extends JFrame {
 		mntmAtenderCita.setFont(new Font("Alef", Font.BOLD, 22));
 		mnMedico.add(mntmAtenderCita);
 
-		JMenu mnOperacion = new JMenu("Operacion");
+		JMenu mnOperacion = new JMenu("   Operacion   ");
 		mnOperacion.setBackground(new Color(139, 69, 19));
 		mnOperacion.setFont(new Font("Alef", Font.PLAIN, 32));
 		menuBar.add(mnOperacion);
@@ -295,17 +297,37 @@ public class UI extends JFrame {
 		mntmCerrarOperacion.setFont(new Font("Alef", Font.BOLD, 22));
 		mnOperacion.add(mntmCerrarOperacion);
 		
+		hora = new JTextField();
+		hora.setForeground(new Color(0, 0, 0));
+		hora.setBackground(new Color(184, 134, 11));
+		hora.setBorder(new LineBorder(new Color(171, 173, 179), 0));
+		hora.setHorizontalAlignment(SwingConstants.LEFT);
+		
+		
 		fecha = new JTextField();
+		fecha.setForeground(new Color(0, 0, 0));
+		fecha.setBackground(new Color(184, 134, 11));
+		fecha.setBorder(new LineBorder(new Color(171, 173, 179), 0));
+		fecha.setHorizontalAlignment(SwingConstants.RIGHT);
 		fecha.setFont(new Font("Tahoma", Font.BOLD, 22));
 		fecha.setEditable(false);
 		menuBar.add(fecha);
 		fecha.setColumns(10);
+		hora.setFont(new Font("Tahoma", Font.BOLD, 22));
+		hora.setEditable(false);
+		menuBar.add(hora);
+		hora.setColumns(10);
 		
 		 //FECHA DEL SISTEMA
         Date sistFecha=new Date();
-        SimpleDateFormat formato=new SimpleDateFormat(" dd / MM / YYYY");
+        SimpleDateFormat formato=new SimpleDateFormat(" dd / MM / YYYY ");
         fecha.setText(formato.format(sistFecha));
-
+        //HORA
+        Date sistHora=new Date();
+        String pmAm="   hh:mm:ss a";
+        SimpleDateFormat format=new SimpleDateFormat(pmAm);
+        Calendar hoy=Calendar.getInstance();
+        hora.setText(String.format(format.format(sistHora),hoy));
 		
 
 	}
@@ -336,13 +358,23 @@ public class UI extends JFrame {
 	public JComboBox getComboBoxIdBajaPaciente() {
 		return bajaPaciente.getComboBoxId();
 	}
+	public JComboBox getComboBoxNombreBajaPaciente() {
+		return bajaPaciente.getComboBoxNombre();
+	}
 	
 	public JComboBox getComboBoxIdModificacionPaciente() {
 		return modificacionPaciente.getComboBoxId();
 	}
+
+	public JComboBox getComboBoxNombreModificacionPaciente() {
+		return modificacionPaciente.getComboBoxNombre();
+	}
 	
 	public JComboBox getComboBoxIdConsultaPaciente() {
 		return consultaPaciente.getComboBoxId();
+	}
+	public JComboBox getComboBoxNombreConsultaPaciente() {
+		return consultaPaciente.getComboBoxNombre();
 	}
 	
 	//DOCTOR
@@ -363,8 +395,15 @@ public class UI extends JFrame {
 		return bajaMedico.getComboId();
 	}
 
+	public JComboBox getComboBoxNombreBajaDoctor() {
+		return bajaMedico.getComboNombre();
+	}
 	public JComboBox getComboBoxIdConsultaDoctor() {
 		return consultaMedico.getComboId();
+	}
+
+	public JComboBox getComboBoxNombreConsultaDoctor() {
+		return consultaMedico.getComboNombre();
 	}
 	
 	

@@ -1,25 +1,22 @@
 package modelo.dao;
-
 import java.io.File;
-import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import modelo.acceso.AccesoColeccion;
 import modelo.dto.DoctorDTO;
 
-public class DoctorDAO implements Serializable{
+public class DoctorDAO {
 	private String rutaCarpeta = "doctor";
 	private String extension = ".doct";
 	private String nombreFichero = "listaDoctores";
-	private AccesoColeccion<DoctorDTO> acceso;
+	private DAOColecciones<DoctorDTO> acceso;
+
 	public DoctorDAO() {
 		String path = rutaCarpeta + File.separator  + nombreFichero + extension;
-		acceso = new AccesoColeccion<DoctorDTO>(path, true);
+		acceso = new DAOColecciones<DoctorDTO>(path, true);
 	}
 
 	public boolean guardar(DoctorDTO doctor) {
-		Long id = obtenerId();
-		doctor.setID(id);
 		return acceso.save(doctor);
 	}
 
@@ -33,6 +30,16 @@ public class DoctorDAO implements Serializable{
 		return acceso.modify(doctor);
 	}
 
+	public HashMap<Long,String> obtenerMapaIDNombre() {
+		HashMap<Long,String> mapa = new HashMap<Long,String>();
+		for (DoctorDTO doctor : acceso.getAll()) {
+			if (!doctor.isEliminado()) {
+				mapa.put(doctor.getID(),doctor.getNombre());
+			}
+		}
+		return mapa;
+	}
+	
 	public ArrayList<String> obtenerTodosIds() {
 		ArrayList<String> lista = new ArrayList<>();
 		for (DoctorDTO doctor : acceso.getAll()) {
@@ -43,7 +50,7 @@ public class DoctorDAO implements Serializable{
 		return lista;
 	}
 
-	private Long obtenerId() {
+	public Long obtenerId() {
 		ArrayList<String> lista = obtenerTodosIds();
 		Long idMax = null;
 		for (String id : lista) {

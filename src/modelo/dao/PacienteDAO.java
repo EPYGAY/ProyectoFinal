@@ -2,9 +2,10 @@ package modelo.dao;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import modelo.acceso.AccesoFichero;
+import modelo.dto.DoctorDTO;
 import modelo.dto.PacienteDTO;
 
 public class PacienteDAO {
@@ -17,36 +18,34 @@ public class PacienteDAO {
 	}
 
 	public boolean guardar(PacienteDTO paciente) {
-		Long IDpaciente = obtnerIDpaciente();
-		paciente.setID(IDpaciente);
-		String path = rutaCarpeta + File.separator + IDpaciente + extension;
-		AccesoFichero<PacienteDTO> acceso = new AccesoFichero<PacienteDTO>(path, true);
+		String path = rutaCarpeta + File.separator + paciente.getID() + extension;
+		DAO<PacienteDTO> acceso = new DAO<PacienteDTO>(path, true);
 		mapa.registrarPaciente(paciente);
 		return acceso.save(paciente);
 	}
 
 	public PacienteDTO consultar(Long id) {
 		String path = rutaCarpeta + File.separator + String.valueOf(id) + extension;
-		AccesoFichero<PacienteDTO> acceso = new AccesoFichero<PacienteDTO>(path, false);
+		DAO<PacienteDTO> acceso = new DAO<PacienteDTO>(path, false);
 		return acceso.getOne();
 	}
 	
 	public boolean modificar(PacienteDTO paciente) {
 		String idPaciente=String.valueOf(paciente.getID());
 		String path = rutaCarpeta + File.separator + idPaciente + extension;
-		AccesoFichero<PacienteDTO> acceso = new AccesoFichero<PacienteDTO>(path, false);
+		DAO<PacienteDTO> acceso = new DAO<PacienteDTO>(path, false);
 		mapa.actualizarPaciente(paciente);
 		return acceso.override(paciente);
 	}
 	public boolean eliminar(PacienteDTO paciente) {
 		String idPaciente=String.valueOf(paciente.getID());
 		String path = rutaCarpeta + File.separator + idPaciente + extension;
-		AccesoFichero<PacienteDTO> acceso = new AccesoFichero<PacienteDTO>(path, false);
+		DAO<PacienteDTO> acceso = new DAO<PacienteDTO>(path, false);
 		return acceso.delete();
 	}
 
 	public ArrayList<String> obtenerTodosLosId() {
-		AccesoFichero<PacienteDTO> acceso = new AccesoFichero<>(rutaCarpeta, false);
+		DAO<PacienteDTO> acceso = new DAO<>(rutaCarpeta, false);
 		List<String> lista = acceso.listarElementosPorNombre();
 		ArrayList<String> listaId= new ArrayList<>(); 
 		for (String nombre : lista) {
@@ -57,9 +56,25 @@ public class PacienteDAO {
 		}
 		return listaId;
 	}
+	
+	
+	public HashMap<Long,String> obtenerMapaIDNombre() {
+		HashMap<Long,String> mapa = new HashMap<Long,String>();
+		DAO<PacienteDTO> acceso = new DAO<>(rutaCarpeta, false);
+		List<String> lista = acceso.listarElementosPorNombre();
+		for (String nombre : lista) {
+			Long idPacienteDTO=new Long(nombre.replace(extension, ""));
+			PacienteDTO pacienteDTO= consultar(idPacienteDTO);
+			if (!pacienteDTO.isEliminado()) {
+				mapa.put(pacienteDTO.getID(),pacienteDTO.getNombre());
+			}
+		}
+		return mapa;
+	}
+	
 
-	private Long obtnerIDpaciente() {
-		AccesoFichero<PacienteDTO> acceso = new AccesoFichero<>(rutaCarpeta, false);
+	public Long obtnerIDpaciente() {
+		DAO<PacienteDTO> acceso = new DAO<>(rutaCarpeta, false);
 		List<String> lista = acceso.listarElementosPorNombre();
 		Long idFinal = null;
 		for (String nombre : lista) {

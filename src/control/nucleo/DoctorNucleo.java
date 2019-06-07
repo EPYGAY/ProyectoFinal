@@ -1,6 +1,7 @@
 package control.nucleo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import modelo.dao.DoctorDAO;
 import modelo.dto.DoctorDTO;
@@ -19,9 +20,19 @@ public class DoctorNucleo {
 		doctorDTO.setApellidos(doctor.getApellidos());
 		doctorDTO.setDireccion(doctor.getDireccion());
 		doctorDTO.setTelefono(doctor.getTelefono());
+		Long IDdoctor = dao.obtenerId();
+		doctorDTO.setID(IDdoctor);
 		return dao.guardar(doctorDTO);
 	}
 
+	public boolean modificarDoctor(PersonaMV doctor) {
+		DoctorDTO doctorDTO = dao.consultar(doctor.getID());
+		doctorDTO.setNombre(doctor.getNombre());
+		doctorDTO.setApellidos(doctor.getApellidos());
+		doctorDTO.setDireccion(doctor.getDireccion());
+		doctorDTO.setTelefono(doctor.getTelefono());
+		return dao.modificar(doctorDTO);
+	}
 
 	public boolean bajaDoctor(PersonaMV doctor) {
 		DoctorDTO doctorDTO = dao.consultar(doctor.getID());
@@ -42,6 +53,10 @@ public class DoctorNucleo {
 
 	public ArrayList<String> listadoIdDoctores() {
 		return dao.obtenerTodosIds();
+	}
+
+	public HashMap<Long, String> obtenerMapaIDNombre() {
+		return dao.obtenerMapaIDNombre();
 	}
 
 }

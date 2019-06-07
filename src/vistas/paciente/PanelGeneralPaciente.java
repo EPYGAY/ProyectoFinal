@@ -18,6 +18,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 public class PanelGeneralPaciente extends JPanel {
+	
 	public PanelComboBox panelComboBox;
 	public PanelDatosPersonales panelDatosPersonales;
 
@@ -30,7 +31,6 @@ public class PanelGeneralPaciente extends JPanel {
 		panelComboBox = new PanelComboBox("Paciente", "ID");
 		panelComboBox.setBackground(new Color(240, 230, 140));
 		panel.add(panelComboBox);
-
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(240, 230, 140));
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -59,8 +59,15 @@ public class PanelGeneralPaciente extends JPanel {
 	public JComboBox getComboBoxId() {
 		return panelComboBox.comboBoxID;
 	}
+	
+	
+	
 
 	public PanelDatosPersonales getPanelDatosPersonales() {
 		return panelDatosPersonales;
+	}
+
+	public JComboBox getComboBoxNombre() {
+		return panelComboBox.getComboBoxNombre();
 	}
 }
