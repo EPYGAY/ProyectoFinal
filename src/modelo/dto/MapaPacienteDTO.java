@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.Map.Entry;
 
-import modelo.acceso.AccesoColeccion;
+import modelo.dao.DAOColecciones;
 
 public class MapaPacienteDTO implements Serializable{
 	private static MapaPacienteDTO mapaPaciente; 

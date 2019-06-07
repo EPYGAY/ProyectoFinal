@@ -10,21 +10,34 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Color;
+import javax.swing.border.LineBorder;
+import java.awt.Cursor;
 
 public class PanelComboBox extends JPanel {
-	public JComboBox comboBoxPaciente;
+	public JComboBox comboBoxNombrePaciente;
 	public JComboBox comboBoxID; 
 
 	public PanelComboBox(String nombre, String id) {
 		setBackground(new Color(240, 230, 140));
 
 		JLabel lblMensaje = new JLabel(nombre);
+		lblMensaje.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		comboBoxPaciente = new JComboBox();
+		comboBoxNombrePaciente = new JComboBox();
+		comboBoxNombrePaciente.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		comboBoxNombrePaciente.setFont(new Font("Tahoma", Font.BOLD, 20));
+		comboBoxNombrePaciente.setBackground(new Color(205, 92, 92));
+		comboBoxNombrePaciente.setBorder(new LineBorder(new Color(184, 134, 11)));
 		
 		JLabel lblId = new JLabel(id);
+		lblId.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		comboBoxID = new JComboBox();
+		comboBoxID.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		comboBoxID.setFont(new Font("Tahoma", Font.BOLD, 20));
+		comboBoxID.setForeground(new Color(240, 230, 140));
+		comboBoxID.setBackground(new Color(220, 20, 60));
+		comboBoxID.setBorder(new LineBorder(new Color(139, 69, 19)));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -32,7 +45,7 @@ public class PanelComboBox extends JPanel {
 					.addContainerGap()
 					.addComponent(lblMensaje)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(comboBoxPaciente, GroupLayout.PREFERRED_SIZE, 273, GroupLayout.PREFERRED_SIZE)
+					.addComponent(comboBoxNombrePaciente, GroupLayout.PREFERRED_SIZE, 273, GroupLayout.PREFERRED_SIZE)
 					.addGap(12)
 					.addComponent(lblId)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
@@ -45,12 +58,20 @@ public class PanelComboBox extends JPanel {
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblMensaje)
-						.addComponent(comboBoxPaciente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(comboBoxNombrePaciente, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(comboBoxID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblId))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
+	}
+
+	public JComboBox getComboBoxID() {
+		return comboBoxID;
+	}
+
+	public JComboBox getComboBoxNombre() {
+		return comboBoxNombrePaciente;
 	}
 	
 	

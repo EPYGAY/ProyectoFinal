@@ -1,6 +1,7 @@
 package facade;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import control.nucleo.DoctorNucleo;
 import control.nucleo.PacienteNucleo;
@@ -14,7 +15,7 @@ public class Facade {
 	public boolean guardarPaciente(PersonaMV pacienteMV) {
 		return pacienteNucleo.altaPaciente(pacienteMV);
 	}
-	
+
 	public PersonaMV obtenerPaciente(String id) {
 		return pacienteNucleo.obtenerPaciente(id);
 	}
@@ -34,7 +35,6 @@ public class Facade {
 	public boolean guardarDoctor(PersonaMV pacienteMV) {
 		return doctorNucleo.altaDoctor(pacienteMV);
 	}
-	
 
 	public PersonaMV obtenerDoctor(String id) {
 		return doctorNucleo.obtenerDoctor(id);
@@ -48,4 +48,18 @@ public class Facade {
 		return doctorNucleo.bajaDoctor(pacienteMV);
 	}
 
+	public boolean modificarDoctor(PersonaMV obtenerDatos) {
+		return doctorNucleo.modificarDoctor(obtenerDatos);
+	}
+
+	public HashMap<Long, String> obtnerMapaPaciente() {
+		return pacienteNucleo.obtenerMapaIDNombre();
+	}
+
+	public HashMap<Long, String> obtnerMapaDoctor() {
+		return doctorNucleo.obtenerMapaIDNombre();
+	}
+
+
 }
+

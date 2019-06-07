@@ -29,13 +29,17 @@ public class ParaUI extends UI {
 			}
 		});
 		
-		ActionComboPaciente actionComboPacienteConsulta=new ActionComboPaciente(getComboBoxIdConsultaPaciente(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesConsultaPaciente());
+		ActionComboPaciente actionComboPacienteConsulta=new ActionComboPaciente(getComboBoxIdConsultaPaciente(), getComboBoxNombreConsultaPaciente(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesConsultaPaciente());
 		getComboBoxIdConsultaPaciente().addFocusListener(actionComboPacienteConsulta);
-		getComboBoxIdConsultaPaciente().addItemListener(actionComboPacienteConsulta);
+		getComboBoxIdConsultaPaciente().addActionListener(actionComboPacienteConsulta);
+		getComboBoxNombreConsultaPaciente().addFocusListener(actionComboPacienteConsulta);
+		getComboBoxNombreConsultaPaciente().addActionListener(actionComboPacienteConsulta);
 		
-		ActionComboPaciente actionComboPacienteBaja=new ActionComboPaciente(getComboBoxIdBajaPaciente(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesBajaPaciente());
+		ActionComboPaciente actionComboPacienteBaja=new ActionComboPaciente(getComboBoxIdBajaPaciente(),getComboBoxNombreBajaPaciente(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesBajaPaciente());
 		getComboBoxIdBajaPaciente().addFocusListener(actionComboPacienteBaja);
-		getComboBoxIdBajaPaciente().addItemListener(actionComboPacienteBaja);
+		getComboBoxIdBajaPaciente().addActionListener(actionComboPacienteBaja);
+		getComboBoxNombreBajaPaciente().addFocusListener(actionComboPacienteBaja);
+		getComboBoxNombreBajaPaciente().addActionListener(actionComboPacienteBaja);
 		
 		modificacionPaciente.panelMensaje.getBtnAplicr().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -45,9 +49,11 @@ public class ParaUI extends UI {
 				
 			}
 		});
-		ActionComboPaciente actionComboPacienteModificacion=new ActionComboPaciente(getComboBoxIdModificacionPaciente(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesModificacionPaciente());
+		ActionComboPaciente actionComboPacienteModificacion=new ActionComboPaciente(getComboBoxIdModificacionPaciente(),getComboBoxNombreModificacionPaciente(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesModificacionPaciente());
 		getComboBoxIdModificacionPaciente().addFocusListener(actionComboPacienteModificacion);
-		getComboBoxIdModificacionPaciente().addItemListener(actionComboPacienteModificacion);
+		getComboBoxIdModificacionPaciente().addActionListener(actionComboPacienteModificacion);
+		getComboBoxNombreModificacionPaciente().addFocusListener(actionComboPacienteModificacion);
+		getComboBoxNombreModificacionPaciente().addActionListener(actionComboPacienteModificacion);
 		
 		bajaPaciente.panelMensaje.getBtnAplicr().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -69,13 +75,17 @@ public class ParaUI extends UI {
 				controladorMensaje.mostrarMensajes(altaMedico.getPanelMensaje(), "Doctor dado de alta correctamente");
 			}
 		});
-		ActionComboDoctor actionComboDoctorConsulta=new ActionComboDoctor(getComboBoxIdConsultaDoctor(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesConsultaDoctor());
+		ActionComboDoctor actionComboDoctorConsulta=new ActionComboDoctor(getComboBoxIdConsultaDoctor(),getComboBoxNombreConsultaDoctor(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesConsultaDoctor());
 		getComboBoxIdConsultaDoctor().addFocusListener(actionComboDoctorConsulta);
-		getComboBoxIdConsultaDoctor().addItemListener(actionComboDoctorConsulta);
+		getComboBoxIdConsultaDoctor().addActionListener(actionComboDoctorConsulta);
+		getComboBoxNombreConsultaDoctor().addFocusListener(actionComboDoctorConsulta);
+		getComboBoxNombreConsultaDoctor().addActionListener(actionComboDoctorConsulta);
 		
-		ActionComboDoctor actionComboDoctorBaja=new ActionComboDoctor(getComboBoxIdBajaDoctor(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesBajaDoctor());
+		ActionComboDoctor actionComboDoctorBaja=new ActionComboDoctor(getComboBoxIdBajaDoctor(),getComboBoxNombreBajaDoctor(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesBajaDoctor());
 		getComboBoxIdBajaDoctor().addFocusListener(actionComboDoctorBaja);
-		getComboBoxIdBajaDoctor().addItemListener(actionComboDoctorBaja);
+		getComboBoxIdBajaDoctor().addActionListener(actionComboDoctorBaja);
+		getComboBoxNombreBajaDoctor().addFocusListener(actionComboDoctorBaja);
+		getComboBoxNombreBajaDoctor().addActionListener(actionComboDoctorBaja);
 		
 		bajaMedico.panelMensaje.btnAplicr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

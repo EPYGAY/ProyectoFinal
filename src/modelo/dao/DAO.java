@@ -1,4 +1,4 @@
-package modelo.acceso;
+package modelo.dao;
 
 import java.io.EOFException;
 import java.io.File;
@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class AccesoFichero<T> {
+public class DAO<T> {
 
 	private File file;
 
-	public AccesoFichero(String path, boolean create) {
+	public DAO(String path, boolean create) {
 		if (create) {
 			this.file = createFile(path);
 		} else {
