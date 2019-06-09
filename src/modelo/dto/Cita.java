@@ -23,7 +23,7 @@ public class Cita implements Serializable{//
 
 	private String obtnerId() {
 		return null;
-	}
+	}//
 	
 	
 	
