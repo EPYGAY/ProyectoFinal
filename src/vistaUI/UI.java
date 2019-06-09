@@ -16,6 +16,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
@@ -323,11 +324,8 @@ public class UI extends JFrame {
         SimpleDateFormat formato=new SimpleDateFormat(" dd / MM / YYYY ");
         fecha.setText(formato.format(sistFecha));
         //HORA
-        Date sistHora=new Date();
-        String pmAm="   hh:mm:ss a";
-        SimpleDateFormat format=new SimpleDateFormat(pmAm);
-        Calendar hoy=Calendar.getInstance();
-        hora.setText(String.format(format.format(sistHora),hoy));
+        Timer tiempo=new Timer(100, new UI.horas());
+        tiempo.start();
 		
 
 	}
@@ -406,7 +404,18 @@ public class UI extends JFrame {
 		return consultaMedico.getComboNombre();
 	}
 	
-	
+	 class horas implements ActionListener{
+		    
+	        public void actionPerformed(ActionEvent e){
+	            Date sistHora=new Date();
+	            String pmAm="hh:mm:ss a";
+	            SimpleDateFormat format=new SimpleDateFormat(pmAm);
+	            Calendar hoy=Calendar.getInstance();
+	            hora.setText(String.format(format.format(sistHora),hoy));
+	            
+	                  
+	        }
+	 }
 	
 	
 }
