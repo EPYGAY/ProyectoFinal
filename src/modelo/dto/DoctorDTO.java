@@ -6,12 +6,12 @@ import utiles.Especialidad;
 
 public class DoctorDTO extends PersonaDTO implements Serializable{
 	private Horario horario;
-	private Especialidad especialidad;
+	private String especialidad;
 
-	public DoctorDTO() {
+	public DoctorDTO() { 
 	}
 	public DoctorDTO(String nombre, String apellidos, String direccion, String telefono, Horario horario,
-			Especialidad especialidad) {
+			String especialidad) {
 		super(nombre, apellidos, direccion, telefono);
 		this.horario = horario;
 		this.especialidad = especialidad;
@@ -22,10 +22,10 @@ public class DoctorDTO extends PersonaDTO implements Serializable{
 	public void setHorario(Horario horario) {
 		this.horario = horario;
 	}
-	public Especialidad getEspecialidad() {
+	public String getEspecialidad() {
 		return especialidad;
 	}
-	public void setEspecialidad(Especialidad especialidad) {
+	public void setEspecialidad(String especialidad) {
 		this.especialidad = especialidad;
 	}
 	

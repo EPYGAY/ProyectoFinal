@@ -43,7 +43,7 @@ public class DoctorDAO {
 	public ArrayList<String> obtenerTodosIds() {
 		ArrayList<String> lista = new ArrayList<>();
 		for (DoctorDTO doctor : acceso.getAll()) {
-			if (!doctor.isEliminado()) {
+			if (!doctor.isEliminado()) { 
 				lista.add(String.valueOf(doctor.getID()));
 			}
 		}

@@ -3,14 +3,13 @@ import java.io.File;
 import java.util.ArrayList;
 
 import modelo.dto.CitaDTO;
-import modelo.dto.DoctorDTO;
 
 
 public class CitasDAO {
 	private String rutaCarpeta = "citas";
 	private String extension = ".cit";
 	private String nombreFichero = "listaCitas";
-	private DAOColecciones<CitaDTO> acceso;
+	private DAOColecciones<CitaDTO> acceso; 
 
 	public CitasDAO() {
 		String path = rutaCarpeta + File.separator  + nombreFichero + extension;
@@ -21,14 +20,24 @@ public class CitasDAO {
 		return acceso.save(cita);
 	}
 
+	public CitaDTO consultar(Long id) {
+		CitaDTO cita = new CitaDTO();
+		cita.setID(id);
+		return acceso.findById(cita);
+	}
+	
+	public boolean modificar(CitaDTO cita) {
+		return acceso.modify(cita);
+	}
+
 	public ArrayList<String> obtenerTodosIds() {
 		ArrayList<String> lista = new ArrayList<>();
 		for (CitaDTO cita : acceso.getAll()) {
-			if (!cita.isEliminado()) {
+			//if (!cita.isEliminado()) { 
 				lista.add(String.valueOf(cita.getID()));
-			}
+			//}
 		}
-		return lista;
+		return lista; 
 	}
 
 	public Long obtenerId() {

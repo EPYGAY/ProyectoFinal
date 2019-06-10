@@ -1,80 +1,98 @@
 package modelo.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 public class CitaDTO implements Serializable{
 	private Long ID;
 	private PacienteDTO paciente;
 	private DoctorDTO medico;
-	private DiasDeLaSemana deLaSemana;
-	private boolean eliminado=false;
+	private Date fecha;
+	private boolean confirmacionFecha;
+	private String observaciones;
 	
-	private int hora;
 	
 	public CitaDTO() {
 		super();
 	}
 
-	public CitaDTO(Long iD, PacienteDTO paciente, DoctorDTO medico, DiasDeLaSemana deLaSemana, boolean eliminado,
-			int hora) {
+
+	public CitaDTO(Long iD, PacienteDTO paciente, DoctorDTO medico, Date fecha, boolean confirmacionFecha,
+			String observaciones) {
 		super();
 		ID = iD;
 		this.paciente = paciente;
 		this.medico = medico;
-		this.deLaSemana = deLaSemana;
-		this.eliminado = eliminado;
-		this.hora = hora;
+		this.fecha = fecha;
+		this.confirmacionFecha = confirmacionFecha;
+		this.observaciones = observaciones;
 	}
+
 
 	public Long getID() {
 		return ID;
 	}
 
+
 	public void setID(Long iD) {
 		ID = iD;
 	}
+
 
 	public PacienteDTO getPaciente() {
 		return paciente;
 	}
 
+
 	public void setPaciente(PacienteDTO paciente) {
 		this.paciente = paciente;
 	}
+
 
 	public DoctorDTO getMedico() {
 		return medico;
 	}
 
+
 	public void setMedico(DoctorDTO medico) {
 		this.medico = medico;
 	}
 
-	public DiasDeLaSemana getDeLaSemana() {
-		return deLaSemana;
+
+	public Date getFecha() {
+		return fecha;
 	}
 
-	public void setDeLaSemana(DiasDeLaSemana deLaSemana) {
-		this.deLaSemana = deLaSemana;
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
-	public boolean isEliminado() {
-		return eliminado;
+
+	public boolean isConfirmacionFecha() {
+		return confirmacionFecha;
 	}
 
-	public void setEliminado(boolean eliminado) {
-		this.eliminado = eliminado;
+
+	public void setConfirmacionFecha(boolean confirmacionFecha) {
+		this.confirmacionFecha = confirmacionFecha;
 	}
 
-	public int getHora() {
-		return hora;
+
+	public String getObservaciones() {
+		return observaciones;
 	}
 
-	public void setHora(int hora) {
-		this.hora = hora;
+
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
 	}
 
+
+	
+
+	
 	
 	
 }

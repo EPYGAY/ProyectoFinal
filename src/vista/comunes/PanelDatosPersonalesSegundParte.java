@@ -15,7 +15,7 @@ import javax.swing.JComboBox;
 
 public class PanelDatosPersonalesSegundParte extends JPanel{
 	public JLabel lblHorario;
-	public JComboBox comboBox;
+	protected JComboBox comboBox;
 	public JComboBox comboBox_1;
 	public JComboBox comboBox_2;
 	private Especialidad especialidad;
@@ -43,7 +43,7 @@ public class PanelDatosPersonalesSegundParte extends JPanel{
 		comboBox.addItem(especialidad.CIRUJANO);
 		
 		comboBox_1 = new JComboBox();
-		comboBox_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		comboBox_1.setFont(new Font("Tahoma", Font.BOLD, 11)); 
 		
 		comboBox_2 = new JComboBox();
 		comboBox_2.setFont(new Font("Tahoma", Font.BOLD, 11));
