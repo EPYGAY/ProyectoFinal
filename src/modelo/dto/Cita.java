@@ -16,8 +16,8 @@ public class Cita {
 		this.deLaSemana = deLaSemana;
 		this.eliminado = eliminado;
 	}
-	public Long getID() {
-		return ID;
+	public Long getID() { 
+		return ID; 
 	}
 	public void setID(Long iD) {
 		ID = iD;
