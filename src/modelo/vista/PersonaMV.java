@@ -4,14 +4,14 @@ import utiles.Especialidad;
 
 public class PersonaMV {
 	private String nombre, apellidos, direccion, telefono, fechaNacimiento;
-	private Especialidad especialidad;
+	private String especialidad;
 	private Long ID;
 
 	public PersonaMV() {
 	}
 
 	public PersonaMV(String nombre, String apellidos, String direccion, String telefono, String fechaNacimiento,
-			Especialidad especialidad, Long iD) {
+			String especialidad, Long iD) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -21,7 +21,7 @@ public class PersonaMV {
 		this.especialidad = especialidad;
 		ID = iD;
 	}
-
+ 
 	public String getNombre() {
 		return nombre;
 	}
@@ -62,11 +62,11 @@ public class PersonaMV {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public Especialidad getEspecialidad() {
+	public String getEspecialidad() {
 		return especialidad;
 	}
 
-	public void setEspecialidad(Especialidad especialidad) {
+	public void setEspecialidad(String especialidad) {
 		this.especialidad = especialidad;
 	}
 

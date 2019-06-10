@@ -2,8 +2,6 @@ package control.nucleo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import modelo.dao.DoctorDAO;
 import modelo.dto.DoctorDTO;
@@ -29,7 +27,7 @@ public class DoctorNucleo {
 			return dao.guardar(doctorDTO);
 		}
 		return false;
-
+ 
 	}
 
 	public boolean validacionDoctor(PersonaMV doctor) {

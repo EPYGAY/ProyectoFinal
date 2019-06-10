@@ -1,11 +1,9 @@
 package control.nucleo;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import modelo.dao.CitasDAO;
-import modelo.dao.PacienteDAO;
 import modelo.dto.CitaDTO;
+import modelo.dto.DoctorDTO;
 import modelo.dto.PacienteDTO;
 import modelo.vista.CitaMV;
 import modelo.vista.PersonaMV;
@@ -13,30 +11,34 @@ import modelo.vista.PersonaMV;
 public class CitaNucleo {
 	
 	private CitasDAO dao= new CitasDAO();
+	private DoctorNucleo doctorNucleo= new DoctorNucleo();
+	private PacienteNucleo pacienteNucleo= new PacienteNucleo();
 	
 	public CitaNucleo() {
 	}
 	
-	public boolean pedirCitaPrimaria(CitaMV cita) {
+	public boolean altaCita(CitaMV cita) {
 		CitaDTO citaDTO= new CitaDTO();
-		citaDTO.setPaciente(cita.getPacienteDTO());
-		citaDTO.setMedico(cita.getDoctorDTO());
-		citaDTO.setHora(cita.getHora());
-		citaDTO.setDeLaSemana(cita.getDiasDeLaSemana());
-		Long IDCita = dao.obtenerId();
-		citaDTO.setID(IDCita);
+		citaDTO.setID(dao.obtenerId());
+		citaDTO.setFecha(cita.getFecha());
+		//TODO terminar mapeo
+		
+		PersonaMV medicoMV= doctorNucleo.obtenerDoctor(cita.getIdMedico());
+		DoctorDTO medicoDTO= new DoctorDTO();
+		medicoDTO.setID(medicoMV.getID());
+		medicoDTO.setApellidos(medicoMV.getApellidos());
+		medicoDTO.setDireccion(medicoMV.getDireccion());
+		//TODO terminar mapeo
+		citaDTO.setMedico(medicoDTO);
+		PacienteDTO pacienteDTO= new PacienteDTO();
+		PersonaMV pacienteMV= pacienteNucleo.obtenerPaciente(cita.getIdPaciente());
+		pacienteDTO.setApellidos(pacienteMV.getApellidos());
+		//TODO terminar mapeo
+		citaDTO.setPaciente(pacienteDTO);
 		return dao.guardar(citaDTO);
 	}
-	public boolean pedirCitaEspecialista(CitaMV cita) {
-		CitaDTO citaDTO= new CitaDTO();
-		citaDTO.setPaciente(cita.getPacienteDTO());
-		citaDTO.setMedico(cita.getDoctorDTO());
-		citaDTO.setHora(cita.getHora());
-		citaDTO.setDeLaSemana(cita.getDiasDeLaSemana());
-		Long IDCita = dao.obtenerId();
-		citaDTO.setID(IDCita);
-		return dao.guardar(citaDTO);
-	}
+	
+	//TODO hcaer resto métodos
 	
 	
 	

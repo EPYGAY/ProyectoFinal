@@ -1,6 +1,5 @@
 package modelo.dto;
-
-import java.util.Date;
+ 
 
 public class Cita {
 	private Long ID;
@@ -16,11 +15,11 @@ public class Cita {
 		this.deLaSemana = deLaSemana;
 		this.eliminado = eliminado;
 	}
-	public Long getID() { 
+	public Long getID() {
 		return ID; 
 	}
 	public void setID(Long iD) {
-		ID = iD;
+		ID = iD;  
 	}
 	public PacienteDTO getPaciente() {
 		return paciente;
@@ -48,9 +47,7 @@ public class Cita {
 	}
 	
 
-	
-	
-	
+
 	
 	
 }

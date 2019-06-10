@@ -3,14 +3,17 @@ package facade;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import control.nucleo.CitaNucleo;
 import control.nucleo.DoctorNucleo;
 import control.nucleo.PacienteNucleo;
+import modelo.vista.CitaMV;
 import modelo.vista.PersonaMV;
 
 public class Facade {
 
 	private PacienteNucleo pacienteNucleo= new PacienteNucleo();
 	private DoctorNucleo doctorNucleo=new DoctorNucleo();
+	private CitaNucleo citaNucleo=new CitaNucleo();
 	
 	public boolean guardarPaciente(PersonaMV pacienteMV) {
 		return pacienteNucleo.altaPaciente(pacienteMV);
@@ -57,7 +60,11 @@ public class Facade {
 	}
 
 	public HashMap<Long, String> obtnerMapaDoctor() {
-		return doctorNucleo.obtenerMapaIDNombre();
+		return doctorNucleo.obtenerMapaIDNombre(); 
+	}
+	
+	public boolean guardarCita(CitaMV citaMV) {
+		return citaNucleo.altaCita(citaMV);
 	}
 
 
