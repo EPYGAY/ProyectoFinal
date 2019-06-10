@@ -59,9 +59,6 @@ public class PanelGeneralPaciente extends JPanel {
 	public JComboBox getComboBoxId() {
 		return panelComboBox.comboBoxID;
 	}
-	
-	
-	
 
 	public PanelDatosPersonales getPanelDatosPersonales() {
 		return panelDatosPersonales;

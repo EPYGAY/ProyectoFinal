@@ -1,21 +1,24 @@
 package modelo.vista;
 
+import utiles.Especialidad;
 
 public class PersonaMV {
 	private String nombre, apellidos, direccion, telefono, fechaNacimiento;
+	private Especialidad especialidad;
 	private Long ID;
 
 	public PersonaMV() {
 	}
 
 	public PersonaMV(String nombre, String apellidos, String direccion, String telefono, String fechaNacimiento,
-			Long iD) {
+			Especialidad especialidad, Long iD) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.fechaNacimiento = fechaNacimiento;
+		this.especialidad = especialidad;
 		ID = iD;
 	}
 
@@ -51,14 +54,20 @@ public class PersonaMV {
 		this.telefono = telefono;
 	}
 
-
-
 	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
 	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public Especialidad getEspecialidad() {
+		return especialidad;
+	}
+
+	public void setEspecialidad(Especialidad especialidad) {
+		this.especialidad = especialidad;
 	}
 
 	public Long getID() {
@@ -68,6 +77,8 @@ public class PersonaMV {
 	public void setID(Long iD) {
 		ID = iD;
 	}
+
+	
 
 
 }

@@ -24,10 +24,11 @@ public class PanelComboBox extends JPanel {
 		lblMensaje.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		comboBoxNombrePaciente = new JComboBox();
+		comboBoxNombrePaciente.setForeground(new Color(255, 255, 255));
 		comboBoxNombrePaciente.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		comboBoxNombrePaciente.setFont(new Font("Tahoma", Font.BOLD, 20));
-		comboBoxNombrePaciente.setBackground(new Color(205, 92, 92));
-		comboBoxNombrePaciente.setBorder(new LineBorder(new Color(184, 134, 11)));
+		comboBoxNombrePaciente.setBackground(new Color(85, 107, 47));
+		comboBoxNombrePaciente.setBorder(new LineBorder(new Color(184, 134, 11), 0));
 		
 		JLabel lblId = new JLabel(id);
 		lblId.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -35,9 +36,9 @@ public class PanelComboBox extends JPanel {
 		comboBoxID = new JComboBox();
 		comboBoxID.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		comboBoxID.setFont(new Font("Tahoma", Font.BOLD, 20));
-		comboBoxID.setForeground(new Color(240, 230, 140));
-		comboBoxID.setBackground(new Color(220, 20, 60));
-		comboBoxID.setBorder(new LineBorder(new Color(139, 69, 19)));
+		comboBoxID.setForeground(new Color(255, 255, 255));
+		comboBoxID.setBackground(new Color(85, 107, 47));
+		comboBoxID.setBorder(new LineBorder(new Color(139, 69, 19), 0));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

@@ -2,13 +2,15 @@ package control.nucleo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import modelo.dao.DoctorDAO;
 import modelo.dto.DoctorDTO;
 import modelo.vista.PersonaMV;
+import utiles.Validator;
 
 public class DoctorNucleo {
-
 	private DoctorDAO dao = new DoctorDAO();
 
 	public DoctorNucleo() {
@@ -20,9 +22,22 @@ public class DoctorNucleo {
 		doctorDTO.setApellidos(doctor.getApellidos());
 		doctorDTO.setDireccion(doctor.getDireccion());
 		doctorDTO.setTelefono(doctor.getTelefono());
+		doctorDTO.setEspecialidad(doctor.getEspecialidad());
 		Long IDdoctor = dao.obtenerId();
 		doctorDTO.setID(IDdoctor);
-		return dao.guardar(doctorDTO);
+		if (validacionDoctor(doctor)) {
+			return dao.guardar(doctorDTO);
+		}
+		return false;
+
+	}
+
+	public boolean validacionDoctor(PersonaMV doctor) {
+		if (Validator.isNombre(doctor.getNombre()) && Validator.isPhone(doctor.getTelefono())
+				&& Validator.isDireccion(doctor.getDireccion()) && Validator.isWord(doctor.getApellidos())) {
+			return true;
+		}
+		return false;
 	}
 
 	public boolean modificarDoctor(PersonaMV doctor) {
@@ -48,6 +63,7 @@ public class DoctorNucleo {
 		modelo.setApellidos(doctor.getApellidos());
 		modelo.setDireccion(doctor.getDireccion());
 		modelo.setTelefono(doctor.getTelefono());
+		modelo.setEspecialidad(doctor.getEspecialidad());
 		return modelo;
 	}
 

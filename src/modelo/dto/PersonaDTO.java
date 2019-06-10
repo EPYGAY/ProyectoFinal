@@ -1,6 +1,10 @@
 package modelo.dto;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.Serializable;
+
+import utiles.Validator;
 
 public abstract class PersonaDTO implements Serializable {
 	
@@ -12,8 +16,11 @@ public abstract class PersonaDTO implements Serializable {
 	}
 
 	public PersonaDTO(String nombre,String apellidos, String direccion, String telefono) {
-		this.nombre = nombre;
+		//assertTrue(Validator.isNombre(nombre));
+		this.nombre = nombre; 
+		//assertTrue(Validator.isDireccion(direccion));
 		this.direccion = direccion;
+		//assertTrue(Validator.isPhone(telefono));
 		this.telefono = telefono;
 		this.apellidos=apellidos;
 	}
@@ -66,7 +73,7 @@ public abstract class PersonaDTO implements Serializable {
 		this.eliminado = eliminado;
 	}
 	
-	public abstract Respuesta validarCampos(String campo, String patron, String mensaje);
+	
 	
 	@Override
 	public boolean equals(Object obj) {

@@ -25,11 +25,7 @@ public class PacienteDTO extends PersonaDTO implements Serializable{
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	@Override
-	public Respuesta validarCampos(String campo, String patron, String mensaje) {
-			return new Respuesta(Pattern.matches(patron,campo),mensaje);
-	}
-
+	
 	
 
 }
