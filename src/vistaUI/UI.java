@@ -16,6 +16,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
@@ -34,6 +35,7 @@ import vistas.paciente.PanelPedirCitaPrimarioyEspecialistaPaciente;
 import vistas.paciente.PanelVerHistorialPaciente;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.text.SimpleDateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -326,13 +328,10 @@ public class UI extends JFrame {
         SimpleDateFormat formato=new SimpleDateFormat(" dd / MM / YYYY ");
         fecha.setText(formato.format(sistFecha));
         //HORA
-        Date sistHora=new Date();
-        String pmAm="   hh:mm:ss a";
-        SimpleDateFormat format=new SimpleDateFormat(pmAm);
-        Calendar hoy=Calendar.getInstance();
-        hora.setText(String.format(format.format(sistHora),hoy));
+        Timer tiempo=new Timer(100, new UI.horas());
+         tiempo.start(); 
 		
-
+ 
 	}
 	private void asociarPanel(String string) {
 		((CardLayout)contentPane.getLayout()).show(contentPane,string);
@@ -386,7 +385,7 @@ public class UI extends JFrame {
 	public JComboBox getComboBoxNombreCitaPrimeariaPaciente() {
 		return citaPrimario.getPanelPedirCitaPacienteNombre();
 	}
-	
+	 
 	//DOCTOR
 	
 	public PanelDatosPersonales getPanelDatosPersonalesConsultaDoctor() {
@@ -416,7 +415,18 @@ public class UI extends JFrame {
 		return consultaMedico.getComboNombre();
 	}
 	
-	
+	 class horas implements ActionListener{
+		    
+	        public void actionPerformed(ActionEvent e){
+	            Date sistHora=new Date();
+	            String pmAm="hh:mm:ss a";
+	            SimpleDateFormat format=new SimpleDateFormat(pmAm);
+	            Calendar hoy=Calendar.getInstance();
+	            hora.setText(String.format(format.format(sistHora),hoy));
+	            
+	                  
+	        }
+	 }
 	
 	
 }

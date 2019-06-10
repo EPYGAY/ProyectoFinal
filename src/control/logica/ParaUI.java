@@ -77,7 +77,7 @@ public class ParaUI extends UI {
 				controladorMensaje.mostrarMensajes(bajaPaciente.getPanelMensaje(), "Baja correctamente");
 				
 			}
-		});
+		}); 
 		
 		
 		
@@ -90,7 +90,7 @@ public class ParaUI extends UI {
 				}else {
 					controladorMensaje.mostrarMensajes(altaMedico.getPanelMensaje(), "Campos erróneos");
 				}
-				
+				 
 			}
 		});
 		ActionComboDoctor actionComboDoctorConsulta=new ActionComboDoctor(getComboBoxIdConsultaDoctor(),getComboBoxNombreConsultaDoctor(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesConsultaDoctor());
