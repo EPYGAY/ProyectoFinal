@@ -3,10 +3,10 @@ package control.nucleo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import modelo.dao.MapaPacienteDAO;
 import modelo.dao.PacienteDAO;
 import modelo.dto.PacienteDTO;
 import modelo.vista.PersonaMV;
+import utiles.Validator;
 
 public class PacienteNucleo {
 	
@@ -24,7 +24,11 @@ public class PacienteNucleo {
 		pacienteDTO.setFechaNacimiento(paciente.getFechaNacimiento());
 		Long IDpaciente =dao.obtnerIDpaciente();
 		pacienteDTO.setID(IDpaciente);
-		return  dao.guardar(pacienteDTO);
+		if (validacionPaciente(paciente)) {
+			return  dao.guardar(pacienteDTO);
+		}
+		return false;
+		
 	}
 	
 	public boolean modificarPaciente(PersonaMV paciente) {
@@ -34,11 +38,23 @@ public class PacienteNucleo {
 		pacienteDTO.setDireccion(paciente.getDireccion());
 		pacienteDTO.setTelefono(paciente.getTelefono());
 		pacienteDTO.setFechaNacimiento(paciente.getFechaNacimiento());
-		return  dao.modificar(pacienteDTO);
+		if (validacionPaciente(paciente)) {
+			return  dao.modificar(pacienteDTO); 
+		}
+		return false;
+		
 	}
 	public boolean bajaPaciente(PersonaMV paciente) {
 		PacienteDTO pacienteDTO= dao.consultar(paciente.getID());
 		return  dao.eliminar(pacienteDTO);
+	}
+	
+	public boolean validacionPaciente(PersonaMV paciente) {
+		if (Validator.isNombre(paciente.getNombre()) && Validator.isPhone(paciente.getTelefono())
+				&& Validator.isDireccion(paciente.getDireccion())&&Validator.isFechaNacimiento(paciente.getFechaNacimiento()) && Validator.isWord(paciente.getApellidos())) {
+			return true;
+		}
+		return false;
 	}
 	
 	public PersonaMV obtenerPaciente(String id) {

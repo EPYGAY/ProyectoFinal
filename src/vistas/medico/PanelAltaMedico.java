@@ -19,6 +19,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class PanelAltaMedico extends JPanel {
 	public PanelDatosPersonales panelDatosPersonales;
@@ -32,9 +33,12 @@ public class PanelAltaMedico extends JPanel {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(240, 230, 140));
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		panelDatosPersonales = new PanelDatosPersonales();
+		panelDatosPersonales.getLblEj().setVisible(false);
+		panelDatosPersonales.getLblNacimiento().setVisible(false);
+		panelDatosPersonales.getTextNacimiento().setVisible(false);
 		panelDatosPersonales.getTxtID().setVisible(false);
+		panel.setLayout(new BorderLayout(0, 0));
 		panelDatosPersonales.lblID.setVisible(false);
 		panelDatosPersonales.setBackground(new Color(240, 230, 140));
 		panel.add(panelDatosPersonales);
@@ -42,16 +46,17 @@ public class PanelAltaMedico extends JPanel {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(240, 230, 140));
 		panel_1.setLayout(new BorderLayout(0, 0));
-		PanelDatosPersonalesSegundParte panelDatosPersonalesSegundParte = new PanelDatosPersonalesSegundParte();
-		panelDatosPersonalesSegundParte.setBackground(new Color(240, 230, 140));
-		panel_1.add(panelDatosPersonalesSegundParte, BorderLayout.EAST);
 		
 		JPanel panel_Mensaje2 = new JPanel();
 		panel_Mensaje2.setLayout(new BorderLayout(0, 0));
-		panelMensaje = new PanelMensaje();
-		panel_Mensaje2.add(panelMensaje);
 		
 		panel_Mensaje2.setBackground(new Color(240, 230, 140));
+		panelMensaje = new PanelMensaje();
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon("imagenes\\altadDoctor.png"));
+		PanelDatosPersonalesSegundParte panelDatosPersonalesSegundParte = new PanelDatosPersonalesSegundParte();
+		panelDatosPersonalesSegundParte.setBackground(new Color(240, 230, 140));
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -64,21 +69,46 @@ public class PanelAltaMedico extends JPanel {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(56)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_Mensaje2, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 514, GroupLayout.PREFERRED_SIZE))))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(495)
+									.addComponent(label, GroupLayout.PREFERRED_SIZE, 412, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(566)
+									.addComponent(panel_Mensaje2, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(92)
+							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(39)
+							.addComponent(panelMensaje, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(68)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(113)
+							.addComponent(panelDatosPersonalesSegundParte, GroupLayout.PREFERRED_SIZE, 417, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(lblNewLabel)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(lblNewLabel)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
+							.addGap(27)
+							.addComponent(panelDatosPersonalesSegundParte, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)
+							.addGap(43))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(28)
+							.addComponent(label)))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 204, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(panelMensaje, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+					.addGap(100)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 137, GroupLayout.PREFERRED_SIZE)
-					.addGap(52)
+					.addGap(70)
 					.addComponent(panel_Mensaje2, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 					.addGap(280))
 		);
@@ -100,6 +130,4 @@ public class PanelAltaMedico extends JPanel {
 	public void setPanelMensaje(PanelMensaje panelMensaje) {
 		this.panelMensaje = panelMensaje;
 	}
-	
-	
 }

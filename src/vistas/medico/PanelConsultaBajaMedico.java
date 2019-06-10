@@ -17,6 +17,7 @@ import vista.comunes.PanelDatosPersonales;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import vista.comunes.PanelMensaje;
+import javax.swing.ImageIcon;
 
 public class PanelConsultaBajaMedico extends JPanel {
 	private PanelComboBox panelCombo;
@@ -25,9 +26,10 @@ public class PanelConsultaBajaMedico extends JPanel {
 	private JTextField textConsulta;
 	public PanelMensaje panelMensaje;
 	public PanelDatosPersonales panelDatosPersonales;
+	private JLabel label;
 	
 
-	public PanelConsultaBajaMedico(String name, boolean visibilidadPanel) {
+	public PanelConsultaBajaMedico(String name, boolean visibilidadPanel,String imagen) {
 		setBackground(new Color(240, 230, 140));
 		
 		JLabel lblConsultaMedico = new JLabel(name);
@@ -48,13 +50,13 @@ public class PanelConsultaBajaMedico extends JPanel {
 		panel.add(panelDatosPersonales);
 		
 		JLabel lblEspecialidad = new JLabel("Especialidad");
-		lblEspecialidad.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblEspecialidad.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
 		
 		JLabel lblHorario = new JLabel("Horario");
-		lblHorario.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblHorario.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
 		
 		JLabel lblConsulta = new JLabel("Consulta");
-		lblConsulta.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblConsulta.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
 		
 		textEspecialidad = new JTextField();
 		textEspecialidad.setEditable(false);
@@ -76,38 +78,45 @@ public class PanelConsultaBajaMedico extends JPanel {
 		panel_1.setLayout(new BorderLayout(0, 0));
 		panelMensaje = new PanelMensaje();
 		panelMensaje.setVisible(visibilidadPanel);
-		panel_1.add(panelMensaje);
+		
+		label = new JLabel("");
+		label.setIcon(new ImageIcon(imagen));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 401, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panelCombo, GroupLayout.PREFERRED_SIZE, 633, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblConsultaMedico)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
+							.addGap(22)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(panel, GroupLayout.PREFERRED_SIZE, 401, GroupLayout.PREFERRED_SIZE)
-								.addComponent(panelCombo, GroupLayout.PREFERRED_SIZE, 633, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblConsultaMedico)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(22)
+									.addComponent(panelMensaje, GroupLayout.PREFERRED_SIZE, 565, GroupLayout.PREFERRED_SIZE)
+									.addGap(17)
+									.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 565, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 										.addGroup(groupLayout.createSequentialGroup()
-											.addGap(28)
+											.addGap(40)
+											.addComponent(lblHorario))
+										.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 											.addComponent(lblConsulta)
-											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(textConsulta, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE))
+											.addComponent(lblEspecialidad)))
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 										.addGroup(groupLayout.createSequentialGroup()
-											.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-												.addComponent(lblHorario)
-												.addComponent(lblEspecialidad))
-											.addPreferredGap(ComponentPlacement.RELATED)
+											.addGap(18)
+											.addComponent(textEspecialidad, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE))
+										.addGroup(groupLayout.createSequentialGroup()
+											.addGap(18)
 											.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-												.addComponent(textHorario, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
-												.addComponent(textEspecialidad, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)))))))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(41)
-							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 565, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(25, Short.MAX_VALUE))
+												.addComponent(textConsulta, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
+												.addComponent(textHorario, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE))))
+									.addGap(27)
+									.addComponent(label)))))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -117,22 +126,27 @@ public class PanelConsultaBajaMedico extends JPanel {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(panelCombo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblEspecialidad)
-						.addComponent(textEspecialidad, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
-					.addGap(10)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textHorario, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblHorario))
-					.addGap(7)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textConsulta, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblConsulta))
-					.addGap(38)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 219, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblEspecialidad)
+								.addComponent(textEspecialidad, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblConsulta)
+								.addComponent(textHorario, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblHorario)
+								.addComponent(textConsulta, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(label, GroupLayout.PREFERRED_SIZE, 344, GroupLayout.PREFERRED_SIZE))
+					.addGap(62)
+					.addComponent(panelMensaje, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(98, Short.MAX_VALUE))
+					.addContainerGap(55, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
 	}

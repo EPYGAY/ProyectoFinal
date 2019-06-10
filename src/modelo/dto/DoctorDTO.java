@@ -15,7 +15,7 @@ public class DoctorDTO extends PersonaDTO implements Serializable{
 		super(nombre, apellidos, direccion, telefono);
 		this.horario = horario;
 		this.especialidad = especialidad;
-	}
+	} 
 	public Horario getHorario() {
 		return horario;
 	}
@@ -28,11 +28,7 @@ public class DoctorDTO extends PersonaDTO implements Serializable{
 	public void setEspecialidad(Especialidad especialidad) {
 		this.especialidad = especialidad;
 	}
-	@Override
-	public Respuesta validarCampos(String campo, String patron, String mensaje) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 
 }

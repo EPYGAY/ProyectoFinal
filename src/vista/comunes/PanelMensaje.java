@@ -9,6 +9,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 public class PanelMensaje extends JPanel {
 	
@@ -18,14 +20,21 @@ public class PanelMensaje extends JPanel {
 	public PanelMensaje() {
 		setBackground(new Color(240, 230, 140));
 
-		JLabel lblMensaje = new JLabel("Mensaje");
+		JLabel lblMensaje = new JLabel("Mensaje: ");
+		lblMensaje.setFont(new Font("Tahoma", Font.BOLD, 12));
 
 		txtMensajeComun = new JTextField();
-		txtMensajeComun.setFont(new Font("Tahoma", Font.BOLD, 14));
+		txtMensajeComun.setBorder(new LineBorder(new Color(171, 173, 179), 0));
+		txtMensajeComun.setBackground(new Color(240, 230, 140));
+		txtMensajeComun.setHorizontalAlignment(SwingConstants.CENTER);
+		txtMensajeComun.setFont(new Font("Tahoma", Font.BOLD, 15));
 		txtMensajeComun.setEditable(false);
 		txtMensajeComun.setColumns(10);
 
 		btnAplicr = new JButton("Aplicar");
+		btnAplicr.setForeground(new Color(255, 255, 255));
+		btnAplicr.setBackground(new Color(0, 0, 139));
+		btnAplicr.setFont(new Font("Tahoma", Font.BOLD, 13));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup().addContainerGap().addComponent(lblMensaje)

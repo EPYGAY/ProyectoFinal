@@ -20,6 +20,7 @@ public class PanelDatosPersonales extends JPanel{
 	public JLabel lblNacimiento;
 	public JLabel lblTelefono;
 	public JLabel lblID;
+	private JLabel lblEj;
 	
 	public PanelDatosPersonales() {
 		setBackground(new Color(240, 230, 140));
@@ -28,7 +29,7 @@ public class PanelDatosPersonales extends JPanel{
 		
 		lblID = new JLabel("ID");
 		lblID.setHorizontalAlignment(SwingConstants.CENTER);
-		lblID.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblID.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
 		
 		txtNombre = new JTextField();
 		txtNombre.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -36,7 +37,7 @@ public class PanelDatosPersonales extends JPanel{
 		
 		txtNombre.setColumns(10);
 		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblNombre.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
 		
 		txtaApellido = new JTextField();
 		txtaApellido.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -44,16 +45,18 @@ public class PanelDatosPersonales extends JPanel{
 		txtaApellido.setColumns(10);
 		
 		JLabel lblApellido = new JLabel("Apellidos");
-		lblApellido.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblApellido.setHorizontalAlignment(SwingConstants.CENTER);
+		lblApellido.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
 		
 		txtDireccion = new JTextField();
+		txtDireccion.setCaretColor(Color.LIGHT_GRAY);
+		txtDireccion.setSelectedTextColor(Color.LIGHT_GRAY);
 		txtDireccion.setFont(new Font("Tahoma", Font.BOLD, 14));
 		txtDireccion.setHorizontalAlignment(SwingConstants.CENTER);
 		txtDireccion.setColumns(10);
 		
 		JLabel lblDireccion = new JLabel("Direccion");
-		lblDireccion.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblDireccion.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
 		
 		txtID = new JTextField();
 		txtID.setEnabled(false);
@@ -62,6 +65,7 @@ public class PanelDatosPersonales extends JPanel{
 		txtID.setColumns(10);
 		
 		textNacimiento = new JTextField();
+		textNacimiento.setCaretColor(Color.LIGHT_GRAY);
 		textNacimiento.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textNacimiento.setHorizontalAlignment(SwingConstants.CENTER);
 		textNacimiento.setColumns(10);
@@ -72,33 +76,41 @@ public class PanelDatosPersonales extends JPanel{
 		textTelefono.setColumns(10);
 		
 		lblNacimiento = new JLabel("Nacimiento");
-		lblNacimiento.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNacimiento.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNacimiento.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
 		
 		lblTelefono = new JLabel("Telefono");
-		lblTelefono.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblTelefono.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
+		
+		JLabel lblEjCalleO = new JLabel("Ej: Calle o Plaza o Avenida Libertad 12");
+		lblEjCalleO.setFont(new Font("Tahoma", Font.PLAIN, 8));
+		
+		lblEj = new JLabel("Ej: 10/05/1999");
+		lblEj.setFont(new Font("Tahoma", Font.PLAIN, 8));
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap(95, Short.MAX_VALUE)
+					.addContainerGap(107, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 							.addComponent(lblDireccion, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(lblApellido, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 							.addComponent(lblID, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-							.addComponent(lblNombre, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(lblTelefono, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblNacimiento, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
+							.addComponent(lblNombre, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(lblTelefono, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNacimiento, GroupLayout.PREFERRED_SIZE, 84, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-							.addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
-							.addComponent(txtID, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
-							.addComponent(txtaApellido, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
-							.addComponent(txtDireccion, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
-							.addComponent(textTelefono, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE))
-						.addComponent(textNacimiento, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblEj, GroupLayout.PREFERRED_SIZE, 136, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtID, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtaApellido, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textNacimiento, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
+						.addComponent(textTelefono, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtDireccion, GroupLayout.PREFERRED_SIZE, 272, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblEjCalleO))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -117,10 +129,12 @@ public class PanelDatosPersonales extends JPanel{
 						.addComponent(lblApellido, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(txtaApellido, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblDireccion, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(txtDireccion, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
 					.addGap(9)
+					.addComponent(lblEjCalleO)
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(textTelefono, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblTelefono, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
@@ -128,9 +142,19 @@ public class PanelDatosPersonales extends JPanel{
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(textNacimiento, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNacimiento, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(14, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblEj, GroupLayout.PREFERRED_SIZE, 10, GroupLayout.PREFERRED_SIZE)
+					.addGap(33))
 		);
 		setLayout(groupLayout);
+	}
+
+	public JLabel getLblEj() {
+		return lblEj;
+	}
+
+	public void setLblEj(JLabel lblEj) {
+		this.lblEj = lblEj;
 	}
 
 	public JTextField getTxtNombre() {
@@ -196,6 +220,4 @@ public class PanelDatosPersonales extends JPanel{
 	public void setLblTelefono(JLabel lblTelefono) {
 		this.lblTelefono = lblTelefono;
 	}
-
-	
 }

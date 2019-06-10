@@ -12,6 +12,7 @@ public class ControladorPanelDatosPersonales {
 		panel.txtDireccion.setText(persona.getDireccion());
 		panel.textTelefono.setText(persona.getTelefono());
 		panel.textNacimiento.setText(persona.getFechaNacimiento());
+		
 	}
 
 	public PersonaMV obtenerDatos(PanelDatosPersonales panel) {

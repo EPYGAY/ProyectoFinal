@@ -26,15 +26,17 @@ public class PanelVerHistorialPaciente extends JPanel {
 	public PanelVerHistorialPaciente() {
 		setBackground(new Color(240, 230, 140));
 		JLabel lblCierreOperaciones = new JLabel("Historial Paciente ");
-		lblCierreOperaciones.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblCierreOperaciones.setFont(new Font("Tahoma", Font.BOLD, 25));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		
 		JLabel lblTratamientos = new JLabel("Tratamientos");
+		lblTratamientos.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JLabel lblCitas = new JLabel("Citas/Operaciones");
+		lblCitas.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout(0, 0));
@@ -63,7 +65,7 @@ public class PanelVerHistorialPaciente extends JPanel {
 					.addContainerGap()
 					.addComponent(lblCierreOperaciones, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 					.addGap(11)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(lblCitas)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
@@ -72,7 +74,7 @@ public class PanelVerHistorialPaciente extends JPanel {
 					.addComponent(lblTratamientos)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 173, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(73, Short.MAX_VALUE))
+					.addContainerGap(33, Short.MAX_VALUE))
 		);
 		
 		String nombresColumnasT[]={"Paciente","medicamento","posologia", "fecha inicio", "fecha fin"};

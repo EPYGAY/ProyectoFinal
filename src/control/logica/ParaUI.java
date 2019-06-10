@@ -22,18 +22,29 @@ public class ParaUI extends UI {
 		
 		altaPaciente.panelMensaje.getBtnAplicr().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				facade.guardarPaciente(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesAltaPaciente()));
+			if(	facade.guardarPaciente(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesAltaPaciente()))) {
+				controladorMensaje.mostrarMensajes(altaPaciente.getPanelMensaje(), "Registrado correctamente");
 				controladorPanelDatosPersonales.vaciarDatos(altaPaciente.getPanelDatosPersonales());
-				controladorMensaje.mostrarMensajes(altaPaciente.getPanelMensaje(), "Paciente registrado correctamente");
-				
+			}else {
+				controladorMensaje.mostrarMensajes(altaPaciente.getPanelMensaje(), "Campos erróneos");
 			}
-		});
+			}
+		}); 
+		
+		
 		
 		ActionComboPaciente actionComboPacienteConsulta=new ActionComboPaciente(getComboBoxIdConsultaPaciente(), getComboBoxNombreConsultaPaciente(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesConsultaPaciente());
 		getComboBoxIdConsultaPaciente().addFocusListener(actionComboPacienteConsulta);
 		getComboBoxIdConsultaPaciente().addActionListener(actionComboPacienteConsulta);
 		getComboBoxNombreConsultaPaciente().addFocusListener(actionComboPacienteConsulta);
 		getComboBoxNombreConsultaPaciente().addActionListener(actionComboPacienteConsulta);
+		
+		/*ActionComboCitas actionComboPacientePedirCitaPrimaria=new ActionComboCitas(getComboBoxIdCitaPrimeariaPaciente(), getComboBoxNombreCitaPrimeariaPaciente(), facade);
+		getComboBoxIdConsultaPaciente().addFocusListener(actionComboPacientePedirCitaPrimaria);
+		getComboBoxIdConsultaPaciente().addActionListener(actionComboPacientePedirCitaPrimaria);
+		getComboBoxNombreConsultaPaciente().addFocusListener(actionComboPacientePedirCitaPrimaria);
+		getComboBoxNombreConsultaPaciente().addActionListener(actionComboPacientePedirCitaPrimaria);*/
+		
 		
 		ActionComboPaciente actionComboPacienteBaja=new ActionComboPaciente(getComboBoxIdBajaPaciente(),getComboBoxNombreBajaPaciente(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesBajaPaciente());
 		getComboBoxIdBajaPaciente().addFocusListener(actionComboPacienteBaja);
@@ -43,12 +54,16 @@ public class ParaUI extends UI {
 		
 		modificacionPaciente.panelMensaje.getBtnAplicr().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				facade.modificarPaciente(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesModificacionPaciente()));
+				if(facade.modificarPaciente(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesModificacionPaciente()))) {
+					controladorMensaje.mostrarMensajes(modificacionPaciente.getPanelMensaje(), "Modificado correctamente");
 				controladorPanelDatosPersonales.vaciarDatos(modificacionPaciente.getPanelDatosPersonales());
-				controladorMensaje.mostrarMensajes(modificacionPaciente.getPanelMensaje(), "Paciente modificado correctamente");
-				
+				}else {
+					controladorMensaje.mostrarMensajes(modificacionPaciente.getPanelMensaje(), "Campos erróneos");
+				}
 			}
 		});
+		
+		
 		ActionComboPaciente actionComboPacienteModificacion=new ActionComboPaciente(getComboBoxIdModificacionPaciente(),getComboBoxNombreModificacionPaciente(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesModificacionPaciente());
 		getComboBoxIdModificacionPaciente().addFocusListener(actionComboPacienteModificacion);
 		getComboBoxIdModificacionPaciente().addActionListener(actionComboPacienteModificacion);
@@ -59,20 +74,23 @@ public class ParaUI extends UI {
 			public void actionPerformed(ActionEvent e) {
 				facade.darBajaPaciente(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesBajaPaciente()));
 				controladorPanelDatosPersonales.vaciarDatos(bajaPaciente.getPanelDatosPersonales());
-				controladorMensaje.mostrarMensajes(bajaPaciente.getPanelMensaje(), "Paciente dado de baja correctamente");
+				controladorMensaje.mostrarMensajes(bajaPaciente.getPanelMensaje(), "Baja correctamente");
 				
 			}
 		});
 		
-			
 		
 		
 		//PACIENTES 
 		altaMedico.panelMensaje.btnAplicr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				facade.guardarDoctor(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPesonalesAltaDoctor()));
-				controladorPanelDatosPersonales.vaciarDatos(altaMedico.getPanelDatosPersonales());
-				controladorMensaje.mostrarMensajes(altaMedico.getPanelMensaje(), "Doctor dado de alta correctamente");
+				if(facade.guardarDoctor(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPesonalesAltaDoctor()))) {
+					controladorMensaje.mostrarMensajes(altaMedico.getPanelMensaje(), "Alta correctamente");
+					controladorPanelDatosPersonales.vaciarDatos(altaMedico.getPanelDatosPersonales());
+				}else {
+					controladorMensaje.mostrarMensajes(altaMedico.getPanelMensaje(), "Campos erróneos");
+				}
+				
 			}
 		});
 		ActionComboDoctor actionComboDoctorConsulta=new ActionComboDoctor(getComboBoxIdConsultaDoctor(),getComboBoxNombreConsultaDoctor(), facade, controladorPanelDatosPersonales, getPanelDatosPersonalesConsultaDoctor());
@@ -91,7 +109,7 @@ public class ParaUI extends UI {
 			public void actionPerformed(ActionEvent e) {
 				facade.darBajaDoctor(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesBajaDoctor()));
 				controladorPanelDatosPersonales.vaciarDatos(bajaMedico.getPanelDatosPersonales());
-				controladorMensaje.mostrarMensajes(bajaMedico.getPanelMensaje(), "Doctor dado de baja correctamente");
+				controladorMensaje.mostrarMensajes(bajaMedico.getPanelMensaje(), "Baja correctamente");
 			}
 		});
 		

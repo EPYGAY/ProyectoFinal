@@ -11,6 +11,7 @@ import java.awt.FlowLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import vista.comunes.PanelComboBox;
+import vista.comunes.PanelDatosPersonales;
 import vista.comunes.PanelHorario;
 import vista.comunes.PanelMensaje;
 
@@ -20,20 +21,25 @@ import java.awt.Font;
 
 public class PanelPedirCitaPaciente extends JPanel {
 PanelComboBox combo= null;
+private JPanel panel_2;
+protected JPanel panel;
+private PanelComboBox panelComboBox;
+
+	
 
 	public PanelPedirCitaPaciente(boolean horarioMañana, boolean mañanastxt) {
 		setBackground(new Color(240, 230, 140));
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBackground(new Color(240, 230, 140));
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		PanelComboBox panelComboBox = new PanelComboBox("Paciente", "ID");
+		panelComboBox = new PanelComboBox("Paciente", "ID");
 		panelComboBox.setBackground(new Color(240, 230, 140));
 		panel.add(panelComboBox);
 		
 		JComboBox comboBox = new JComboBox();
 		
-		JPanel panel_2 = new JPanel();
+		panel_2 = new JPanel();
 		panel_2.setBackground(new Color(240, 230, 140));
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		PanelMensaje panelMensaje = new PanelMensaje();
@@ -112,4 +118,16 @@ PanelComboBox combo= null;
 		setLayout(groupLayout);
 	
 	}
+
+	public JComboBox getPanelComboBoxid() {
+		return panelComboBox.getComboBoxID();
+	}
+	public JComboBox getPanelComboBoxNombre() {
+		return panelComboBox.getComboBoxNombre();
+	}
+	public void setPanelComboBox(PanelComboBox panelComboBox) {
+		this.panelComboBox = panelComboBox;
+	}
+	
+	
 }

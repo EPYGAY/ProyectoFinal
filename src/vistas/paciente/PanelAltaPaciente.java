@@ -38,7 +38,7 @@ public class PanelAltaPaciente extends JPanel {
 		panelDatosPersonales.setBackground(new Color(240, 230, 140));
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(new BorderLayout(0, 0));
-		panel_1.add(panelDatosPersonales);
+		panel_1.add(panelDatosPersonales, BorderLayout.NORTH);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(new BorderLayout(0, 0));

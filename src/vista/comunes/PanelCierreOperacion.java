@@ -28,34 +28,34 @@ public class PanelCierreOperacion extends JPanel {
 		lblCierreOperaciones.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		
 		JScrollPane scrollPane = new JScrollPane();
-		
-		JPanel panelMensajeCierreOperacion = new JPanel();
-		panelMensajeCierreOperacion.setLayout(new BorderLayout(0, 0));
-		panelMensajeCierreOperacion.add(new PanelMensaje());
+		PanelMensaje panelMensaje = new PanelMensaje();
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(33)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 1115, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblCierreOperaciones, GroupLayout.PREFERRED_SIZE, 346, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(279, Short.MAX_VALUE)
-					.addComponent(panelMensajeCierreOperacion, GroupLayout.PREFERRED_SIZE, 636, GroupLayout.PREFERRED_SIZE)
-					.addGap(233))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 1115, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblCierreOperaciones, GroupLayout.PREFERRED_SIZE, 346, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(71, Short.MAX_VALUE))))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(268)
+					.addComponent(panelMensaje, GroupLayout.PREFERRED_SIZE, 535, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(486, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(43)
+					.addContainerGap()
 					.addComponent(lblCierreOperaciones, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 455, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panelMensajeCierreOperacion, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(129, Short.MAX_VALUE))
+					.addGap(50)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 411, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(panelMensaje, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(40, Short.MAX_VALUE))
 		);
 		
 		String nombresColumnas[]={"Paciente	","operacion","cirujano", "resultado"};

@@ -26,7 +26,7 @@ public class PanelConsultarCitas extends JPanel {
 		setBackground(new Color(240, 230, 140));
 
 		JLabel lblCierreOperaciones = new JLabel("Citas Pendiente Paciente ");
-		lblCierreOperaciones.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblCierreOperaciones.setFont(new Font("Tahoma", Font.BOLD, 25));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		

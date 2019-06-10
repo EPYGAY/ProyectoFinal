@@ -29,8 +29,5 @@ public class MedicoDTO extends PersonaDTO implements Serializable{
 	public void setHorario(Horario horario) {
 		this.horario = horario;
 	}
-	@Override
-	public Respuesta validarCampos(String campo, String patron, String mensaje) {
-			return new Respuesta(Pattern.matches(patron,campo),mensaje);
-	}
+
 }

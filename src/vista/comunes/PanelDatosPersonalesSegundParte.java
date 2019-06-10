@@ -6,6 +6,9 @@ import javax.swing.JTextField;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import utiles.Especialidad;
+
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.JComboBox;
@@ -15,30 +18,35 @@ public class PanelDatosPersonalesSegundParte extends JPanel{
 	public JComboBox comboBox;
 	public JComboBox comboBox_1;
 	public JComboBox comboBox_2;
+	private Especialidad especialidad;
 	
 	public PanelDatosPersonalesSegundParte() {
 		setBackground(new Color(240, 230, 140));
 		
 		JLabel lblApellido = new JLabel("Especialidad");
 		lblApellido.setHorizontalAlignment(SwingConstants.CENTER);
-		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblApellido.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
 		
 		JLabel lblDireccion = new JLabel("Consulta");
 		lblDireccion.setHorizontalAlignment(SwingConstants.CENTER);
-		lblDireccion.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblDireccion.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
 		
 		lblHorario = new JLabel("Horario");
 		lblHorario.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHorario.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblHorario.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
 		
 		comboBox = new JComboBox();
-		comboBox.setEditable(true);
+		comboBox.setFont(new Font("Tahoma", Font.BOLD, 11));
+		
+		comboBox.addItem(especialidad.PRIMARIO);
+		comboBox.addItem(especialidad.ESPECILISTA);
+		comboBox.addItem(especialidad.CIRUJANO);
 		
 		comboBox_1 = new JComboBox();
-		comboBox_1.setEditable(true);
+		comboBox_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		comboBox_2 = new JComboBox();
-		comboBox_2.setEditable(true);
+		comboBox_2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
