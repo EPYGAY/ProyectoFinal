@@ -18,8 +18,8 @@ public class PacienteDAO {
 
 	public boolean guardar(PacienteDTO paciente) {
 		String path = rutaCarpeta + File.separator + paciente.getID() + extension;
-		DAO<PacienteDTO> acceso = new DAO<PacienteDTO>(path, true);
-		return acceso.save(paciente);
+ 		DAO<PacienteDTO> acceso = new DAO<PacienteDTO>(path, true);
+		return acceso.save(paciente); 
 	}
 
 	public PacienteDTO consultar(Long id) {

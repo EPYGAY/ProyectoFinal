@@ -14,27 +14,36 @@ public class CitaNucleo {
 	private DoctorNucleo doctorNucleo= new DoctorNucleo();
 	private PacienteNucleo pacienteNucleo= new PacienteNucleo();
 	
-	public CitaNucleo() {
+	public CitaNucleo() { 
 	}
 	
 	public boolean altaCita(CitaMV cita) {
-		CitaDTO citaDTO= new CitaDTO();
-		citaDTO.setID(dao.obtenerId());
-		citaDTO.setFecha(cita.getFecha());
-		//TODO terminar mapeo
-		
 		PersonaMV medicoMV= doctorNucleo.obtenerDoctor(cita.getIdMedico());
 		DoctorDTO medicoDTO= new DoctorDTO();
 		medicoDTO.setID(medicoMV.getID());
 		medicoDTO.setApellidos(medicoMV.getApellidos());
 		medicoDTO.setDireccion(medicoMV.getDireccion());
-		//TODO terminar mapeo
-		citaDTO.setMedico(medicoDTO);
+		medicoDTO.setTelefono(medicoMV.getTelefono());
+		medicoDTO.setNombre(medicoMV.getNombre());
+		medicoDTO.setEspecialidad(medicoMV.getEspecialidad());
+
+		
 		PacienteDTO pacienteDTO= new PacienteDTO();
 		PersonaMV pacienteMV= pacienteNucleo.obtenerPaciente(cita.getIdPaciente());
 		pacienteDTO.setApellidos(pacienteMV.getApellidos());
-		//TODO terminar mapeo
+		pacienteDTO.setDireccion(pacienteMV.getDireccion());
+		pacienteDTO.setFechaNacimiento(pacienteMV.getFechaNacimiento());
+		pacienteDTO.setNombre(pacienteMV.getNombre());
+		pacienteDTO.setTelefono(pacienteMV.getTelefono());
+
+		
+		CitaDTO citaDTO= new CitaDTO();
+		citaDTO.setID(dao.obtenerId());
+		citaDTO.setFecha(cita.getFecha());
+		citaDTO.setMedico(medicoDTO);
 		citaDTO.setPaciente(pacienteDTO);
+		
+		
 		return dao.guardar(citaDTO);
 	}
 	

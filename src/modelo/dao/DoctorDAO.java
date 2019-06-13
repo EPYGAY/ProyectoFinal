@@ -18,7 +18,7 @@ public class DoctorDAO {
 
 	public boolean guardar(DoctorDTO doctor) {
 		return acceso.save(doctor);
-	}
+	} 
 
 	public DoctorDTO consultar(Long id) {
 		DoctorDTO doctor = new DoctorDTO();

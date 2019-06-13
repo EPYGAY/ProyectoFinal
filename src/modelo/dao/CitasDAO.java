@@ -13,7 +13,7 @@ public class CitasDAO {
 
 	public CitasDAO() {
 		String path = rutaCarpeta + File.separator  + nombreFichero + extension;
-		acceso = new DAOColecciones<CitaDTO>(path, true);
+		acceso = new DAOColecciones<CitaDTO>(path, true); 
 	}
 
 	public boolean guardar(CitaDTO cita) {
@@ -34,7 +34,7 @@ public class CitasDAO {
 		ArrayList<String> lista = new ArrayList<>();
 		for (CitaDTO cita : acceso.getAll()) {
 			//if (!cita.isEliminado()) { 
-				lista.add(String.valueOf(cita.getID()));
+				lista.add(String.valueOf(cita.getID())); 
 			//}
 		}
 		return lista; 

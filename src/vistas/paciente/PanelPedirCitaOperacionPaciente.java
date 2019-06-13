@@ -5,6 +5,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import vista.comunes.Botonera;
 import vista.comunes.PanelComboBox;
 import vista.comunes.PanelMensaje;
 
@@ -22,6 +23,7 @@ import java.awt.FlowLayout;
 
 public class PanelPedirCitaOperacionPaciente extends JPanel {
 PanelComboBox combo= null;
+Botonera botonera;
 
 	public PanelPedirCitaOperacionPaciente() {
 		setBackground(new Color(240, 230, 140));
@@ -53,11 +55,19 @@ PanelComboBox combo= null;
 		PanelMensaje panelMensaje = new PanelMensaje();
 		panelMensaje.setBackground(new Color(240, 230, 140));
 		panel_1.add(panelMensaje);
+		
+		
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(29)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblCitaAtencionPrimaria)
+								.addComponent(panel, GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(28)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -72,13 +82,11 @@ PanelComboBox combo= null;
 									.addGap(18)
 									.addComponent(lblCirujano)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(comboBox_1, 0, 366, Short.MAX_VALUE))
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 740, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(29)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblCitaAtencionPrimaria)
-								.addComponent(panel, GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE))))
+									.addComponent(comboBox_1, 0, 366, Short.MAX_VALUE)))))
+					.addContainerGap())
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap(115, Short.MAX_VALUE)
+					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 740, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -94,13 +102,13 @@ PanelComboBox combo= null;
 						.addComponent(lblTipo)
 						.addComponent(lblCirujano)
 						.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(87)
+					.addGap(137)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblFechasDisponibles)
 						.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+					.addGap(115)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
-					.addGap(39))
+					.addGap(19))
 		);
 		setLayout(groupLayout);
 		

@@ -56,15 +56,15 @@ public class PanelGeneralPaciente extends JPanel {
 		setLayout(groupLayout);
 	}
 
-	public JComboBox getComboBoxId() {
-		return panelComboBox.comboBoxID;
-	}
-
-	public PanelDatosPersonales getPanelDatosPersonales() {
-		return panelDatosPersonales;
-	}
-
-	public JComboBox getComboBoxNombre() {
-		return panelComboBox.getComboBoxNombre();
-	}
+		public JComboBox getComboBoxId() {
+			return panelComboBox.comboBoxID;
+		}
+	
+		public PanelDatosPersonales getPanelDatosPersonales() {
+			return panelDatosPersonales;
+		}
+	
+		public JComboBox getComboBoxNombre() {
+			return panelComboBox.getComboBoxNombre();
+		}
 }
