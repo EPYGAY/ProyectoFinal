@@ -35,7 +35,7 @@ public class PacienteNucleo {
 		PacienteDTO pacienteDTO= dao.consultar(paciente.getID());
 		pacienteDTO.setNombre(paciente.getNombre());
 		pacienteDTO.setApellidos(paciente.getApellidos());
-		pacienteDTO.setDireccion(paciente.getDireccion());
+ 		pacienteDTO.setDireccion(paciente.getDireccion());
 		pacienteDTO.setTelefono(paciente.getTelefono());
 		pacienteDTO.setFechaNacimiento(paciente.getFechaNacimiento());
 		if (validacionPaciente(paciente)) {

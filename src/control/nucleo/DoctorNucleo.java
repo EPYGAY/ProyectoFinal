@@ -26,7 +26,7 @@ public class DoctorNucleo {
 		if (validacionDoctor(doctor)) {
 			return dao.guardar(doctorDTO);
 		}
-		return false;
+		return false; 
  
 	}
 
@@ -48,7 +48,7 @@ public class DoctorNucleo {
 	}
 
 	public boolean bajaDoctor(PersonaMV doctor) {
-		DoctorDTO doctorDTO = dao.consultar(doctor.getID());
+		DoctorDTO doctorDTO = dao.consultar(doctor.getID()); 
 		doctorDTO.setEliminado(true);
 		return dao.modificar(doctorDTO);
 	}

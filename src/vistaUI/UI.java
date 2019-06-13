@@ -415,6 +415,20 @@ public class UI extends JFrame {
 		return consultaMedico.getComboNombre();
 	}
 	
+	
+	public JComboBox getComboBoxIdCitaPrimaria() {
+		return citaPrimario.getPanelPedirCitaPacienteNombre();
+	}
+	public JComboBox getComboBoxNombreCitaPrimaria() {
+		return citaPrimario.getPanelPedirCitaPacienteid();
+	}
+	public JComboBox getComboBoxNombreCiaPrimariaDoctor() {
+		return citaPrimario.getPanelPedirCitaPacienteNombreDoctor();
+	}
+	public JComboBox getComboBoxIdCiaPrimariaDoctor() {
+		return citaPrimario.getPanelPedirCitaPacienteIDDoctor();
+	}
+	
 	 class horas implements ActionListener{
 		    
 	        public void actionPerformed(ActionEvent e){
@@ -427,6 +441,7 @@ public class UI extends JFrame {
 	                  
 	        }
 	 }
+	 
 	
 	
 }

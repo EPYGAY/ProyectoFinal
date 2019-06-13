@@ -6,6 +6,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import vista.comunes.PanelComboBox;
+import vista.comunes.PanelMensaje;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -31,7 +32,7 @@ import java.awt.event.ActionEvent;
 public class PanelPedirCitaPrimarioyEspecialistaPaciente extends JPanel {
 PanelComboBox combo= null;
 private CitasDAO citasDAO= new CitasDAO();
-private PanelPedirCitaPaciente panelPedirCitaPaciente;
+public PanelPedirCitaPaciente panelPedirCitaPaciente;
 
 	public PanelPedirCitaPrimarioyEspecialistaPaciente(String nombreCita, String medico, boolean horarioMañana, boolean mañanastxt ) {
 		setBackground(new Color(240, 230, 140));
@@ -43,35 +44,56 @@ private PanelPedirCitaPaciente panelPedirCitaPaciente;
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
 		panelPedirCitaPaciente = new PanelPedirCitaPaciente(horarioMañana, mañanastxt);
+		
+		
+		JComboBox comboBox = new JComboBox();
 			
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(71)
-					.addComponent(lblCitaAtencionPrimaria)
-					.addPreferredGap(ComponentPlacement.RELATED, 846, Short.MAX_VALUE)
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 271, GroupLayout.PREFERRED_SIZE)
-					.addGap(81))
-				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(19)
-					.addComponent(panelPedirCitaPaciente, GroupLayout.PREFERRED_SIZE, 1184, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(72, Short.MAX_VALUE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(panelPedirCitaPaciente, GroupLayout.PREFERRED_SIZE, 1184, GroupLayout.PREFERRED_SIZE)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(1190)
+									.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 416, GroupLayout.PREFERRED_SIZE)))
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addGap(39)
+							.addComponent(lblCitaAtencionPrimaria)
+							.addPreferredGap(ComponentPlacement.RELATED, 700, Short.MAX_VALUE)
+							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)
+							.addGap(573))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(lblCitaAtencionPrimaria)
-						.addComponent(lblNewLabel))
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(panelPedirCitaPaciente, GroupLayout.PREFERRED_SIZE, 646, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblNewLabel)
+						.addComponent(lblCitaAtencionPrimaria))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(621)
+							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(panelPedirCitaPaciente, GroupLayout.PREFERRED_SIZE, 569, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
 		);
 		setLayout(groupLayout);
 		
 		
 	
+	}
+
+	
+
+
+	public PanelMensaje getPanelPedirCitaPaciente() {
+		return panelPedirCitaPaciente.getPanelMensajeCita();
 	}
 
 	public JComboBox getPanelPedirCitaPacienteid() {
@@ -80,13 +102,13 @@ private PanelPedirCitaPaciente panelPedirCitaPaciente;
 	public JComboBox getPanelPedirCitaPacienteNombre() {
 		return panelPedirCitaPaciente.getPanelComboBoxNombre();
 	}
-
-	public void setPanelPedirCitaPaciente(PanelPedirCitaPaciente panelPedirCitaPaciente) {
-		this.panelPedirCitaPaciente = panelPedirCitaPaciente;
-	}
-
 	
-
+	public JComboBox getPanelPedirCitaPacienteNombreDoctor() {
+		return panelPedirCitaPaciente.getComboBoxNombreDoctorCItaPaciente();
+	}
+	public JComboBox getPanelPedirCitaPacienteIDDoctor() {
+		return panelPedirCitaPaciente.getComboBoxIDDoctorCItaPaciente();
+	}
 	
 
 	
