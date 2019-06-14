@@ -35,9 +35,12 @@ public class PanelPedirCitaPrimarioyEspecialistaPaciente extends JPanel {
 PanelComboBox combo= null;
 private CitasDAO citasDAO= new CitasDAO();
 private PanelPedirCitaPaciente panelPedirCitaPaciente;
+public PanelMensaje panelMensaje;
+
+
 
 	public PanelPedirCitaPrimarioyEspecialistaPaciente(String nombreCita, String medico, boolean horarioMañana, boolean mañanastxt ) {
-		setBackground(new Color(240, 230, 140));
+		setBackground(new Color(32, 178, 170));
 		
 		JLabel lblCitaAtencionPrimaria = new JLabel(nombreCita);
 		lblCitaAtencionPrimaria.setFont(new Font("Tahoma", Font.BOLD, 22));
@@ -46,6 +49,14 @@ private PanelPedirCitaPaciente panelPedirCitaPaciente;
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
 		panelPedirCitaPaciente = new PanelPedirCitaPaciente(horarioMañana, mañanastxt);
+		
+		panelPedirCitaPaciente.getComboBoxNombreDoctorCItaPaciente().setForeground(new Color(184, 134, 11));
+		panelPedirCitaPaciente.getPanelMensajeCita().setBackground(new Color(32, 178, 170));
+		panelPedirCitaPaciente.panel.setBackground(new Color(32, 178, 170));
+		panelPedirCitaPaciente.setBackground(new Color(32, 178, 170));
+		panelPedirCitaPaciente.getComboBoxNombreDoctorCItaPaciente().setBackground(new Color(255, 255, 255));
+		panelPedirCitaPaciente.getPanelComboBoxid().setBackground(new Color(255, 255, 255));
+		panelPedirCitaPaciente.getPanelComboBoxNombre().setBackground(new Color(255, 255, 255));
 		
 		
 		JComboBox comboBox = new JComboBox();
@@ -91,8 +102,6 @@ private PanelPedirCitaPaciente panelPedirCitaPaciente;
 	
 	}
 
-	
-
 
 	public PanelMensaje getPanelMensajePedirCitaPaciente() {
 		return panelPedirCitaPaciente.getPanelMensajeCita();
@@ -115,6 +124,6 @@ private PanelPedirCitaPaciente panelPedirCitaPaciente;
 		return panelPedirCitaPaciente;
 	}
 	
-
 	
+
 }

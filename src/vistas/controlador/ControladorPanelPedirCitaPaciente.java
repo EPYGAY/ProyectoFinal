@@ -14,11 +14,9 @@ public class ControladorPanelPedirCitaPaciente {
 
 	public CitaMV obtenerDatos(PanelPedirCitaPaciente panelPedirCitaPaciente) {
 		CitaMV modelo = new CitaMV();
-		modelo.setIdMedico(
-				getIdFromComboBox((Item) panelPedirCitaPaciente.getComboBoxIDDoctorCItaPaciente().getSelectedItem()));
-		modelo.setIdPaciente(
-				getIdFromComboBox((Item) panelPedirCitaPaciente.getPanelComboBoxNombre().getSelectedItem()));
-		modelo.setFecha(new Date());
+		modelo.setIdMedico(getIdFromComboBox((Item) panelPedirCitaPaciente.getComboBoxIDDoctorCItaPaciente().getSelectedItem()));
+		modelo.setIdPaciente(getIdFromComboBox((Item) panelPedirCitaPaciente.getPanelComboBoxNombre().getSelectedItem()));
+		modelo.setFecha(panelPedirCitaPaciente.getNombreBoton());
 		return modelo;
 
 	}

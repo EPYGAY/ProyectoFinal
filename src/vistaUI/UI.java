@@ -355,9 +355,8 @@ public class UI extends JFrame {
 	private void asociarPanel(String string) {
 		((CardLayout)contentPane.getLayout()).show(contentPane,string);
 	}
-	public PanelMensaje getTMensaje() {
-		return altaPaciente.getPanelMensaje();
-	}
+	
+
 	
 	//PACIENTE
 	

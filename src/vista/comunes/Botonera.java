@@ -14,10 +14,7 @@ public class Botonera extends JPanel {
 
 	public JButton botones[][];
 	int ladoBoton = 150, ladoBoton2 = 45;
-
-	/**
-	 * Create the panel.
-	 */
+	private String nombreBoton;
 
 	public Botonera(int x, int y) {
 		setBackground(new Color(240, 230, 140));
@@ -33,7 +30,7 @@ public class Botonera extends JPanel {
 
 	private void iniciarBotonera() {
 		int horaInicial = 8;
-		final int DIAS_SEMANAS=5;
+		final int DIAS_SEMANAS = 5;
 		this.botones = new JButton[8][5];
 		int x = 0, y = 0;
 		for (int i = 0; i < this.botones.length; i++) {
@@ -42,9 +39,9 @@ public class Botonera extends JPanel {
 				this.botones[i][j].setName(String.valueOf(i) + String.valueOf(j));
 
 				for (int z = 0; z < DIAS_SEMANAS; z++) {
-					if (i<2) {
-						this.botones[i][j].setText("0"+horaInicial + ":00");
-					}else {
+					if (i < 2) {
+						this.botones[i][j].setText("0" + horaInicial + ":00");
+					} else {
 						this.botones[i][j].setText(horaInicial + ":00");
 					}
 				}
@@ -53,41 +50,71 @@ public class Botonera extends JPanel {
 				this.botones[i][j].setFont(new Font("Tahoma", 0, 35));
 				this.botones[i][j].setForeground(Color.BLACK);
 				this.add(this.botones[i][j]);
-			
+
 				x += this.ladoBoton;
-				
+
 			}
 			horaInicial++;
 			x = 0;
 			y += this.ladoBoton2;
 		}
-		
-		
-		
+
 		for (int i = 0; i < this.botones.length; i++) {
 			for (int j = 0; j < this.botones[i].length; j++) {
+
+				
 				this.botones[i][j].addActionListener(new ActionListener() {
-					
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						fondoBlanco();
 						JButton miBoton = ((JButton) e.getSource());
-						
-						if (miBoton.getBackground()==Color.MAGENTA) {
+						String nameDia = nameDiaSemana(getNumeroDiaSemana(miBoton));
+						nombreBoton = nameDia + miBoton.getText();
+						if (miBoton.getBackground() == Color.MAGENTA) {
 							miBoton.setBackground(Color.WHITE);
-						}else {
+						} else {
 							miBoton.setBackground(Color.MAGENTA);
 						}
-						
-						
 
 					}
 
 				});
 			}
+		}
+
+	}
+
+	public int getNumeroDiaSemana(JButton miBoton ) {
+		for (int i = 0; i < this.botones.length; i++) {
+			for (int j = 0; j < this.botones[i].length; j++) {
+				if (botones[i][j] == miBoton) {
+					return j;
+				}
+			}
+		}
+		return 0;
+	}
+
+	public String nameDiaSemana(int diaSemana) {
+
+		if (diaSemana == 0) {
+			return "Lunes, ";
+		}
+		if (diaSemana == 1) {
+			return "Martes, ";
+		}
+		if (diaSemana == 2) {
+			return "Miercoles, ";
+		}
+		if (diaSemana == 3) {
+			return "Jueves, ";
+		}
+		if (diaSemana == 4) {
+			return "Viernes, ";
 
 		}
-		
+		return null;
+
 	}
 
 	public void fondoBlanco() {
@@ -95,9 +122,8 @@ public class Botonera extends JPanel {
 			for (int j = 0; j < this.botones[i].length; j++) {
 				this.botones[i][j].setBackground(Color.WHITE);
 			}
-			}
+		}
 	}
-	
 
 	public JButton[][] getBotones() {
 		return botones;
@@ -106,4 +132,13 @@ public class Botonera extends JPanel {
 	public void setBotones(JButton[][] botones) {
 		this.botones = botones;
 	}
+
+	public String getNombreBoton() {
+		return nombreBoton;
+	}
+
+	public void setNombreBoton(String nombreBoton) {
+		this.nombreBoton = nombreBoton;
+	}
+
 }
