@@ -30,6 +30,7 @@ import modelo.dto.PacienteDTO;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class PanelPedirCitaPrimarioyEspecialistaPaciente extends JPanel {
 PanelComboBox combo= null;
@@ -40,7 +41,7 @@ public PanelMensaje panelMensaje;
 
 
 	public PanelPedirCitaPrimarioyEspecialistaPaciente(String nombreCita, String medico, boolean horarioMañana, boolean mañanastxt ) {
-		setBackground(new Color(32, 178, 170));
+		setBackground(new Color(204, 204, 153));
 		
 		JLabel lblCitaAtencionPrimaria = new JLabel(nombreCita);
 		lblCitaAtencionPrimaria.setFont(new Font("Tahoma", Font.BOLD, 22));
@@ -49,14 +50,15 @@ public PanelMensaje panelMensaje;
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 22));
 		panelPedirCitaPaciente = new PanelPedirCitaPaciente(horarioMañana, mañanastxt);
+		panelPedirCitaPaciente.getBotonera().setBackground(new Color(204, 204, 153));
 		
 		panelPedirCitaPaciente.getComboBoxNombreDoctorCItaPaciente().setForeground(new Color(184, 134, 11));
-		panelPedirCitaPaciente.getPanelMensajeCita().setBackground(new Color(32, 178, 170));
-		panelPedirCitaPaciente.panel.setBackground(new Color(32, 178, 170));
-		panelPedirCitaPaciente.setBackground(new Color(32, 178, 170));
+		panelPedirCitaPaciente.getPanelMensajeCita().setBackground(new Color(204, 204, 153));
+		panelPedirCitaPaciente.panel.setBackground(new Color(204, 204, 153));
+		panelPedirCitaPaciente.setBackground(new Color(204, 204, 153));
 		panelPedirCitaPaciente.getComboBoxNombreDoctorCItaPaciente().setBackground(new Color(255, 255, 255));
-		panelPedirCitaPaciente.getPanelComboBoxid().setBackground(new Color(255, 255, 255));
-		panelPedirCitaPaciente.getPanelComboBoxNombre().setBackground(new Color(255, 255, 255));
+		panelPedirCitaPaciente.getPanelComboBoxid().setBackground(SystemColor.activeCaption);
+		panelPedirCitaPaciente.getPanelComboBoxNombre().setBackground(SystemColor.activeCaption);
 		
 		
 		JComboBox comboBox = new JComboBox();
@@ -66,35 +68,36 @@ public PanelMensaje panelMensaje;
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(19)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(panelPedirCitaPaciente, GroupLayout.PREFERRED_SIZE, 1184, GroupLayout.PREFERRED_SIZE)
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(1190)
 									.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 416, GroupLayout.PREFERRED_SIZE)))
-							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 							.addGap(39)
 							.addComponent(lblCitaAtencionPrimaria)
-							.addPreferredGap(ComponentPlacement.RELATED, 700, Short.MAX_VALUE)
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 174, GroupLayout.PREFERRED_SIZE)
-							.addGap(573))))
+							.addPreferredGap(ComponentPlacement.RELATED, 770, Short.MAX_VALUE)
+							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 177, GroupLayout.PREFERRED_SIZE)
+							.addGap(490)))
+					.addGap(407))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel)
-						.addComponent(lblCitaAtencionPrimaria))
+						.addComponent(lblCitaAtencionPrimaria)
+						.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(621)
 							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 						.addComponent(panelPedirCitaPaciente, GroupLayout.PREFERRED_SIZE, 569, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
+					.addGap(0))
 		);
 		setLayout(groupLayout);
 		

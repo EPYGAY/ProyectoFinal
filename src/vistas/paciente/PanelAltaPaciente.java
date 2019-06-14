@@ -20,6 +20,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import javax.swing.UIManager;
 
 public class PanelAltaPaciente extends JPanel {
 
@@ -70,9 +71,8 @@ public class PanelAltaPaciente extends JPanel {
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 375, GroupLayout.PREFERRED_SIZE)
 									.addGap(116)
-									.addComponent(lblNewLabel_1)))
-							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addPreferredGap(ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
+									.addComponent(lblNewLabel_1)))))
+					.addPreferredGap(ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
 					.addComponent(lblNewLabel)
 					.addContainerGap())
 		);
@@ -84,7 +84,7 @@ public class PanelAltaPaciente extends JPanel {
 							.addGap(26)
 							.addComponent(lblAltaPaciente)
 							.addGap(36)
-							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 247, GroupLayout.PREFERRED_SIZE))
+							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 255, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(56)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -92,7 +92,7 @@ public class PanelAltaPaciente extends JPanel {
 								.addComponent(lblNewLabel))))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(66, Short.MAX_VALUE))
+					.addContainerGap(53, Short.MAX_VALUE))
 		);
 		panelMensaje = new PanelMensaje();
 		panelMensaje.setBackground(new Color(240, 230, 140));

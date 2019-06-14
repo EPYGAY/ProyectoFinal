@@ -13,19 +13,20 @@ import control.logica.Item;
 import facade.Facade;
 import vista.comunes.PanelDatosPersonales;
 import vistas.controlador.ControladorPanelDatosPersonales;
-import vistas.controlador.ControladorPanelPedirCitaPaciente;
+import vistas.controlador.ControladorPanelPedirCitaPacienteVerHistorialCitas;
 import vistas.paciente.PanelConsultarCitas;
+import vistas.paciente.PanelVerHistorialPaciente;
 
-public class ActionComboCita implements FocusListener,ActionListener{
+public class ActionComboCitaVerHistorial implements FocusListener,ActionListener{
 
 
 		private JComboBox comboID, comboNombre;
 		private Facade facade;
-		private PanelConsultarCitas panel;
-		private ControladorPanelPedirCitaPaciente controlador;
+		private PanelVerHistorialPaciente panel;
+		private ControladorPanelPedirCitaPacienteVerHistorialCitas controlador;
 
-		public ActionComboCita( JComboBox comboNombre,JComboBox comboID, Facade facade,
-				ControladorPanelPedirCitaPaciente controlador, PanelConsultarCitas panel) {
+		public ActionComboCitaVerHistorial( JComboBox comboNombre,JComboBox comboID, Facade facade,
+				ControladorPanelPedirCitaPacienteVerHistorialCitas controlador, PanelVerHistorialPaciente panel) {
 			this.comboID = comboID;
 			this.comboNombre = comboNombre;
 			this.facade = facade;

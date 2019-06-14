@@ -32,10 +32,10 @@ public class PanelPedirCitaPaciente extends JPanel {
 
 
 	public PanelPedirCitaPaciente(boolean horarioMañana, boolean mañanastxt) {
-		setBackground(new Color(32, 178, 170));
+		setBackground(new Color(204, 204, 153));
 
 		panel = new JPanel();
-		panel.setBackground(new Color(32, 178, 170));
+		panel.setBackground(new Color(204, 204, 153));
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		panelComboBox = new PanelComboBox("Paciente", "ID");
 		panelComboBox.getComboBoxNombre().setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -44,7 +44,7 @@ public class PanelPedirCitaPaciente extends JPanel {
 		panelComboBox.getComboBoxNombre().setForeground(new Color(0, 0, 0));
 		panelComboBox.getComboBoxID().setBackground(new Color(119, 136, 153));
 		panelComboBox.getComboBoxNombre().setBackground(new Color(176, 196, 222));
-		panelComboBox.setBackground(new Color(32, 178, 170));
+		panelComboBox.setBackground(new Color(204, 204, 153));
 		panel.add(panelComboBox);
 
 		JPanel panel_1 = new JPanel();
@@ -55,12 +55,12 @@ public class PanelPedirCitaPaciente extends JPanel {
 		comboBoxIDDoctorCItaPaciente.setEnabled(false);
 		panelMensajeCita = new PanelMensaje();
 
-		panelMensajeCita.setBackground(new Color(32, 178, 170));
+		panelMensajeCita.setBackground(new Color(204, 204, 153));
 
 		panel_3 = new JPanel();
 		panel_3.setBackground(new Color(244, 164, 96));
 		botonera = new Botonera(100, 0);
-		botonera.setBackground(new Color(32, 178, 170));
+		botonera.setBackground(new Color(204, 204, 153));
 
 		comboBoxNombreDoctorCItaPaciente = new JComboBox();
 		comboBoxNombreDoctorCItaPaciente.setForeground(Color.WHITE);

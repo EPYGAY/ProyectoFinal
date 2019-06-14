@@ -10,7 +10,7 @@ import modelo.vista.CitaMV;
 import vistas.paciente.PanelConsultarCitas;
 import vistas.paciente.PanelPedirCitaPaciente;
 
-public class ControladorPanelPedirCitaPaciente {
+public class ControladorPanelPedirCitaPacienteonsultasCitas {
 
 	public CitaMV obtenerDatos(PanelPedirCitaPaciente panelPedirCitaPaciente) {
 		CitaMV modelo = new CitaMV();
