@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import vista.comunes.PanelMensaje;
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class PanelConsultaBajaMedico extends JPanel {
 	private PanelComboBox panelCombo;
@@ -59,16 +60,19 @@ public class PanelConsultaBajaMedico extends JPanel {
 		lblConsulta.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
 		
 		textEspecialidad = new JTextField();
+		textEspecialidad.setHorizontalAlignment(SwingConstants.CENTER);
 		textEspecialidad.setEditable(false);
 		textEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textEspecialidad.setColumns(10);
 		
 		textHorario = new JTextField();
+		textHorario.setHorizontalAlignment(SwingConstants.CENTER);
 		textHorario.setEditable(false);
 		textHorario.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textHorario.setColumns(10);
 		
 		textConsulta = new JTextField();
+		textConsulta.setHorizontalAlignment(SwingConstants.CENTER);
 		textConsulta.setEditable(false);
 		textConsulta.setFont(new Font("Tahoma", Font.BOLD, 14));
 		textConsulta.setColumns(10);
