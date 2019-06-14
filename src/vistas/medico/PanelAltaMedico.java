@@ -24,6 +24,7 @@ import javax.swing.ImageIcon;
 public class PanelAltaMedico extends JPanel {
 	public PanelDatosPersonales panelDatosPersonales;
 	public PanelMensaje panelMensaje;
+	public PanelDatosPersonalesSegundParte panelDatosPersonalesSegundParte;
 	public PanelAltaMedico(String nombre) {
 		setBackground(new Color(240, 230, 140));
 		
@@ -55,8 +56,9 @@ public class PanelAltaMedico extends JPanel {
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon("imagenes\\altadDoctor.png"));
-		PanelDatosPersonalesSegundParte panelDatosPersonalesSegundParte = new PanelDatosPersonalesSegundParte();
+		 panelDatosPersonalesSegundParte = new PanelDatosPersonalesSegundParte();
 		panelDatosPersonalesSegundParte.setBackground(new Color(240, 230, 140));
+		panelDatosPersonales.setEspecialidad(panelDatosPersonalesSegundParte.getEspecialidad());
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(

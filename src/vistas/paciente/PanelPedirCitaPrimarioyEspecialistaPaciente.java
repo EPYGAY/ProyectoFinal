@@ -10,6 +10,8 @@ import vista.comunes.PanelMensaje;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Panel;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -32,7 +34,7 @@ import java.awt.event.ActionEvent;
 public class PanelPedirCitaPrimarioyEspecialistaPaciente extends JPanel {
 PanelComboBox combo= null;
 private CitasDAO citasDAO= new CitasDAO();
-public PanelPedirCitaPaciente panelPedirCitaPaciente;
+private PanelPedirCitaPaciente panelPedirCitaPaciente;
 
 	public PanelPedirCitaPrimarioyEspecialistaPaciente(String nombreCita, String medico, boolean horarioMañana, boolean mañanastxt ) {
 		setBackground(new Color(240, 230, 140));
@@ -92,7 +94,7 @@ public PanelPedirCitaPaciente panelPedirCitaPaciente;
 	
 
 
-	public PanelMensaje getPanelPedirCitaPaciente() {
+	public PanelMensaje getPanelMensajePedirCitaPaciente() {
 		return panelPedirCitaPaciente.getPanelMensajeCita();
 	}
 
@@ -108,6 +110,9 @@ public PanelPedirCitaPaciente panelPedirCitaPaciente;
 	}
 	public JComboBox getPanelPedirCitaPacienteIDDoctor() {
 		return panelPedirCitaPaciente.getComboBoxIDDoctorCItaPaciente();
+	}
+	public PanelPedirCitaPaciente getPanelPedirCitaPaciente() {
+		return panelPedirCitaPaciente;
 	}
 	
 

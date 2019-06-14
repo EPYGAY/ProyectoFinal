@@ -1,6 +1,7 @@
 package vistas.controlador;
 
 import modelo.vista.PersonaMV;
+import utiles.Especialidad;
 import vista.comunes.PanelDatosPersonales;
 
 public class ControladorPanelDatosPersonales {
@@ -12,7 +13,10 @@ public class ControladorPanelDatosPersonales {
 		panel.txtDireccion.setText(persona.getDireccion());
 		panel.textTelefono.setText(persona.getTelefono());
 		panel.textNacimiento.setText(persona.getFechaNacimiento());
-		
+		if (persona.getEspecialidad() != null && panel.getTxtEspecialidad() != null) {
+			panel.getTxtEspecialidad().setText(persona.getEspecialidad().toString());
+		}
+
 	}
 
 	public PersonaMV obtenerDatos(PanelDatosPersonales panel) {
@@ -25,6 +29,9 @@ public class ControladorPanelDatosPersonales {
 		modelo.setDireccion(panel.txtDireccion.getText());
 		modelo.setTelefono(panel.textTelefono.getText());
 		modelo.setFechaNacimiento(panel.textNacimiento.getText());
+		if (panel.getEspecialidad() != null) {
+			modelo.setEspecialidad((Especialidad) panel.getEspecialidad().getSelectedItem());
+		}
 		return modelo;
 	}
 

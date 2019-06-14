@@ -7,6 +7,7 @@ public class Cita {
 	private DoctorDTO medico;
 	private DiasDeLaSemana deLaSemana;
 	private boolean eliminado=false;
+	
 	public Cita(Long iD, PacienteDTO paciente, DoctorDTO medico, DiasDeLaSemana deLaSemana, boolean eliminado) {
 		super();
 		ID = iD;

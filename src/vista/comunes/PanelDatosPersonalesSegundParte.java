@@ -18,7 +18,7 @@ public class PanelDatosPersonalesSegundParte extends JPanel{
 	protected JComboBox comboBox;
 	public JComboBox comboBox_1;
 	public JComboBox comboBox_2;
-	private Especialidad especialidad;
+	private JComboBox especialidad;
 	
 	public PanelDatosPersonalesSegundParte() {
 		setBackground(new Color(240, 230, 140));
@@ -35,12 +35,12 @@ public class PanelDatosPersonalesSegundParte extends JPanel{
 		lblHorario.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHorario.setFont(new Font("Microsoft YaHei", Font.BOLD, 12));
 		
-		comboBox = new JComboBox();
-		comboBox.setFont(new Font("Tahoma", Font.BOLD, 11));
+		especialidad = new JComboBox();
+		especialidad.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		comboBox.addItem(especialidad.PRIMARIO);
-		comboBox.addItem(especialidad.ESPECILISTA);
-		comboBox.addItem(especialidad.CIRUJANO);
+		especialidad.addItem(Especialidad.PRIMARIO);
+		especialidad.addItem(Especialidad.ESPECILISTA);
+		especialidad.addItem(Especialidad.CIRUJANO);
 		
 		comboBox_1 = new JComboBox();
 		comboBox_1.setFont(new Font("Tahoma", Font.BOLD, 11)); 
@@ -64,7 +64,7 @@ public class PanelDatosPersonalesSegundParte extends JPanel{
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
-								.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(especialidad, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE))))
 					.addGap(60))
 		);
 		groupLayout.setVerticalGroup(
@@ -73,7 +73,7 @@ public class PanelDatosPersonalesSegundParte extends JPanel{
 					.addGap(14)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblApellido, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+						.addComponent(especialidad, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
@@ -121,4 +121,14 @@ public class PanelDatosPersonalesSegundParte extends JPanel{
 	public void setComboBox_2(JComboBox comboBox_2) {
 		this.comboBox_2 = comboBox_2;
 	}
+
+	public JComboBox getEspecialidad() {
+		return especialidad;
+	}
+
+	public void setEspecialidad(JComboBox especialidad) {
+		this.especialidad = especialidad;
+	}
+	
+	
 }

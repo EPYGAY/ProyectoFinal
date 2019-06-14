@@ -81,6 +81,8 @@ public class PanelConsultaBajaMedico extends JPanel {
 		
 		label = new JLabel("");
 		label.setIcon(new ImageIcon(imagen));
+		
+		panelDatosPersonales.setTxtEspecialidad(textEspecialidad);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

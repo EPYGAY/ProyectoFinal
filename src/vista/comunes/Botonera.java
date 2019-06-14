@@ -73,10 +73,10 @@ public class Botonera extends JPanel {
 						fondoBlanco();
 						JButton miBoton = ((JButton) e.getSource());
 						
-						if (miBoton.getBackground()==Color.BLUE) {
+						if (miBoton.getBackground()==Color.MAGENTA) {
 							miBoton.setBackground(Color.WHITE);
 						}else {
-							miBoton.setBackground(Color.BLUE);
+							miBoton.setBackground(Color.MAGENTA);
 						}
 						
 						
