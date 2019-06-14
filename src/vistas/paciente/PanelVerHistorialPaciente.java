@@ -2,6 +2,7 @@ package vistas.paciente;
 import java.awt.Font;
 
 import javax.swing.GroupLayout;
+import javax.swing.JComboBox;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,12 +20,14 @@ import java.awt.FlowLayout;
 public class PanelVerHistorialPaciente extends JPanel {
 	private JTable tableConsultas;
 	private JTable tableTratamiento;
+	private JTable tableVerHistorial;
+	PanelComboBox panelComboBox;
 
 	/**
 	 * Create the panel.
 	 */
 	public PanelVerHistorialPaciente() {
-		setBackground(new Color(240, 230, 140));
+		setBackground(new Color(204, 204, 153));
 		JLabel lblCierreOperaciones = new JLabel("Historial Paciente ");
 		lblCierreOperaciones.setFont(new Font("Tahoma", Font.BOLD, 25));
 		
@@ -40,7 +43,9 @@ public class PanelVerHistorialPaciente extends JPanel {
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout(0, 0));
-		panel.add(new PanelComboBox("Paciente","ID"));
+		panelComboBox = new PanelComboBox("Paciente","ID");
+		panelComboBox.setBackground(new Color(204, 204, 153));
+		panel.add(panelComboBox);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -76,19 +81,20 @@ public class PanelVerHistorialPaciente extends JPanel {
 					.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 173, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(33, Short.MAX_VALUE))
 		);
-		
-		String nombresColumnasT[]={"Paciente","medicamento","posologia", "fecha inicio", "fecha fin"};
-		String dataT[][]={{"Gonzalo Berceo, Jonathan","omeprazol","cada 8 horas","10/06/2019","16/06/2019"}};
+
+		tableVerHistorial = new JTable();
+		tableVerHistorial.setBackground(new Color(204, 204, 204));
 		Font font = new Font("Tahoma", Font.PLAIN, 16);
-		DefaultTableModel defaultTableModelT = new DefaultTableModel(dataT,nombresColumnasT);
-		tableTratamiento = new JTable(defaultTableModelT);
-		tableTratamiento.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		scrollPane_1.setViewportView(tableTratamiento);
+		tableVerHistorial.setFont(font);
+		tableVerHistorial.getTableHeader().setFont(font);
+		
+		scrollPane.setViewportView(tableVerHistorial);
+		setLayout(groupLayout);
 		
 		
 		
 		
-		String nombresColumnas[]={"Paciente	","tipo","fecha", "medico"};
+		/*String nombresColumnas[]={"Paciente	","tipo","fecha", "medico"};
 		String data[][]={{"Gonzalo Berceo, Jonathan","Consulta primaria","16/06/2019","Jovellanos pursuy,Benito"}};
 		tableConsultas = new JTable();
 		tableConsultas.setFont(font);
@@ -96,8 +102,25 @@ public class PanelVerHistorialPaciente extends JPanel {
 		DefaultTableModel defaultTableModel = new DefaultTableModel(data,nombresColumnas);
 		tableConsultas.setModel(defaultTableModel);
 		scrollPane.setViewportView(tableConsultas);
-		setLayout(groupLayout);
+		setLayout(groupLayout);*/
 		
 		
+	}
+	
+
+
+	
+	public JComboBox getComboBoxIDHistorial() {
+		return panelComboBox.getComboBoxID();
+	}
+	public JComboBox getComboBoxNombreHistorial() {
+		return panelComboBox.getComboBoxNombre();
+	}
+	public JTable getTableVerHistorial() {
+		return tableVerHistorial;
+	}
+
+	public void setTableVerHistorial(JTable tableVerHistorial) {
+		this.tableVerHistorial = tableVerHistorial;
 	}
 }

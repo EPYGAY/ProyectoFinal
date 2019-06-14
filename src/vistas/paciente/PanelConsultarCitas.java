@@ -24,7 +24,7 @@ public class PanelConsultarCitas extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelConsultarCitas() {
-		setBackground(new Color(240, 230, 140));
+		setBackground(new Color(204, 204, 153));
 
 		JLabel lblCierreOperaciones = new JLabel("Citas Pendiente Paciente ");
 		lblCierreOperaciones.setFont(new Font("Tahoma", Font.BOLD, 25));
@@ -34,6 +34,7 @@ public class PanelConsultarCitas extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout(0, 0));
 		panelComboBox=new PanelComboBox("Paciente", "ID");
+		panelComboBox.setBackground(new Color(204, 204, 153));
 		panel.add(panelComboBox);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -60,6 +61,7 @@ public class PanelConsultarCitas extends JPanel {
 		
 		
 		table = new JTable();
+		table.setBackground(new Color(204, 204, 204));
 		Font font = new Font("Tahoma", Font.PLAIN, 16);
 		table.setFont(font);
 		table.getTableHeader().setFont(font);

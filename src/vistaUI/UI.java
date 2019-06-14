@@ -47,6 +47,7 @@ import javax.swing.JTextField;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 import javax.swing.border.MatteBorder;
+import javax.swing.GroupLayout;
 
 public class UI extends JFrame {
 
@@ -86,11 +87,14 @@ public class UI extends JFrame {
 		setBounds(90, 50, 1200, 660);
 
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(240, 230, 140));
+		contentPane.setBackground(new Color(218, 165, 32));
 		contentPane.setForeground(new Color(240, 230, 140));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
+		GroupLayout groupLayout = (GroupLayout) inicio.getLayout();
+		groupLayout.setAutoCreateGaps(true);
+		inicio.setBorder(new LineBorder(new Color(0, 0, 0), 0));
 		
 		contentPane.add(inicio);
 		//PACIENTE
@@ -127,11 +131,12 @@ public class UI extends JFrame {
 
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBorder(new LineBorder(new Color(0, 0, 0), 0));
-		menuBar.setBackground(new Color(204, 204, 51));
+		menuBar.setBackground(new Color(218, 165, 32));
 		menuBar.setForeground(new Color(0, 0, 0));
 		setJMenuBar(menuBar);
 
 		JMenu mnPaciente = new JMenu("   Paciente   ");
+		mnPaciente.setBorder(new MatteBorder(1, 1, 1, 0, (Color) new Color(0, 0, 0)));
 		
 		
 		mnPaciente.setBackground(new Color(218, 165, 32));
@@ -242,6 +247,7 @@ public class UI extends JFrame {
 		mnPaciente.add(mntmVerHistorial);
 
 		JMenu mnMedico = new JMenu("   Medico   ");
+		mnMedico.setBorder(new MatteBorder(1, 1, 1, 0, (Color) new Color(0, 0, 0)));
 		
 		mnMedico.setBackground(new Color(139, 0, 139));
 		mnMedico.setHorizontalAlignment(SwingConstants.CENTER);
@@ -293,6 +299,7 @@ public class UI extends JFrame {
 		mnMedico.add(mntmAtenderCita);
 
 		JMenu mnOperacion = new JMenu("   Operacion   ");
+		mnOperacion.setBorder(new MatteBorder(1, 1, 1, 0, (Color) new Color(0, 0, 0)));
 		mnOperacion.setBackground(new Color(139, 69, 19));
 		mnOperacion.setFont(new Font("Alef", Font.PLAIN, 32));
 		menuBar.add(mnOperacion);
@@ -311,14 +318,14 @@ public class UI extends JFrame {
 		hora = new JTextField();
 		hora.setForeground(new Color(0, 0, 0));
 		hora.setBackground(new Color(210, 180, 140));
-		hora.setBorder(new MatteBorder(0, 2, 0, 2, (Color) new Color(0, 0, 0)));
+		hora.setBorder(new MatteBorder(1, 2, 1, 2, (Color) new Color(0, 0, 0)));
 		hora.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		
 		fecha = new JTextField();
 		fecha.setForeground(new Color(0, 0, 0));
 		fecha.setBackground(new Color(210, 180, 140));
-		fecha.setBorder(new MatteBorder(0, 2, 0, 0, (Color) new Color(0, 0, 0)));
+		fecha.setBorder(new MatteBorder(1, 2, 1, 0, (Color) new Color(0, 0, 0)));
 		fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		fecha.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		fecha.setEditable(false);
@@ -345,17 +352,14 @@ public class UI extends JFrame {
         btnPasar.setFont(new Font("Tahoma", Font.BOLD, 16));
         btnPasar.setBackground(new Color(165, 42, 42));
         //HORA
-        Date sistHora=new Date();
-        String pmAm="hh:mm a";
-        SimpleDateFormat format=new SimpleDateFormat(pmAm);
-        Calendar hoy=Calendar.getInstance();
-        hora.setText(String.format(format.format(sistHora),hoy));
+        Timer tiempo=new Timer(100, new UI.horas());
+        tiempo.start();
  
 	}
 	private void asociarPanel(String string) {
 		((CardLayout)contentPane.getLayout()).show(contentPane,string);
 	}
-	
+
 
 	
 	//PACIENTE
@@ -471,9 +475,30 @@ public class UI extends JFrame {
 		return consultaCitaPaciente;
 	}
 	
-	 
+	public JComboBox getComboBoxIDHistorial() {
+		return verHistotialPaciente.getComboBoxIDHistorial();
+	}
+
+	public JComboBox getComboBoxNombreHistorial() {
+		return verHistotialPaciente.getComboBoxNombreHistorial();
+	}
+
 	
-	 
+	public PanelVerHistorialPaciente getPanelVerHistorial() {
+		return verHistotialPaciente;
+	}
+	 class horas implements ActionListener{
+
+	        public void actionPerformed(ActionEvent e){
+	            Date sistHora=new Date();
+	            String pmAm="hh:mm:ss a";
+	            SimpleDateFormat format=new SimpleDateFormat(pmAm);
+	            Calendar hoy=Calendar.getInstance();
+	            hora.setText(String.format(format.format(sistHora),hoy));
+
+
+	        }
+	 }
 	
 	
 }

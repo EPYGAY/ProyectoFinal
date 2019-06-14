@@ -46,7 +46,7 @@ public class PanelBajaModificacionConsultaPaciente extends JPanel {
 		panelPaciente.getPanelDatosPersonales().txtNombre.setVerifyInputWhenFocusTarget(false);
 		panelPaciente.getPanelDatosPersonales().txtNombre.setVerifyInputWhenFocusTarget(false);
 		panelPaciente.getPanelDatosPersonales().setBackground(new Color(240, 230, 140));
-		panelPaciente.panelComboBox.setBackground(new Color(240, 230, 140));
+		panelPaciente.panelComboBox.setBackground(new Color(204, 204, 153));
 		panelPaciente.setBackground(new Color(240, 230, 140));
 		panelMensaje = new PanelMensaje();
 		panelMensaje.setVisible(visbilidadPanelMensaje);

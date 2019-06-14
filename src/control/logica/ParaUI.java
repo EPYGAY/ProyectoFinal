@@ -2,24 +2,26 @@ package control.logica;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
+
 
 import facade.Facade;
-import listener.ComboBox.ActionComboCita;
+import listener.ComboBox.ActionComboCitaConsulta;
+import listener.ComboBox.ActionComboCitaVerHistorial;
 import listener.ComboBox.ActionComboDoctor;
 import listener.ComboBox.ActionComboPaciente;
 import vistaUI.UI;
 import vistas.controlador.ControladorMensaje;
 import vistas.controlador.ControladorPanelDatosPersonales;
-import vistas.controlador.ControladorPanelPedirCitaPaciente;
+import vistas.controlador.ControladorPanelPedirCitaPacienteVerHistorialCitas;
+import vistas.controlador.ControladorPanelPedirCitaPacienteonsultasCitas;
 
 public class ParaUI extends UI {
 
 	protected static final ParaUI panelPedirCitaPaciente = null;
 	private Facade facade = new Facade();
 	private ControladorPanelDatosPersonales controladorPanelDatosPersonales = new ControladorPanelDatosPersonales();
-	private ControladorPanelPedirCitaPaciente controladorPanelPedirCitaPaciente= new ControladorPanelPedirCitaPaciente();
+	private ControladorPanelPedirCitaPacienteonsultasCitas ControladorPanelPedirCitaPacienteonsultasCitas= new ControladorPanelPedirCitaPacienteonsultasCitas();
+	private ControladorPanelPedirCitaPacienteVerHistorialCitas controladorPanelPedirCitaPacienteVerHistorialCitas= new ControladorPanelPedirCitaPacienteVerHistorialCitas();
 	private ControladorMensaje controladorMensaje = new ControladorMensaje();
 
 	public ParaUI() {
@@ -41,7 +43,7 @@ public class ParaUI extends UI {
 	
 	ActionListener citaPrimariaListener=new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			facade.guardarCita(controladorPanelPedirCitaPaciente.obtenerDatos(citaPrimario.getPanelPedirCitaPaciente()));
+			facade.guardarCita(ControladorPanelPedirCitaPacienteonsultasCitas.obtenerDatos(citaPrimario.getPanelPedirCitaPaciente()));
 			//controladorMensaje.mostrarMensajes(citaPrimario.getPanelMensaje(), "Registrada Cita Primaria correctamente");
 
 		}
@@ -93,7 +95,7 @@ public class ParaUI extends UI {
 	
 	ActionListener citaEspecialistaListener=new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			facade.guardarCita(controladorPanelPedirCitaPaciente.obtenerDatos(citaEspecialista.getPanelPedirCitaPaciente()));
+			facade.guardarCita(ControladorPanelPedirCitaPacienteonsultasCitas.obtenerDatos(citaEspecialista.getPanelPedirCitaPaciente()));
 
 		}
 	};
@@ -205,7 +207,7 @@ public class ParaUI extends UI {
 		getComboBoxNombreCiaEspecialistaDoctor().addFocusListener(actionComboCitaEspecialistaDoctor);
 		getComboBoxNombreCiaEspecialistaDoctor().addActionListener(actionComboCitaEspecialistaDoctor);
 		
-		ActionComboCita actionComboConsultarCitasPaciente = new ActionComboCita(getComboBoxIDConsultarCitas(), getComboBoxNombreConsultarCitas(), facade, controladorPanelPedirCitaPaciente, getPanelConsultarCitas());
+		ActionComboCitaConsulta actionComboConsultarCitasPaciente = new ActionComboCitaConsulta(getComboBoxIDConsultarCitas(), getComboBoxNombreConsultarCitas(), facade, ControladorPanelPedirCitaPacienteonsultasCitas, getPanelConsultarCitas());
 
 		getComboBoxIDConsultarCitas().addFocusListener(actionComboConsultarCitasPaciente);
 		getComboBoxIDConsultarCitas().addActionListener(actionComboConsultarCitasPaciente);
@@ -213,7 +215,16 @@ public class ParaUI extends UI {
 		getComboBoxNombreConsultarCitas().addFocusListener(actionComboConsultarCitasPaciente);
 		getComboBoxNombreConsultarCitas().addActionListener(actionComboConsultarCitasPaciente);
 		
+		ActionComboCitaVerHistorial actionComboVerHistorialPaciente = new ActionComboCitaVerHistorial(getComboBoxIDHistorial(), getComboBoxNombreHistorial(), facade, controladorPanelPedirCitaPacienteVerHistorialCitas, getPanelVerHistorial());
+		getComboBoxIDHistorial().addFocusListener(actionComboVerHistorialPaciente);
+		getComboBoxIDHistorial().addActionListener(actionComboVerHistorialPaciente);
+
+		getComboBoxNombreHistorial().addFocusListener(actionComboVerHistorialPaciente);
+		getComboBoxNombreHistorial().addActionListener(actionComboVerHistorialPaciente);
+	
 	}
+
+
 	
 	
 	

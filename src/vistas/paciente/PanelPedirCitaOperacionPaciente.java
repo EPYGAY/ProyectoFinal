@@ -20,6 +20,7 @@ import java.awt.Color;
 import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.SystemColor;
 
 public class PanelPedirCitaOperacionPaciente extends JPanel {
 PanelComboBox combo= null;
@@ -35,18 +36,23 @@ Botonera botonera;
 		
 		panel.setLayout(new BorderLayout(0, 0));
 		PanelComboBox panelComboBox = new PanelComboBox("Paciente", "ID");
+		panelComboBox.getComboBoxID().setBackground(SystemColor.activeCaption);
+		panelComboBox.getComboBoxNombre().setBackground(SystemColor.activeCaption);
 		panelComboBox.setBackground(new Color(240, 230, 140));
 		panel.add(panelComboBox);
 		
 		JComboBox comboBox = new JComboBox();
 		
 		JLabel lblTipo = new JLabel("Tipo");
+		lblTipo.setFont(new Font("Tahoma", Font.BOLD, 15));
 		
 		JLabel lblCirujano = new JLabel("Cirujano");
+		lblCirujano.setFont(new Font("Tahoma", Font.BOLD, 15));
 		
 		JComboBox comboBox_1 = new JComboBox();
 		
 		JLabel lblFechasDisponibles = new JLabel("Fechas Disponibles");
+		lblFechasDisponibles.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		JComboBox comboBox_2 = new JComboBox();
 		
