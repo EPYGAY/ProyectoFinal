@@ -1,4 +1,4 @@
-package control.logica;
+package listener.ComboBox;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.swing.JComboBox;
 
+import control.logica.Item;
 import facade.Facade;
 import vista.comunes.PanelDatosPersonales;
 import vistas.controlador.ControladorPanelDatosPersonales;

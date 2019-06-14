@@ -6,7 +6,9 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
 import facade.Facade;
-
+import listener.ComboBox.ActionComboCita;
+import listener.ComboBox.ActionComboDoctor;
+import listener.ComboBox.ActionComboPaciente;
 import vistaUI.UI;
 import vistas.controlador.ControladorMensaje;
 import vistas.controlador.ControladorPanelDatosPersonales;
@@ -21,12 +23,8 @@ public class ParaUI extends UI {
 	private ControladorMensaje controladorMensaje = new ControladorMensaje();
 
 	public ParaUI() {
-		
-		
 		rellenarComboBox();
 		setActionListener();
-		
-		
 	}
 	
 	ActionListener altaPacienteListener=new ActionListener() {
@@ -47,79 +45,78 @@ public class ParaUI extends UI {
 
 		}
 	};
+	
+	ActionListener modificacionPacienteListener=new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			if (facade.modificarPaciente(
+					controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesModificacionPaciente()))) {
+				controladorMensaje.mostrarMensajes(modificacionPaciente.getPanelMensaje(),
+						"Modificado correctamente");
+				controladorPanelDatosPersonales.vaciarDatos(modificacionPaciente.getPanelDatosPersonales());
+			} else {
+				controladorMensaje.mostrarMensajes(modificacionPaciente.getPanelMensaje(), "Campos erróneos");
+			}
+		}
+	};
 
+	ActionListener bajaPacienteListener=new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			facade.darBajaPaciente(
+					controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesBajaPaciente()));
+			controladorPanelDatosPersonales.vaciarDatos(bajaPaciente.getPanelDatosPersonales());
+			controladorMensaje.mostrarMensajes(bajaPaciente.getPanelMensaje(), "Baja correctamente");
+
+		}
+	};
+	
+	ActionListener altaMedicoListener=new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			if (facade.guardarDoctor(
+					controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPesonalesAltaDoctor()))) {
+				controladorMensaje.mostrarMensajes(altaMedico.getPanelMensaje(), "Alta correctamente");
+				controladorPanelDatosPersonales.vaciarDatos(altaMedico.getPanelDatosPersonales());
+			} else {
+				controladorMensaje.mostrarMensajes(altaMedico.getPanelMensaje(), "Campos erróneos");
+			}
+
+		}
+	};
+	
+	ActionListener bajaMedicoListener=new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			facade.darBajaDoctor(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesBajaDoctor()));
+			controladorPanelDatosPersonales.vaciarDatos(bajaMedico.getPanelDatosPersonales());
+			controladorMensaje.mostrarMensajes(bajaMedico.getPanelMensaje(), "Baja correctamente");
+		}
+	};
+	
+	ActionListener citaEspecialistaListener=new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			facade.guardarCita(controladorPanelPedirCitaPaciente.obtenerDatos(citaEspecialista.getPanelPedirCitaPaciente()));
+
+		}
+	};
+	
+	ActionListener pasarHoraListener=new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+     		
+     	}
+	};
+	
 	private void setActionListener() {
-		// PACIENTES
+				// PACIENTES
 				altaPaciente.panelMensaje.getBtnAplicr().addActionListener(altaPacienteListener);
-
-				
-				modificacionPaciente.panelMensaje.getBtnAplicr().addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if (facade.modificarPaciente(
-								controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesModificacionPaciente()))) {
-							controladorMensaje.mostrarMensajes(modificacionPaciente.getPanelMensaje(),
-									"Modificado correctamente");
-							controladorPanelDatosPersonales.vaciarDatos(modificacionPaciente.getPanelDatosPersonales());
-						} else {
-							controladorMensaje.mostrarMensajes(modificacionPaciente.getPanelMensaje(), "Campos erróneos");
-						}
-					}
-				});
-
-				bajaPaciente.panelMensaje.getBtnAplicr().addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						facade.darBajaPaciente(
-								controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesBajaPaciente()));
-						controladorPanelDatosPersonales.vaciarDatos(bajaPaciente.getPanelDatosPersonales());
-						controladorMensaje.mostrarMensajes(bajaPaciente.getPanelMensaje(), "Baja correctamente");
-
-					}
-				});
+				modificacionPaciente.panelMensaje.getBtnAplicr().addActionListener(modificacionPacienteListener);
+				bajaPaciente.panelMensaje.getBtnAplicr().addActionListener(bajaPacienteListener);
 
 				// MEDICOS
-				altaMedico.panelMensaje.btnAplicr.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if (facade.guardarDoctor(
-								controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPesonalesAltaDoctor()))) {
-							controladorMensaje.mostrarMensajes(altaMedico.getPanelMensaje(), "Alta correctamente");
-							controladorPanelDatosPersonales.vaciarDatos(altaMedico.getPanelDatosPersonales());
-						} else {
-							controladorMensaje.mostrarMensajes(altaMedico.getPanelMensaje(), "Campos erróneos");
-						}
-
-					}
-				});
-				
-				bajaMedico.panelMensaje.btnAplicr.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						facade.darBajaDoctor(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesBajaDoctor()));
-						controladorPanelDatosPersonales.vaciarDatos(bajaMedico.getPanelDatosPersonales());
-						controladorMensaje.mostrarMensajes(bajaMedico.getPanelMensaje(), "Baja correctamente");
-					}
-				});
+				altaMedico.panelMensaje.btnAplicr.addActionListener(altaMedicoListener);
+				bajaMedico.panelMensaje.btnAplicr.addActionListener(bajaMedicoListener);
 				// CITAS
-
-				
-
-				citaPrimario.getPanelMensajePedirCitaPaciente().getBtnAplicr()
-						.addActionListener(citaPrimariaListener);
-
-			
-				
-				/*citaEspecialista.getPanelMensajePedirCitaPaciente().getBtnAplicr()
-				.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						System.out.println("Espacialista");
-
-					}
-				});
-				*/
-				
-				 btnPasar.addActionListener(new ActionListener() {
-				     	public void actionPerformed(ActionEvent arg0) {
-				     		
-				     	}
-				     });
+				citaPrimario.getPanelMensajePedirCitaPaciente().getBtnAplicr().addActionListener(citaPrimariaListener);
+				citaEspecialista.getPanelMensajePedirCitaPaciente().getBtnAplicr().addActionListener(citaEspecialistaListener);
+				//PASAR HORA
+				 btnPasar.addActionListener(pasarHoraListener);
 		
 	}
 
