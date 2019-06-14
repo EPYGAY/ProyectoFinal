@@ -3,6 +3,8 @@ package modelo.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import utiles.Especialidad;
+
 
 public class CitaDTO implements Serializable{
 	private Long ID;
@@ -11,6 +13,7 @@ public class CitaDTO implements Serializable{
 	private Date fecha;
 	private boolean confirmacionFecha;
 	private String observaciones;
+	private Especialidad especialidad;
 	
 	
 	public CitaDTO() {
@@ -22,6 +25,7 @@ public class CitaDTO implements Serializable{
 			String observaciones) {
 		super();
 		ID = iD;
+		this.especialidad=medico.getEspecialidad();
 		this.paciente = paciente;
 		this.medico = medico;
 		this.fecha = fecha;
@@ -87,6 +91,15 @@ public class CitaDTO implements Serializable{
 
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
+	}
+	
+	public Especialidad getTipo() {
+		
+		return especialidad;
+	}
+	
+	public void setTipo(Especialidad especialidad) {
+		this.especialidad=especialidad;
 	}
 
 

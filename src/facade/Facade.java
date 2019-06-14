@@ -67,6 +67,10 @@ public class Facade {
 		return citaNucleo.altaCita(citaMV);
 	}
 
+	public ArrayList<CitaMV> obtenerCita(String idPcaciente) {
+		return citaNucleo.obtenerCita(idPcaciente);
+	}
+
 
 }
 

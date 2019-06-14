@@ -5,8 +5,12 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JComboBox;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
+
+import utiles.Especialidad;
+
 import java.awt.Color;
 
 public class PanelDatosPersonales extends JPanel{
@@ -21,7 +25,12 @@ public class PanelDatosPersonales extends JPanel{
 	public JLabel lblTelefono;
 	public JLabel lblID;
 	private JLabel lblEj;
+	private JComboBox especialidad;
+	private JTextField txtEspecialidad;
 	
+	
+
+
 	public PanelDatosPersonales() {
 		setBackground(new Color(240, 230, 140));
 		
@@ -219,5 +228,23 @@ public class PanelDatosPersonales extends JPanel{
 
 	public void setLblTelefono(JLabel lblTelefono) {
 		this.lblTelefono = lblTelefono;
+	}
+	public JComboBox getEspecialidad() {
+		return especialidad;
+	}
+
+	public void setEspecialidad(JComboBox especialidad) {
+		this.especialidad = especialidad;
+	}
+	public void setEspecialidadValor(Especialidad especialidad) {
+		this.especialidad.setSelectedItem(especialidad);;
+	}
+
+	public JTextField getTxtEspecialidad() {
+		return txtEspecialidad;
+	}
+
+	public void setTxtEspecialidad(JTextField txtEspecialidad) {
+		this.txtEspecialidad = txtEspecialidad;
 	}
 }

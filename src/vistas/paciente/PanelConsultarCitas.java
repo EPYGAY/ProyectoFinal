@@ -3,6 +3,7 @@ import java.awt.Font;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -18,7 +19,7 @@ import java.awt.FlowLayout;
 
 public class PanelConsultarCitas extends JPanel {
 	private JTable table;
-
+	PanelComboBox panelComboBox;
 	/**
 	 * Create the panel.
 	 */
@@ -32,7 +33,8 @@ public class PanelConsultarCitas extends JPanel {
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout(0, 0));
-		panel.add(new PanelComboBox("Paciente", "ID"));
+		panelComboBox=new PanelComboBox("Paciente", "ID");
+		panel.add(panelComboBox);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -56,17 +58,35 @@ public class PanelConsultarCitas extends JPanel {
 					.addContainerGap(44, Short.MAX_VALUE))
 		);
 		
-		String nombresColumnas[]={"Paciente	","tipo","fecha", "medico"};
-		String data[][]={{"Gonzalo Berceo, Jonathan","Consulta primaria","16/06/2019","Jovellanos pursuy,Benito"}};
+		
 		table = new JTable();
 		Font font = new Font("Tahoma", Font.PLAIN, 16);
 		table.setFont(font);
 		table.getTableHeader().setFont(font);
-		DefaultTableModel defaultTableModel = new DefaultTableModel(data,nombresColumnas);
-		table.setModel(defaultTableModel);
+		
 		scrollPane.setViewportView(table);
 		setLayout(groupLayout);
 
 	}
 
+
+	
+
+	public JComboBox getComboBoxConsultarCitasIdPaciente() {
+		return panelComboBox.getComboBoxID();
+	}
+	public JComboBox getComboBoxConsultarCitasNombrePaciente() {
+		return panelComboBox.getComboBoxNombre();
+	}
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+	
+	
+	
 }

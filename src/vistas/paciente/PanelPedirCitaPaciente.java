@@ -37,6 +37,8 @@ private JComboBox comboBoxNombreDoctorCItaPaciente;
 		panel.setBackground(new Color(240, 230, 140));
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		panelComboBox = new PanelComboBox("Paciente", "ID");
+		panelComboBox.getComboBoxNombre().setFont(new Font("Tahoma", Font.BOLD, 16));
+		panelComboBox.getComboBoxID().setFont(new Font("Tahoma", Font.BOLD, 16));
 		panelComboBox.getComboBoxID().setForeground(new Color(0, 0, 0));
 		panelComboBox.getComboBoxNombre().setForeground(new Color(0, 0, 0));
 		panelComboBox.getComboBoxID().setBackground(new Color(119, 136, 153));
@@ -61,7 +63,7 @@ private JComboBox comboBoxNombreDoctorCItaPaciente;
 		comboBoxNombreDoctorCItaPaciente = new JComboBox();
 		comboBoxNombreDoctorCItaPaciente.setForeground(Color.WHITE);
 		comboBoxNombreDoctorCItaPaciente.setFont(new Font("Tahoma", Font.BOLD, 15));
-		comboBoxNombreDoctorCItaPaciente.setBackground(new Color(153, 51, 0));
+		comboBoxNombreDoctorCItaPaciente.setBackground(new Color(85, 107, 47));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -86,11 +88,11 @@ private JComboBox comboBoxNombreDoctorCItaPaciente;
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(comboBoxNombreDoctorCItaPaciente, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)))
+							.addGap(11)
+							.addComponent(comboBoxNombreDoctorCItaPaciente, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(6)

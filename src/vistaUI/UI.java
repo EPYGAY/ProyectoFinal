@@ -36,12 +36,17 @@ import vistas.paciente.PanelVerHistorialPaciente;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.swing.JTextField;
 import java.awt.Dimension;
+import java.awt.BorderLayout;
+import javax.swing.border.MatteBorder;
 
 public class UI extends JFrame {
 
@@ -66,8 +71,9 @@ public class UI extends JFrame {
 	 protected PanelPedirCitaOperacionPaciente operacion= new PanelPedirCitaOperacionPaciente();
 	 //Operacion
 	 protected PanelCierreOperacion cierreOperacion= new PanelCierreOperacion();
-	 private JTextField fecha;
-	 private JTextField hora;
+	 protected JTextField fecha;
+	 protected JTextField hora;
+	 protected JButton btnPasar;
 	
 	
 	public UI() {
@@ -304,16 +310,16 @@ public class UI extends JFrame {
 		
 		hora = new JTextField();
 		hora.setForeground(new Color(0, 0, 0));
-		hora.setBackground(new Color(240, 230, 140));
-		hora.setBorder(new LineBorder(new Color(171, 173, 179), 0));
-		hora.setHorizontalAlignment(SwingConstants.LEFT);
+		hora.setBackground(new Color(210, 180, 140));
+		hora.setBorder(new MatteBorder(0, 2, 0, 2, (Color) new Color(0, 0, 0)));
+		hora.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		
 		fecha = new JTextField();
 		fecha.setForeground(new Color(0, 0, 0));
-		fecha.setBackground(new Color(240, 230, 140));
-		fecha.setBorder(new LineBorder(new Color(171, 173, 179), 0));
-		fecha.setHorizontalAlignment(SwingConstants.RIGHT);
+		fecha.setBackground(new Color(210, 180, 140));
+		fecha.setBorder(new MatteBorder(0, 2, 0, 0, (Color) new Color(0, 0, 0)));
+		fecha.setHorizontalAlignment(SwingConstants.CENTER);
 		fecha.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		fecha.setEditable(false);
 		menuBar.add(fecha);
@@ -327,10 +333,23 @@ public class UI extends JFrame {
         Date sistFecha=new Date();
         SimpleDateFormat formato=new SimpleDateFormat(" dd / MM / YYYY ");
         fecha.setText(formato.format(sistFecha));
+        
+        JPanel panel = new JPanel();
+        menuBar.add(panel);
+        panel.setLayout(new BorderLayout(0, 0));
+        
+        btnPasar = new JButton("PASAR");
+        
+        btnPasar.setForeground(new Color(255, 255, 255));
+        panel.add(btnPasar, BorderLayout.CENTER);
+        btnPasar.setFont(new Font("Tahoma", Font.BOLD, 16));
+        btnPasar.setBackground(new Color(165, 42, 42));
         //HORA
-        Timer tiempo=new Timer(100, new UI.horas());
-         tiempo.start(); 
-		
+        Date sistHora=new Date();
+        String pmAm="hh:mm a";
+        SimpleDateFormat format=new SimpleDateFormat(pmAm);
+        Calendar hoy=Calendar.getInstance();
+        hora.setText(String.format(format.format(sistHora),hoy));
  
 	}
 	private void asociarPanel(String string) {
@@ -399,6 +418,8 @@ public class UI extends JFrame {
 	public PanelDatosPersonales getPanelDatosPesonalesAltaDoctor() {
 		return altaMedico.getPanelDatosPersonales();
 	}
+	
+	
 
 	public JComboBox getComboBoxIdBajaDoctor() {
 		return bajaMedico.getComboId();
@@ -428,19 +449,31 @@ public class UI extends JFrame {
 	public JComboBox getComboBoxIdCiaPrimariaDoctor() {
 		return citaPrimario.getPanelPedirCitaPacienteIDDoctor();
 	}
+	public JComboBox getComboBoxIdCitaEspecialista() {
+		return citaEspecialista.getPanelPedirCitaPacienteNombre();
+	}
+	public JComboBox getComboBoxNombreCitaEspecialista() {
+		return citaEspecialista.getPanelPedirCitaPacienteid();
+	}
+	public JComboBox getComboBoxNombreCiaEspecialistaDoctor() {
+		return citaEspecialista.getPanelPedirCitaPacienteNombreDoctor();
+	}
+	public JComboBox getComboBoxIdCiaEspecialistaDoctor() {
+		return citaEspecialista.getPanelPedirCitaPacienteIDDoctor();
+	}
 	
-	 class horas implements ActionListener{
-		    
-	        public void actionPerformed(ActionEvent e){
-	            Date sistHora=new Date();
-	            String pmAm="hh:mm:ss a";
-	            SimpleDateFormat format=new SimpleDateFormat(pmAm);
-	            Calendar hoy=Calendar.getInstance();
-	            hora.setText(String.format(format.format(sistHora),hoy));
-	            
-	                  
-	        }
-	 }
+	public JComboBox getComboBoxNombreConsultarCitas() {
+		return consultaCitaPaciente.getComboBoxConsultarCitasNombrePaciente();
+	}
+	public JComboBox getComboBoxIDConsultarCitas() {
+		return consultaCitaPaciente.getComboBoxConsultarCitasIdPaciente();
+	}
+	public PanelConsultarCitas getPanelConsultarCitas() {
+		return consultaCitaPaciente;
+	}
+	
+	 
+	
 	 
 	
 	
