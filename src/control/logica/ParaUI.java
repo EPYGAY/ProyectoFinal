@@ -42,6 +42,7 @@ public class ParaUI extends UI {
 	ActionListener citaPrimariaListener=new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			facade.guardarCita(controladorPanelPedirCitaPaciente.obtenerDatos(citaPrimario.getPanelPedirCitaPaciente()));
+			//controladorMensaje.mostrarMensajes(citaPrimario.getPanelMensaje(), "Registrada Cita Primaria correctamente");
 
 		}
 	};
@@ -102,6 +103,8 @@ public class ParaUI extends UI {
      		
      	}
 	};
+	
+
 	
 	private void setActionListener() {
 				// PACIENTES

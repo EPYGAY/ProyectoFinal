@@ -8,7 +8,7 @@ public class CitaMV {
 	private Long ID;
 	private String idPaciente;
 	private String idMedico;
-	private Date fecha;
+	private String fecha;
 	private boolean confirmacionFecha;
 	private String observaciones;
 	private String nombreMedico;
@@ -18,7 +18,7 @@ public class CitaMV {
 	
 
 
-	public CitaMV(Long iD, String idPaciente, String idMedico, Date fecha, boolean confirmacionFecha,
+	public CitaMV(Long iD, String idPaciente, String idMedico, String fecha, boolean confirmacionFecha,
 			String observaciones) {
 		super();
 		ID = iD;
@@ -57,11 +57,11 @@ public class CitaMV {
 	}
 	
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 

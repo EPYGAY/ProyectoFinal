@@ -10,7 +10,7 @@ public class CitaDTO implements Serializable{
 	private Long ID;
 	private PacienteDTO paciente;
 	private DoctorDTO medico;
-	private Date fecha;
+	private String fecha;
 	private boolean confirmacionFecha;
 	private String observaciones;
 	private Especialidad especialidad;
@@ -21,7 +21,7 @@ public class CitaDTO implements Serializable{
 	}
 
 
-	public CitaDTO(Long iD, PacienteDTO paciente, DoctorDTO medico, Date fecha, boolean confirmacionFecha,
+	public CitaDTO(Long iD, PacienteDTO paciente, DoctorDTO medico, String fecha, boolean confirmacionFecha,
 			String observaciones) {
 		super();
 		ID = iD;
@@ -64,12 +64,12 @@ public class CitaDTO implements Serializable{
 	}
 
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
@@ -101,6 +101,9 @@ public class CitaDTO implements Serializable{
 	public void setTipo(Especialidad especialidad) {
 		this.especialidad=especialidad;
 	}
+
+
+
 
 
 	
