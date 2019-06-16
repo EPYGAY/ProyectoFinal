@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import modelo.dto.DoctorDTO;
+import utiles.Especialidad;
 
 public class DoctorDAO {
 	private String rutaCarpeta = "doctor";
@@ -34,6 +35,36 @@ public class DoctorDAO {
 		HashMap<Long,String> mapa = new HashMap<Long,String>();
 		for (DoctorDTO doctor : acceso.getAll()) {
 			if (!doctor.isEliminado()) {
+				mapa.put(doctor.getID(),doctor.getNombre());
+			}
+		}
+		return mapa;
+	}
+	
+
+	public HashMap<Long,String> obtenerMapaIDNombrePrimario() {
+		HashMap<Long,String> mapa = new HashMap<Long,String>();
+		for (DoctorDTO doctor : acceso.getAll()) {
+			if ((!doctor.isEliminado())&&(doctor.getEspecialidad()==Especialidad.PRIMARIO)) {
+				mapa.put(doctor.getID(),doctor.getNombre());
+			}
+		}
+		return mapa;
+	}
+
+	public HashMap<Long,String> obtenerMapaIDNombreEspecialista() {
+		HashMap<Long,String> mapa = new HashMap<Long,String>();
+		for (DoctorDTO doctor : acceso.getAll()) {
+			if ((!doctor.isEliminado())&&(doctor.getEspecialidad()==Especialidad.ESPECILISTA)) {
+				mapa.put(doctor.getID(),doctor.getNombre());
+			}
+		}
+		return mapa;
+	}
+	public HashMap<Long,String> obtenerMapaIDNombreCirujano() {
+		HashMap<Long,String> mapa = new HashMap<Long,String>();
+		for (DoctorDTO doctor : acceso.getAll()) {
+			if ((!doctor.isEliminado())&&(doctor.getEspecialidad()==Especialidad.CIRUJANO)) {
 				mapa.put(doctor.getID(),doctor.getNombre());
 			}
 		}
