@@ -1,12 +1,17 @@
 package vistaUI;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
+import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -15,10 +20,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 
 import vista.comunes.PanelCierreOperacion;
 import vista.comunes.PanelDatosPersonales;
@@ -33,21 +40,6 @@ import vistas.paciente.PanelConsultarCitas;
 import vistas.paciente.PanelPedirCitaOperacionPaciente;
 import vistas.paciente.PanelPedirCitaPrimarioyEspecialistaPaciente;
 import vistas.paciente.PanelVerHistorialPaciente;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-
-import javax.swing.JTextField;
-import java.awt.Dimension;
-import java.awt.BorderLayout;
-import javax.swing.border.MatteBorder;
-import javax.swing.GroupLayout;
 
 public class UI extends JFrame {
 
@@ -62,14 +54,14 @@ public class UI extends JFrame {
 	 protected  PanelBajaModificacionConsultaPaciente modificacionPaciente=new PanelBajaModificacionConsultaPaciente("MODIFICACION PACIENTE",false,false,true,true,false,true,true,"imagenes\\modificarPaciente.png");
 	 protected  PanelConsultarCitas consultaCitaPaciente=new PanelConsultarCitas();
 	 protected  PanelVerHistorialPaciente verHistotialPaciente=new PanelVerHistorialPaciente();
+	 protected PanelPedirCitaPrimarioyEspecialistaPaciente citaPrimario= new PanelPedirCitaPrimarioyEspecialistaPaciente("CITA ATENCION PRIMARIA","Medico",true,true);
+	 protected PanelPedirCitaPrimarioyEspecialistaPaciente citaEspecialista= new PanelPedirCitaPrimarioyEspecialistaPaciente("CITA ESPECIALISTA","Especialista",false,false);
+	 protected PanelPedirCitaOperacionPaciente citaOperacion= new PanelPedirCitaOperacionPaciente();
 	//Medico
 	 protected PanelAltaMedico altaMedico= new PanelAltaMedico("ALTA MEDICO");
 	 protected PanelConsultaBajaMedico bajaMedico= new PanelConsultaBajaMedico("BAJA MEDICO",true,"imagenes\\bajaDoctor.png");
 	 protected PanelConsultaBajaMedico consultaMedico= new PanelConsultaBajaMedico("CONSULTA MEDICO",false,"imagenes\\consultaDoctor.png");
 	 protected PanelAtenderCitaMedico atenderCitaMedico= new PanelAtenderCitaMedico();
-	 protected PanelPedirCitaPrimarioyEspecialistaPaciente citaPrimario= new PanelPedirCitaPrimarioyEspecialistaPaciente("CITA ATENCION PRIMARIA","Medico",true,true);
-	 protected PanelPedirCitaPrimarioyEspecialistaPaciente citaEspecialista= new PanelPedirCitaPrimarioyEspecialistaPaciente("CITA ESPECIALISTA","Especialista",false,false);
-	 protected PanelPedirCitaOperacionPaciente operacion= new PanelPedirCitaOperacionPaciente();
 	 //Operacion
 	 protected PanelCierreOperacion cierreOperacion= new PanelCierreOperacion();
 	 protected JTextField fecha;
@@ -104,7 +96,7 @@ public class UI extends JFrame {
 		contentPane.add(modificacionPaciente,"PanelModificacionPaciente");
 		contentPane.add(citaPrimario,"PanelPedirCitaPrimarioPaciente");
 		contentPane.add(citaEspecialista,"PanelPedirCitaEspecialistaPaciente");
-		contentPane.add(operacion,"PanelPedirCitaOperacionPaciente");
+		contentPane.add(citaOperacion,"PanelPedirCitaOperacionPaciente");
 		contentPane.add(consultaCitaPaciente,"PanelConsultaCitaPaciente");
 		contentPane.add(verHistotialPaciente,"PanelVerHistorialPaciente");
 		
@@ -407,6 +399,7 @@ public class UI extends JFrame {
 	public JComboBox getComboBoxNombreCitaPrimeariaPaciente() {
 		return citaPrimario.getPanelPedirCitaPacienteNombre();
 	}
+
 	 
 	//DOCTOR
 	
@@ -482,6 +475,19 @@ public class UI extends JFrame {
 	public JComboBox getComboBoxNombreHistorial() {
 		return verHistotialPaciente.getComboBoxNombreHistorial();
 	}
+	public JComboBox getComboBoxIdCirujanoPaciente() {
+		return citaOperacion.getPanelComboBoxId();
+	}
+	public JComboBox getComboBoxNombreCirujanoPaciente() {
+		return citaOperacion.getPanelComboBoxNombre();
+	}
+	public JComboBox getComboBoxIdCirujano() {
+		return citaOperacion.getComboBoxIdCirujanoNuevo();
+	}
+	public JComboBox getComboBoxNombreCirujano() {
+		return citaOperacion.getComboBoxNombreCirujanoNuevo();
+	}
+	
 
 	
 	public PanelVerHistorialPaciente getPanelVerHistorial() {

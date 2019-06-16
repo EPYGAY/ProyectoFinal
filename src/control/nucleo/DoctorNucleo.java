@@ -72,5 +72,14 @@ public class DoctorNucleo {
 	public HashMap<Long, String> obtenerMapaIDNombre() {
 		return dao.obtenerMapaIDNombre();
 	}
+	public HashMap<Long, String> obtenerMapaIDNombrePrimario() {
+		return dao.obtenerMapaIDNombrePrimario();
+	}
+	public HashMap<Long, String> obtenerMapaIDNombreEspecialista() {
+		return dao.obtenerMapaIDNombreEspecialista();
+	}
+	public HashMap<Long, String> obtenerMapaIDNombreCirujano() {
+		return dao.obtenerMapaIDNombreCirujano();
+	}
 
 }

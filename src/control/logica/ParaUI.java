@@ -3,11 +3,13 @@ package control.logica;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 import facade.Facade;
 import listener.ComboBox.ActionComboCitaConsulta;
 import listener.ComboBox.ActionComboCitaVerHistorial;
 import listener.ComboBox.ActionComboDoctor;
+import listener.ComboBox.ActionComboDoctorCirujano;
+import listener.ComboBox.ActionComboDoctorEspecialista;
+import listener.ComboBox.ActionComboDoctorPrimario;
 import listener.ComboBox.ActionComboPaciente;
 import vistaUI.UI;
 import vistas.controlador.ControladorMensaje;
@@ -20,16 +22,16 @@ public class ParaUI extends UI {
 	protected static final ParaUI panelPedirCitaPaciente = null;
 	private Facade facade = new Facade();
 	private ControladorPanelDatosPersonales controladorPanelDatosPersonales = new ControladorPanelDatosPersonales();
-	private ControladorPanelPedirCitaPacienteonsultasCitas ControladorPanelPedirCitaPacienteonsultasCitas= new ControladorPanelPedirCitaPacienteonsultasCitas();
-	private ControladorPanelPedirCitaPacienteVerHistorialCitas controladorPanelPedirCitaPacienteVerHistorialCitas= new ControladorPanelPedirCitaPacienteVerHistorialCitas();
+	private ControladorPanelPedirCitaPacienteonsultasCitas ControladorPanelPedirCitaPacienteonsultasCitas = new ControladorPanelPedirCitaPacienteonsultasCitas();
+	private ControladorPanelPedirCitaPacienteVerHistorialCitas controladorPanelPedirCitaPacienteVerHistorialCitas = new ControladorPanelPedirCitaPacienteVerHistorialCitas();
 	private ControladorMensaje controladorMensaje = new ControladorMensaje();
 
 	public ParaUI() {
 		rellenarComboBox();
 		setActionListener();
 	}
-	
-	ActionListener altaPacienteListener=new ActionListener() {
+
+	ActionListener altaPacienteListener = new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			if (facade.guardarPaciente(
 					controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesAltaPaciente()))) {
@@ -40,21 +42,28 @@ public class ParaUI extends UI {
 			}
 		}
 	};
-	
-	ActionListener citaPrimariaListener=new ActionListener() {
+
+	ActionListener citaPrimariaListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			facade.guardarCita(ControladorPanelPedirCitaPacienteonsultasCitas.obtenerDatos(citaPrimario.getPanelPedirCitaPaciente()));
-			//controladorMensaje.mostrarMensajes(citaPrimario.getPanelMensaje(), "Registrada Cita Primaria correctamente");
+			if (facade.guardarCita(ControladorPanelPedirCitaPacienteonsultasCitas
+					.obtenerDatos(citaPrimario.getPanelPedirCitaPaciente()))) {
+				controladorMensaje.mostrarMensajes(citaPrimario.getPanelMensaje(),
+						"Cita Primaria Registrada correctamente");
+
+			} else {
+				controladorMensaje.mostrarMensajes(citaPrimario.getPanelMensaje(),
+						"Cita Primaria NO registrada");
+
+			}
 
 		}
 	};
-	
-	ActionListener modificacionPacienteListener=new ActionListener() {
+
+	ActionListener modificacionPacienteListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			if (facade.modificarPaciente(
 					controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesModificacionPaciente()))) {
-				controladorMensaje.mostrarMensajes(modificacionPaciente.getPanelMensaje(),
-						"Modificado correctamente");
+				controladorMensaje.mostrarMensajes(modificacionPaciente.getPanelMensaje(), "Modificado correctamente");
 				controladorPanelDatosPersonales.vaciarDatos(modificacionPaciente.getPanelDatosPersonales());
 			} else {
 				controladorMensaje.mostrarMensajes(modificacionPaciente.getPanelMensaje(), "Campos erróneos");
@@ -62,20 +71,19 @@ public class ParaUI extends UI {
 		}
 	};
 
-	ActionListener bajaPacienteListener=new ActionListener() {
+	ActionListener bajaPacienteListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			facade.darBajaPaciente(
-					controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesBajaPaciente()));
+			facade.darBajaPaciente(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesBajaPaciente()));
 			controladorPanelDatosPersonales.vaciarDatos(bajaPaciente.getPanelDatosPersonales());
 			controladorMensaje.mostrarMensajes(bajaPaciente.getPanelMensaje(), "Baja correctamente");
 
 		}
 	};
-	
-	ActionListener altaMedicoListener=new ActionListener() {
+
+	ActionListener altaMedicoListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			if (facade.guardarDoctor(
-					controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPesonalesAltaDoctor()))) {
+			if (facade
+					.guardarDoctor(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPesonalesAltaDoctor()))) {
 				controladorMensaje.mostrarMensajes(altaMedico.getPanelMensaje(), "Alta correctamente");
 				controladorPanelDatosPersonales.vaciarDatos(altaMedico.getPanelDatosPersonales());
 			} else {
@@ -84,45 +92,66 @@ public class ParaUI extends UI {
 
 		}
 	};
-	
-	ActionListener bajaMedicoListener=new ActionListener() {
+
+	ActionListener bajaMedicoListener = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			facade.darBajaDoctor(controladorPanelDatosPersonales.obtenerDatos(getPanelDatosPersonalesBajaDoctor()));
 			controladorPanelDatosPersonales.vaciarDatos(bajaMedico.getPanelDatosPersonales());
 			controladorMensaje.mostrarMensajes(bajaMedico.getPanelMensaje(), "Baja correctamente");
 		}
 	};
-	
-	ActionListener citaEspecialistaListener=new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			facade.guardarCita(ControladorPanelPedirCitaPacienteonsultasCitas.obtenerDatos(citaEspecialista.getPanelPedirCitaPaciente()));
 
+	ActionListener citaEspecialistaListener = new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			if (facade.guardarCita(ControladorPanelPedirCitaPacienteonsultasCitas
+					.obtenerDatos(citaEspecialista.getPanelPedirCitaPaciente()))) {
+				controladorMensaje.mostrarMensajes(citaEspecialista.getPanelMensaje(),
+						"Cita Especialista Registrada correctamente");
+			} else {
+				controladorMensaje.mostrarMensajes(citaEspecialista.getPanelMensaje(), "Cita Especialista NO registrada");
+			}
 		}
 	};
-	
-	ActionListener pasarHoraListener=new ActionListener() {
+
+	ActionListener pasarHoraListener = new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
-     		
-     	}
+			
+		}
 	};
-	
+	ActionListener operacionPacienteListener = new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+			//if (facade.guardarCita(ControladorPanelPedirCitaPacienteonsultasCitas
+			//		.obtenerDatos(citaOperacion.getPanelComboBox()))) {
+				controladorMensaje.mostrarMensajes(citaOperacion.getPanelMensaje(),
+					"Cita Operacion Registrada correctamente");
+			//} else {
+				controladorMensaje.mostrarMensajes(citaOperacion.getPanelMensaje(), "Cita Operacion NO registrada");
+			//}
+		}
+	};
 
-	
+
 	private void setActionListener() {
-				// PACIENTES
-				altaPaciente.panelMensaje.getBtnAplicr().addActionListener(altaPacienteListener);
-				modificacionPaciente.panelMensaje.getBtnAplicr().addActionListener(modificacionPacienteListener);
-				bajaPaciente.panelMensaje.getBtnAplicr().addActionListener(bajaPacienteListener);
-
-				// MEDICOS
-				altaMedico.panelMensaje.btnAplicr.addActionListener(altaMedicoListener);
-				bajaMedico.panelMensaje.btnAplicr.addActionListener(bajaMedicoListener);
-				// CITAS
-				citaPrimario.getPanelMensajePedirCitaPaciente().getBtnAplicr().addActionListener(citaPrimariaListener);
-				citaEspecialista.getPanelMensajePedirCitaPaciente().getBtnAplicr().addActionListener(citaEspecialistaListener);
-				//PASAR HORA
-				 btnPasar.addActionListener(pasarHoraListener);
+		// PACIENTES
+		altaPaciente.panelMensaje.getBtnAplicr().addActionListener(altaPacienteListener);
+		modificacionPaciente.panelMensaje.getBtnAplicr().addActionListener(modificacionPacienteListener);
+		bajaPaciente.panelMensaje.getBtnAplicr().addActionListener(bajaPacienteListener);
 		
+		// MEDICOS
+		altaMedico.panelMensaje.btnAplicr.addActionListener(altaMedicoListener);
+		bajaMedico.panelMensaje.btnAplicr.addActionListener(bajaMedicoListener);
+		
+		// CITAS
+		citaPrimario.getPanelMensaje().getBtnAplicr().addActionListener(citaPrimariaListener);
+		citaEspecialista.getPanelMensaje().getBtnAplicr().addActionListener(citaEspecialistaListener);
+		citaOperacion.getPanelMensaje().getBtnAplicr().addActionListener(operacionPacienteListener);
+			
+			
+		// PASAR HORA
+		btnPasar.addActionListener(pasarHoraListener);
+		
+		
+
 	}
 
 	private void rellenarComboBox() {
@@ -141,7 +170,6 @@ public class ParaUI extends UI {
 		getComboBoxIdBajaPaciente().addActionListener(actionComboPacienteBaja);
 		getComboBoxNombreBajaPaciente().addFocusListener(actionComboPacienteBaja);
 		getComboBoxNombreBajaPaciente().addActionListener(actionComboPacienteBaja);
-		
 
 		ActionComboPaciente actionComboPacienteModificacion = new ActionComboPaciente(
 				getComboBoxIdModificacionPaciente(), getComboBoxNombreModificacionPaciente(), facade,
@@ -177,16 +205,16 @@ public class ParaUI extends UI {
 		getComboBoxNombreCitaPrimaria().addFocusListener(actionComboCitaPrimariaPaciente);
 		getComboBoxNombreCitaPrimaria().addActionListener(actionComboCitaPrimariaPaciente);
 
-		ActionComboDoctor actionComboCitaPrimariaDoctor = new ActionComboDoctor(getComboBoxIdCiaPrimariaDoctor(),
+		ActionComboDoctorPrimario actionComboCitaPrimariaDoctorPrimario = new ActionComboDoctorPrimario(getComboBoxIdCiaPrimariaDoctor(),
 				getComboBoxNombreCiaPrimariaDoctor(), facade, controladorPanelDatosPersonales,
 				getPanelDatosPersonalesBajaDoctor());
 
-		getComboBoxIdCiaPrimariaDoctor().addFocusListener(actionComboCitaPrimariaDoctor);
-		getComboBoxIdCiaPrimariaDoctor().addActionListener(actionComboCitaPrimariaDoctor);
+		getComboBoxIdCiaPrimariaDoctor().addFocusListener(actionComboCitaPrimariaDoctorPrimario);
+		getComboBoxIdCiaPrimariaDoctor().addActionListener(actionComboCitaPrimariaDoctorPrimario);
 
-		getComboBoxNombreCiaPrimariaDoctor().addFocusListener(actionComboCitaPrimariaDoctor);
-		getComboBoxNombreCiaPrimariaDoctor().addActionListener(actionComboCitaPrimariaDoctor);
-		
+		getComboBoxNombreCiaPrimariaDoctor().addFocusListener(actionComboCitaPrimariaDoctorPrimario);
+		getComboBoxNombreCiaPrimariaDoctor().addActionListener(actionComboCitaPrimariaDoctorPrimario);
+
 		ActionComboPaciente actionComboCitaEspecialistaPaciente = new ActionComboPaciente(
 				getComboBoxIdCitaEspecialista(), getComboBoxNombreCitaEspecialista(), facade,
 				controladorPanelDatosPersonales, getPanelDatosPersonalesBajaDoctor());
@@ -197,38 +225,57 @@ public class ParaUI extends UI {
 		getComboBoxNombreCitaEspecialista().addFocusListener(actionComboCitaEspecialistaPaciente);
 		getComboBoxNombreCitaEspecialista().addActionListener(actionComboCitaEspecialistaPaciente);
 
-		ActionComboDoctor actionComboCitaEspecialistaDoctor = new ActionComboDoctor(getComboBoxIdCiaEspecialistaDoctor(),
-				getComboBoxNombreCiaEspecialistaDoctor(), facade, controladorPanelDatosPersonales,
-				getPanelDatosPersonalesBajaDoctor());
+		ActionComboDoctorEspecialista actionComboCitaEspecialistaDoctorEspecilaista = new ActionComboDoctorEspecialista(
+				getComboBoxIdCiaEspecialistaDoctor(), getComboBoxNombreCiaEspecialistaDoctor(), facade,
+				controladorPanelDatosPersonales, getPanelDatosPersonalesBajaDoctor());
 
-		getComboBoxIdCiaEspecialistaDoctor().addFocusListener(actionComboCitaEspecialistaDoctor);
-		getComboBoxIdCiaEspecialistaDoctor().addActionListener(actionComboCitaEspecialistaDoctor);
+		getComboBoxIdCiaEspecialistaDoctor().addFocusListener(actionComboCitaEspecialistaDoctorEspecilaista);
+		getComboBoxIdCiaEspecialistaDoctor().addActionListener(actionComboCitaEspecialistaDoctorEspecilaista);
 
-		getComboBoxNombreCiaEspecialistaDoctor().addFocusListener(actionComboCitaEspecialistaDoctor);
-		getComboBoxNombreCiaEspecialistaDoctor().addActionListener(actionComboCitaEspecialistaDoctor);
+		getComboBoxNombreCiaEspecialistaDoctor().addFocusListener(actionComboCitaEspecialistaDoctorEspecilaista);
+		getComboBoxNombreCiaEspecialistaDoctor().addActionListener(actionComboCitaEspecialistaDoctorEspecilaista);
 		
-		ActionComboCitaConsulta actionComboConsultarCitasPaciente = new ActionComboCitaConsulta(getComboBoxIDConsultarCitas(), getComboBoxNombreConsultarCitas(), facade, ControladorPanelPedirCitaPacienteonsultasCitas, getPanelConsultarCitas());
+		ActionComboPaciente actionComboCitaEspecialistaDoctorCirujanoPaciente = new ActionComboPaciente(
+				getComboBoxNombreCirujanoPaciente(), getComboBoxIdCirujanoPaciente(), facade,
+				controladorPanelDatosPersonales, getPanelDatosPersonalesBajaDoctor());
+
+		getComboBoxNombreCirujanoPaciente().addFocusListener(actionComboCitaEspecialistaDoctorCirujanoPaciente);
+		getComboBoxNombreCirujanoPaciente().addActionListener(actionComboCitaEspecialistaDoctorCirujanoPaciente);
+
+		getComboBoxIdCirujanoPaciente().addFocusListener(actionComboCitaEspecialistaDoctorCirujanoPaciente);
+		getComboBoxIdCirujanoPaciente().addActionListener(actionComboCitaEspecialistaDoctorCirujanoPaciente);
+		
+		
+		ActionComboDoctorCirujano actionComboCitaEspecialistaDoctorCirujano = new ActionComboDoctorCirujano(
+				getComboBoxIdCirujano(), getComboBoxNombreCirujano(), facade,
+				controladorPanelDatosPersonales, getPanelDatosPersonalesBajaDoctor());
+
+		getComboBoxIdCirujano().addFocusListener(actionComboCitaEspecialistaDoctorCirujano);
+		getComboBoxIdCirujano().addActionListener(actionComboCitaEspecialistaDoctorCirujano);
+
+		getComboBoxNombreCirujano().addFocusListener(actionComboCitaEspecialistaDoctorCirujano);
+		getComboBoxNombreCirujano().addActionListener(actionComboCitaEspecialistaDoctorCirujano);
+		
+		
+		ActionComboCitaConsulta actionComboConsultarCitasPaciente = new ActionComboCitaConsulta(
+				getComboBoxIDConsultarCitas(), getComboBoxNombreConsultarCitas(), facade,
+				ControladorPanelPedirCitaPacienteonsultasCitas, getPanelConsultarCitas());
 
 		getComboBoxIDConsultarCitas().addFocusListener(actionComboConsultarCitasPaciente);
 		getComboBoxIDConsultarCitas().addActionListener(actionComboConsultarCitasPaciente);
 
 		getComboBoxNombreConsultarCitas().addFocusListener(actionComboConsultarCitasPaciente);
 		getComboBoxNombreConsultarCitas().addActionListener(actionComboConsultarCitasPaciente);
-		
-		ActionComboCitaVerHistorial actionComboVerHistorialPaciente = new ActionComboCitaVerHistorial(getComboBoxIDHistorial(), getComboBoxNombreHistorial(), facade, controladorPanelPedirCitaPacienteVerHistorialCitas, getPanelVerHistorial());
+
+		ActionComboCitaVerHistorial actionComboVerHistorialPaciente = new ActionComboCitaVerHistorial(
+				getComboBoxIDHistorial(), getComboBoxNombreHistorial(), facade,
+				controladorPanelPedirCitaPacienteVerHistorialCitas, getPanelVerHistorial());
 		getComboBoxIDHistorial().addFocusListener(actionComboVerHistorialPaciente);
 		getComboBoxIDHistorial().addActionListener(actionComboVerHistorialPaciente);
 
 		getComboBoxNombreHistorial().addFocusListener(actionComboVerHistorialPaciente);
 		getComboBoxNombreHistorial().addActionListener(actionComboVerHistorialPaciente);
-	
+
 	}
-
-
-	
-	
-	
-	
-
 
 }

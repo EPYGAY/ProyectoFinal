@@ -62,6 +62,15 @@ public class Facade {
 	public HashMap<Long, String> obtnerMapaDoctor() {
 		return doctorNucleo.obtenerMapaIDNombre(); 
 	}
+	public HashMap<Long, String> obtnerMapaDoctorprimario() {
+		return doctorNucleo.obtenerMapaIDNombrePrimario();
+	}
+	public HashMap<Long, String> obtnerMapaDoctorEspecialista() {
+		return doctorNucleo.obtenerMapaIDNombreEspecialista();
+	}
+	public HashMap<Long, String> obtnerMapaDoctorCirujano() {
+		return doctorNucleo.obtenerMapaIDNombreCirujano();
+	}
 	
 	public boolean guardarCita(CitaMV citaMV) {
 		return citaNucleo.altaCita(citaMV);
